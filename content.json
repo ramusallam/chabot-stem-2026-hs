@@ -1,0 +1,1291 @@
+{
+  "meta": {
+    "title": "Chabot STEM 2026 \u2014 High School",
+    "program": "High School (Rising 9th-11th)",
+    "dates": "June 22 - July 2",
+    "storageKey": "woven-chabot-2026-hs",
+    "deployUrl": "https://chabot-stem-2026-hs.vercel.app",
+    "slug": "chabot-stem-2026-hs"
+  },
+  "days": [
+    {
+      "title": "Day 1: Advanced Biometrics",
+      "subtitle": "Statistical Analysis of Fingerprint Evidence",
+      "duration": "",
+      "sections": [
+        {
+          "style": "teal",
+          "title": "Part I: The Hook",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "text",
+              "content": "Fingerprint analysis has been used in courts for over a century, but how reliable is it really? Today you will examine the statistics behind biometric identification."
+            },
+            {
+              "type": "text",
+              "content": "Welcome to Day 1 of the High School STEM Workshop! Today you will analyze fingerprint evidence through a scientific and legal lens."
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Today's Case Briefing: A fingerprint recovered at a crime scene partially matches a suspect. The defense attorney challenges the evidence under the Daubert Standard - the legal test for whether scientific evidence is admissible. Your mission: determine whether the fingerprint evidence meets the standard."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/H_YxWRNgVTY"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I read the case briefing and watched the ACE-V method video"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "coral",
+          "title": "Part II: The Physical Lab",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Materials Needed: Ink pads, White cardstock, Magnifying glasses, Scientific calculators, Daubert Standard reference sheet, Frequency distribution worksheet, Tablets"
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Interactive App (fingerprint): Use the Fingerprint Ridge Classifier to practice identifying Loops, Whorls, and Arches. Study the reference patterns, then challenge yourself in Quiz Mode before moving to the statistical analysis. Use the Launch button below to open the app inline."
+            },
+            {
+              "type": "step",
+              "content": "Ink and Roll Technique: Collect prints from all ten fingers using the ink-and-roll technique."
+            },
+            {
+              "type": "step",
+              "content": "Classification: Classify each print and calculate the frequency distribution for your class."
+            },
+            {
+              "type": "step",
+              "content": "Population Comparison: Compare your class distribution to population statistics (Loop ~60%, Whorl ~35%, Arch ~5%)."
+            },
+            {
+              "type": "step",
+              "content": "Probability Calculation: Calculate: If a crime scene print is a whorl, what is the probability of a random match in a city of 100,000 people?"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I explored the Fingerprint Classifier and completed the statistical analysis"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "gold",
+          "title": "Part III: AI & Digital Literacy",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Case Study: The Daubert Standard requires that scientific evidence be based on testable methodology, peer-reviewed research, known error rates, and general acceptance in the scientific community. In 2016, a landmark report by the President's Council of Advisors on Science and Technology found that many forensic disciplines - including fingerprint analysis - lacked rigorous scientific validation."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/g82thePV5x4"
+            },
+            {
+              "type": "step",
+              "content": "Daubert Evaluation: Evaluate fingerprint evidence against each of the four Daubert criteria. Does it pass?"
+            },
+            {
+              "type": "step",
+              "content": "AFIS Research: Research how AFIS (Automated Fingerprint Identification System) works and its known error rates."
+            },
+            {
+              "type": "step",
+              "content": "Legal Argument: Write a one-paragraph argument for or against admitting the fingerprint evidence in court."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I analyzed the Daubert Standard and wrote my admissibility argument"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "maroon",
+          "title": "Part IV: End of Day",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Save your work: Save your Daubert analysis and probability calculations - they set the foundation for evaluating all forensic evidence this week!"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I completed Day 1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Day 2: The Physics of Blood Spatter",
+      "subtitle": "Trigonometric Analysis of Bloodstain Patterns",
+      "duration": "",
+      "sections": [
+        {
+          "style": "teal",
+          "title": "Part I: The Hook",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "text",
+              "content": "Blood spatter analysis sits at the intersection of biology and physics. Today you will derive the mathematical relationship between drop shape and impact angle from first principles."
+            },
+            {
+              "type": "text",
+              "content": "Welcome to Day 2! Today you will apply trigonometry to forensic science."
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Today's Case Briefing: Crime scene photos show elongated blood drops on the floor. The prosecution claims they prove the victim was standing when struck. The defense disagrees. Your mission: use trigonometry to calculate the exact impact angle and determine who is right."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/9cMdnpN7UQ0"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I read the case briefing and watched the impact angle video"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "coral",
+          "title": "Part II: The Physical Lab",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Materials Needed: Washable red paint, Pipettes, Protractors, Rulers, Scientific calculators, Butcher paper, Smocks, Trig reference sheets, Tablets"
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Interactive App (spatter): Use the Blood Spatter Angle Calculator to verify your hand calculations. Start with the Calculator tab to see the formula in action, then test your measurement skills in Practice Challenge mode. Use the Launch button below to open the app inline."
+            },
+            {
+              "type": "step",
+              "content": "Trigonometric Derivation: Derive the formula: Draw a blood drop as an ellipse. Label the width (w) and length (l). Show that sin(theta) = w/l, therefore theta = arcsin(w/l)."
+            },
+            {
+              "type": "step",
+              "content": "Spatter Experiment: Conduct the spatter experiment: Release simulated blood at 30, 45, 60, and 90 degree angles."
+            },
+            {
+              "type": "step",
+              "content": "Angle Calculation: For each spatter, measure width and length with a ruler. Calculate the impact angle."
+            },
+            {
+              "type": "step",
+              "content": "Error Analysis: Compare your calculated angles to the true angles. Calculate the percent error for each measurement."
+            },
+            {
+              "type": "step",
+              "content": "Error Propagation Discussion: Discuss error propagation: Why does a small measurement error produce a larger angle error when theta is close to 90 degrees?"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I used the Spatter Calculator and completed the trigonometric analysis"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "gold",
+          "title": "Part III: AI & Digital Literacy",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Case Study: AI-powered crime scene reconstruction tools can now process an entire room of blood spatter evidence and generate a 3D model of what happened. However, courts have been slow to accept AI-generated reconstructions. Under the Daubert Standard, how would you evaluate this technology?"
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/1o_14oH10V8"
+            },
+            {
+              "type": "step",
+              "content": "Daubert Standard Application: Apply the Daubert Standard to AI crime scene reconstruction. Evaluate each criterion."
+            },
+            {
+              "type": "step",
+              "content": "AI vs. Evidence Distinction: Discuss: What is the difference between AI as a tool for investigators vs. AI as evidence presented in court?"
+            },
+            {
+              "type": "step",
+              "content": "Case Research: Research one real case where digital forensic evidence was challenged. Summarize what happened."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I applied the Daubert Standard to AI forensic tools"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "maroon",
+          "title": "Part IV: End of Day",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Save your work: Save your trigonometric derivation and error analysis - these mathematical skills carry into every analytical challenge ahead!"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I completed Day 2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Day 3: Multi-Modal Analysis",
+      "subtitle": "Combining Evidence Types for Stronger Conclusions",
+      "duration": "",
+      "sections": [
+        {
+          "style": "teal",
+          "title": "Part I: The Hook",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "text",
+              "content": "No single piece of evidence tells the whole story. The strongest forensic cases combine multiple independent lines of evidence that all point to the same conclusion."
+            },
+            {
+              "type": "text",
+              "content": "Welcome to Day 3! Today you will think like a lead forensic analyst managing a complex case."
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Today's Case Briefing: A complex crime scene has yielded fingerprint evidence, blood spatter patterns, trace materials, and digital records. Each alone is inconclusive. Your mission: integrate all evidence types to build a case that meets the Daubert Standard."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/lakRwXYANUA"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I read the case briefing and watched the multi-modal AI video"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "coral",
+          "title": "Part II: The Physical Lab",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Materials Needed: Multi-evidence case file packets, Evidence analysis forms, Role assignment cards, Presentation materials, Previous lab equipment as needed"
+            },
+            {
+              "type": "step",
+              "content": "Case File Review: Review your team's case file. Assign roles: lead analyst, fingerprint specialist, spatter analyst, trace evidence examiner."
+            },
+            {
+              "type": "step",
+              "content": "Independent Analysis: Each specialist analyzes their evidence type independently and writes a brief report."
+            },
+            {
+              "type": "step",
+              "content": "Cross-Reference: The lead analyst reviews all reports and identifies where evidence corroborates or contradicts."
+            },
+            {
+              "type": "step",
+              "content": "Evidence Strength Assessment: As a team, assess the overall strength of the combined evidence."
+            },
+            {
+              "type": "step",
+              "content": "Formal Summary: Prepare a formal evidence summary that could be presented in court."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I completed the team evidence analysis and formal summary"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "gold",
+          "title": "Part III: AI & Digital Literacy",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Case Study: Multi-modal AI systems like GPT-4 can process text, images, and audio simultaneously. In forensics, researchers are developing AI that can analyze fingerprints, bloodstain patterns, and digital evidence in a single integrated system. The promise is faster, more objective analysis - but the risk is a single point of failure."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/jnkrQZoPfDM"
+            },
+            {
+              "type": "step",
+              "content": "Multi-Modal AI Trust Analysis: Discuss: Is an AI that combines multiple evidence types more or less trustworthy than separate AI tools for each type?"
+            },
+            {
+              "type": "step",
+              "content": "Advanced Prompt Engineering: Practice advanced prompt engineering techniques to get better analytical results from AI."
+            },
+            {
+              "type": "step",
+              "content": "AI System Design: Design an ideal AI forensic analysis system. What safeguards would you build in?"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I explored advanced prompt engineering and AI system design"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "maroon",
+          "title": "Part IV: End of Day",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Save your work: Save your team evidence summary - the multi-modal approach you practiced today is exactly how the final case works!"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I completed Day 3"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Day 4: AI Hallucinations",
+      "subtitle": "When Artificial Intelligence Makes Things Up",
+      "duration": "",
+      "sections": [
+        {
+          "style": "teal",
+          "title": "Part I: The Hook",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "text",
+              "content": "AI language models can write essays, answer questions, and even pass professional exams. But they also confidently state things that are completely false. Understanding why is one of the most important skills of the AI age."
+            },
+            {
+              "type": "text",
+              "content": "Welcome to Day 4! Today you will investigate one of AI's most important limitations."
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Today's Case Briefing: An attorney used an AI chatbot to research case law and submitted the citations in a legal brief. The judge discovered that several of the cited cases did not exist - the AI had fabricated them. Your mission: systematically test an AI for hallucinations and develop strategies for catching them."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/lcl0eYM0w_w"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I read the case briefing and watched the AI hallucination video"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "coral",
+          "title": "Part II: The Physical Lab",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Materials Needed: Laptops with internet access, AI testing protocol sheet, Verification source list, Hallucination Report template, Research summary handouts"
+            },
+            {
+              "type": "step",
+              "content": "AI Testing Protocol: Using the AI testing protocol, submit a series of factual questions to the AI chatbot. Record each response."
+            },
+            {
+              "type": "step",
+              "content": "Verification: Verify each AI response against reliable sources. Categorize errors as: fabrication, distortion, outdated information, or correct."
+            },
+            {
+              "type": "step",
+              "content": "Specificity Testing: Test the AI with increasingly specific questions. Does specificity increase or decrease accuracy?"
+            },
+            {
+              "type": "step",
+              "content": "Consistency Testing: Try asking the same question multiple ways. Does the AI give consistent answers?"
+            },
+            {
+              "type": "step",
+              "content": "Hallucination Report: Create a Hallucination Report documenting your findings with specific examples."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I completed the AI hallucination testing lab and created my report"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "gold",
+          "title": "Part III: AI & Digital Literacy",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Case Study: In 2023, a New York attorney submitted a legal brief containing six fabricated case citations generated by ChatGPT. The attorney was sanctioned by the court. This case became a landmark example of the dangers of trusting AI output without verification."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/wcG7s7Nm3EU"
+            },
+            {
+              "type": "step",
+              "content": "Technical Analysis: Analyze: Why do large language models hallucinate? What is happening technically (next-token prediction, training data gaps)?"
+            },
+            {
+              "type": "step",
+              "content": "Verification Protocol: Develop a personal AI Verification Protocol with specific steps for checking AI output."
+            },
+            {
+              "type": "step",
+              "content": "Liability Debate: Debate: Should AI companies be liable when their products generate false information that causes harm?"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I analyzed the legal case study and developed my verification protocol"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "maroon",
+          "title": "Part IV: End of Day",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Save your work: Save your Hallucination Report and Verification Protocol - these critical thinking tools apply to everything you do with AI!"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I completed Day 4"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Day 5: Clinical Physiology",
+      "subtitle": "Advanced Cardiac Monitoring and EKG Interpretation",
+      "duration": "",
+      "sections": [
+        {
+          "style": "teal",
+          "title": "Part I: The Hook",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "text",
+              "content": "The EKG is one of medicine's most powerful diagnostic tools. Each wave and interval tells a specific story about what the heart's electrical system is doing - and what might be going wrong."
+            },
+            {
+              "type": "text",
+              "content": "Welcome to Day 5! Today you enter Mini Med School as a cardiac monitoring specialist."
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Today's Case Briefing: A patient in the emergency department has an abnormal EKG. The attending physician needs you to identify the rhythm, calculate the heart rate from the tracing, and determine if it requires immediate intervention. Your mission: master EKG interpretation."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/ocSd7opNFD8"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I read the case briefing and watched the ECG waveform video"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "coral",
+          "title": "Part II: The Physical Lab",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Materials Needed: Stethoscopes, Manual blood pressure cuffs, Pulse oximeters, Stopwatches, Graph paper, SOAP note templates, Clinical scenario cards, Tablets"
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Interactive App (ekg): Use the EKG Waveform Explorer to study 5 cardiac rhythms in detail. Toggle the wave labels to learn what each PQRST component represents. Adjust the speed and amplitude controls to see how the tracing changes. Test your interpretation skills in Quiz Mode. Use the Launch button below to open the app inline."
+            },
+            {
+              "type": "step",
+              "content": "Resting Heart Rate: Measure your resting heart rate using manual palpation (radial pulse, 15-second count x 4)."
+            },
+            {
+              "type": "step",
+              "content": "Blood Pressure Measurement: Use the blood pressure cuff with manual auscultation. Listen for Korotkoff sounds to identify systolic and diastolic pressures."
+            },
+            {
+              "type": "step",
+              "content": "Pulse Oximetry: Apply the pulse oximeter and observe the plethysmography waveform. Note how it correlates with your pulse."
+            },
+            {
+              "type": "step",
+              "content": "Exercise Challenge: Perform the exercise challenge: 2 minutes of activity, then serial measurements at 0, 2, 5, and 10 minutes post-exercise. Graph your recovery curve."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I mastered the EKG Explorer and completed the advanced vital signs lab"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "gold",
+          "title": "Part III: AI & Digital Literacy",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Case Study: In 2020, an AI system developed by Mayo Clinic was shown to detect low ejection fraction - a sign of heart failure - from a standard 12-lead EKG with over 93% accuracy. Human cardiologists cannot detect this condition from an EKG alone. The AI was seeing patterns invisible to the human eye."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/4VY98bHaqe0"
+            },
+            {
+              "type": "step",
+              "content": "Pattern Recognition Analysis: Analyze: How can an AI detect something from an EKG that a trained cardiologist cannot? What does this suggest about the limits of human pattern recognition?"
+            },
+            {
+              "type": "step",
+              "content": "FDA Approval Research: Research FDA-approved AI cardiac diagnostic tools. What evidence did they need to gain approval?"
+            },
+            {
+              "type": "step",
+              "content": "Clinical Recommendation: Write a clinical recommendation: Should this AI be standard equipment in every emergency department? Support your position with evidence."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I analyzed the Mayo Clinic case study and wrote my clinical recommendation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "maroon",
+          "title": "Part IV: End of Day",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Save your work: Save your recovery curve data and clinical recommendation - evidence-based analysis is at the heart of everything in medicine!"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I completed Day 5"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Day 6: Advanced Surgical Skills",
+      "subtitle": "Precision Suturing and Quantitative Assessment",
+      "duration": "",
+      "sections": [
+        {
+          "style": "teal",
+          "title": "Part I: The Hook",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "text",
+              "content": "In surgery, millimeters matter. The difference between a clean closure and a complication can come down to stitch spacing, needle angle, and tissue tension."
+            },
+            {
+              "type": "text",
+              "content": "Welcome to Day 6! Today you will push your surgical skills to a higher standard."
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Today's Case Briefing: A patient requires a wound closure using both simple interrupted and continuous suture techniques. Your mission: master both patterns and meet the quantitative standards used in surgical training programs."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/iJmAhJwuX_w"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I read the case briefing and watched the vertical mattress technique video"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "coral",
+          "title": "Part II: The Physical Lab",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Materials Needed: Advanced suture kits (blunt-tip needles), Foam practice pads, Surgical gloves, Rulers for measurement, Surgical assessment rubric, Timer, Feedback forms"
+            },
+            {
+              "type": "step",
+              "content": "Technique Review: Review the simple interrupted technique, then learn the continuous (running) suture."
+            },
+            {
+              "type": "step",
+              "content": "Continuous Suture Practice: Practice the continuous suture on your foam pad. Focus on even spacing (3-5mm between bites) and consistent tension."
+            },
+            {
+              "type": "step",
+              "content": "Timed Challenge: Perform a timed suture challenge: close a 5cm wound using the technique of your choice in under 3 minutes."
+            },
+            {
+              "type": "step",
+              "content": "Quantitative Assessment: Measure your stitch spacing, entry/exit distances from the wound edge, and overall uniformity. Record on the assessment sheet."
+            },
+            {
+              "type": "step",
+              "content": "Peer Review: Evaluate a partner's work using the surgical assessment rubric. Provide specific, constructive feedback."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I completed both suture techniques and the quantitative assessment"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "gold",
+          "title": "Part III: AI & Digital Literacy",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Case Study: The STAR (Smart Tissue Autonomous Robot) system demonstrated the ability to perform laparoscopic surgery on soft tissue with outcomes comparable to - and in some measures better than - experienced surgeons. Unlike human surgeons, the robot's hands never shake and it never gets tired."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/M0am3-yCdHA"
+            },
+            {
+              "type": "step",
+              "content": "Human vs. Robot Comparison: Compare: What advantages does a surgical robot have over a human surgeon? What advantages does the human have?"
+            },
+            {
+              "type": "step",
+              "content": "Autonomous Surgery Research: Research the current state of autonomous surgical AI. How close are we to fully autonomous surgery?"
+            },
+            {
+              "type": "step",
+              "content": "Liability Debate: Debate: If a surgical robot makes an error, who is responsible - the robot manufacturer, the supervising surgeon, or the hospital?"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I analyzed the STAR robot case study and debated surgical AI responsibility"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "maroon",
+          "title": "Part IV: End of Day",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Save your work: Save your surgical assessment scores - tracking your improvement over time is exactly how surgical residents train!"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I completed Day 6"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Day 7: Algorithmic Bias",
+      "subtitle": "How AI Systems Can Perpetuate Inequality",
+      "duration": "",
+      "sections": [
+        {
+          "style": "teal",
+          "title": "Part I: The Hook",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "text",
+              "content": "An AI system is only as fair as the data it was trained on and the choices its creators made. When those choices reflect existing inequalities, AI can amplify them at scale."
+            },
+            {
+              "type": "text",
+              "content": "Welcome to Day 7! Today you will investigate one of the most critical ethical challenges in AI."
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Today's Case Briefing: A hospital has deployed an AI system to predict which patients are at highest risk and need extra care. An audit reveals that the algorithm systematically underestimates the needs of Black patients compared to white patients with the same conditions. Your mission: investigate why this happened and propose a fix."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/rf68wQDVEho"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I read the case briefing and watched the Coded Bias trailer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "coral",
+          "title": "Part II: The Physical Lab",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Materials Needed: Simulated patient dataset (printed or digital), Calculators, Bias audit worksheet, Bias report template, Discussion norm posters"
+            },
+            {
+              "type": "step",
+              "content": "Dataset Examination: Examine the simulated dataset. Calculate the average risk score for each demographic group."
+            },
+            {
+              "type": "step",
+              "content": "Proxy Variable Identification: Identify the proxy variable causing bias: the algorithm used healthcare spending as a proxy for healthcare need, but systemic inequalities mean some groups have less access to care."
+            },
+            {
+              "type": "step",
+              "content": "Alternative Variable Proposal: Propose an alternative variable that better captures actual health needs."
+            },
+            {
+              "type": "step",
+              "content": "Recalculation: Recalculate risk scores using your proposed variable. Does the bias decrease?"
+            },
+            {
+              "type": "step",
+              "content": "Bias Audit Report: Write a one-page bias audit report documenting the problem, root cause, and your recommended fix."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I completed the bias audit lab and wrote my report"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "gold",
+          "title": "Part III: AI & Digital Literacy",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Case Study: In 2019, researchers at UC Berkeley found that a widely used healthcare algorithm affected millions of patients. The algorithm used healthcare costs as a proxy for healthcare needs. Because Black patients historically had less access to care (and therefore lower costs), the algorithm concluded they were healthier and needed less additional care - even when they were equally or more sick than white patients."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/og67qeTZPYs"
+            },
+            {
+              "type": "step",
+              "content": "Case Study Analysis: Analyze three additional case studies: COMPAS recidivism prediction, Amazon's hiring algorithm, and facial recognition accuracy across demographics."
+            },
+            {
+              "type": "step",
+              "content": "Root Cause Identification: For each case, identify: What was the biased outcome? What caused it? How could it be prevented?"
+            },
+            {
+              "type": "step",
+              "content": "Fairness Standards: Draft a set of Algorithmic Fairness Standards that you think all AI systems should meet before deployment."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I analyzed the case studies and drafted algorithmic fairness standards"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "maroon",
+          "title": "Part IV: End of Day",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Save your work: Save your bias audit report and fairness standards - these frameworks apply to every AI system you will ever encounter!"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I completed Day 7"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Day 8: The Black Box Problem",
+      "subtitle": "AI Transparency, Explainability, and the Future",
+      "duration": "",
+      "sections": [
+        {
+          "style": "teal",
+          "title": "Part I: The Hook",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "text",
+              "content": "Some of the most powerful AI systems in the world cannot explain how they reach their conclusions. When an AI says a patient has cancer or a defendant will reoffend, the people affected deserve to understand why."
+            },
+            {
+              "type": "text",
+              "content": "Welcome to Day 8 - the final day! Today you will confront the fundamental tension at the heart of AI."
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Today's Case Briefing: An AI diagnostic tool identifies a rare condition in a patient with 97% confidence, but the treating physician cannot understand the AI's reasoning. The patient wants to know why the AI thinks they are sick. Your mission: investigate the black box problem and determine what level of AI transparency should be required."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/0Ktb-Lw7X2w"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I read the case briefing and watched the Explainable AI video"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "coral",
+          "title": "Part II: The Physical Lab",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Materials Needed: Comprehensive case file packets, All previous lab materials, AI Capability Map template, Presentation materials, Timer, Certificates of completion"
+            },
+            {
+              "type": "step",
+              "content": "Case File Review: Read your team's comprehensive case file. This case integrates forensic and medical evidence from the entire workshop."
+            },
+            {
+              "type": "step",
+              "content": "Evidence Station Analysis: At each evidence station, analyze the evidence and document whether AI could perform this analysis and whether it could explain its reasoning."
+            },
+            {
+              "type": "step",
+              "content": "AI Rating Scale: For each station, rate the AI's potential on two scales: accuracy (1-5) and explainability (1-5)."
+            },
+            {
+              "type": "step",
+              "content": "AI Capability Map: Create a visual AI Capability Map showing where AI excels, where humans excel, and where collaboration is ideal."
+            },
+            {
+              "type": "step",
+              "content": "Final Presentation: Prepare your team's final presentation: The case verdict plus your AI Capability Map."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I completed the evidence stations and created the AI Capability Map"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "gold",
+          "title": "Part III: AI & Digital Literacy",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Case Study: The EU's AI Act, passed in 2024, requires that high-risk AI systems provide meaningful explanations of their decisions. In healthcare, this means an AI that recommends a diagnosis must be able to show which factors led to that recommendation. Critics argue this requirement could block the most accurate AI models - which are often the least explainable."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/jpUTQvewhI4"
+            },
+            {
+              "type": "step",
+              "content": "Structured Debate: Structured debate: AI systems should be required to explain their decisions before they can be used in high-stakes settings. Half the class argues for, half against."
+            },
+            {
+              "type": "step",
+              "content": "Position Paper: Write your personal position paper: What level of AI transparency should be required, and why? Support your position with specific examples from the workshop."
+            },
+            {
+              "type": "step",
+              "content": "Final Reflection: Final reflection: How has your understanding of AI changed over these two weeks? What will you do differently when you encounter AI in your life?"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I participated in the debate and wrote my position paper"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "maroon",
+          "title": "Part IV: End of Day",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: open your notebook now. As you move through this phase, write your answers to every reflection, discussion, and case-study question before moving on. Your notebook is the record of your thinking."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Save your work: Congratulations on completing the Chabot High School STEM Workshop! You now have the critical thinking tools to navigate an AI-powered world. Keep questioning, keep analyzing, keep demanding transparency."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                {
+                  "text": "I completed Day 8"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

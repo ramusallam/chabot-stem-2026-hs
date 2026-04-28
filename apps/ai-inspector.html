@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Inspector - Chabot STEM 2026</title>
+  <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.23.9/babel.min.js"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#F0F4F8;min-height:100vh}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+    @keyframes flash{0%{background:#FFF}50%{background:#FFF4D1}100%{background:#FFF}}
+    @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+    @keyframes correctPop{0%{transform:scale(1)}50%{transform:scale(1.12);box-shadow:0 0 0 6px rgba(39,174,96,.25)}100%{transform:scale(1)}}
+    @keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(212,168,67,0)}50%{box-shadow:0 0 0 8px rgba(212,168,67,.18)}}
+    .fade-in{animation:fadeIn .3s ease-out}
+    .slide-up{animation:slideUp .4s ease-out}
+    .shake{animation:shake .35s ease}
+    .correct-pop{animation:correctPop .45s ease-out}
+    .glow{animation:glow 1.6s ease-in-out infinite}
+    input[type=range]{-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;background:#E0E8EE;outline:none;cursor:pointer;width:100%}
+    input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#2A9D8F,#1A6B6B);cursor:pointer;box-shadow:0 2px 6px rgba(42,157,143,.3)}
+    input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#2A9D8F,#1A6B6B);cursor:pointer;border:none}
+    input[type=text],input[type=number],textarea{outline:none;transition:border-color .2s,box-shadow .2s;font-family:inherit}
+    input[type=text]:focus,input[type=number]:focus,textarea:focus{border-color:#2A9D8F !important;box-shadow:0 0 0 3px rgba(42,157,143,.12)}
+    .mono{font-family:'SFMono-Regular',Menlo,Consolas,monospace}
+    .hl-bad{background:#FADBD8;color:#922B21;padding:2px 4px;border-radius:4px;cursor:pointer;border-bottom:2px dashed #C0392B;transition:all .15s}
+    .hl-bad:hover{background:#F5B7B1}
+    .hl-caught{background:#E8F8F1;color:#1E8449;padding:2px 4px;border-radius:4px;cursor:default;border-bottom:2px solid #27AE60}
+    .hl-miss{background:#FFF4D1;color:#8B6914;padding:2px 4px;border-radius:4px;cursor:default;border-bottom:2px dashed #D4A843}
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const{useState,useEffect,useMemo,useRef}=React;
+    const NAVY="#1B3A5C",TEAL="#2A9D8F",TEAL_DARK="#1A6B6B",GOLD="#D4A843",WHITE="#FFFFFF",
+          RED="#C0392B",GREEN="#27AE60",YELLOW="#F39C12",PURPLE="#7A2D4E",
+          DARK="#333",MED="#666",LIGHT="#F8F9FA",
+          R=14,SHADOW="0 2px 10px rgba(0,0,0,.08)";
+
+    // ===== Ethics Pearls =====
+    const ethicsPearls=[
+      "AIs hallucinate confidently. The fluency makes you trust the wrong fact.",
+      "ProPublica's 2016 COMPAS analysis: the algorithm was 45% wrong on Black defendants vs 23% on white. Same model. Different impact.",
+      "An algorithm trained on biased data WILL amplify that bias. It's not a bug, it's the math.",
+      "The EU AI Act (2024) bans AI systems that score people for 'social trustworthiness' and limits AI in hiring, lending, and policing.",
+      "SHAP, LIME, and attention maps are the closest we have to opening the black box. None gives full explanation.",
+      "Apple Card was investigated in 2019 because the credit-limit algorithm gave women lower limits than their husbands, even with shared income and credit.",
+      "Obermeyer et al. (2019) found a healthcare risk algorithm used by US hospitals systematically gave Black patients lower risk scores than equally sick white patients.",
+      "Amazon scrapped its hiring AI in 2018 because it had taught itself that male candidates were preferable. It downgraded resumes with the word 'women's'.",
+      "A model that's 99% accurate can still be deeply unfair. Accuracy says nothing about WHO it gets right.",
+      "Counterfactual reasoning (would the decision change if this feature flipped?) is one of the cleanest tests of fairness we have.",
+      "If an AI can't explain itself, it has no business deciding who gets a loan, a job, parole, or organ-transplant priority.",
+      "UC Berkeley's AI Policy Hub and Stanford HAI both train ethicists who audit models BEFORE they ship. That's the job."
+    ];
+    function randomPearl(){return ethicsPearls[Math.floor(Math.random()*ethicsPearls.length)];}
+
+    // ===== Shared Components =====
+    const WovenLogo=({size=20})=>(<svg viewBox="0 0 40 40" width={size} height={size} style={{flexShrink:0}}><polygon points="13,2 24,13 13,24 2,13" fill="#0ABAB5" opacity=".85"/><polygon points="27,2 38,13 27,24 16,13" fill="#F5B731" opacity=".85"/><polygon points="13,16 24,27 13,38 2,27" fill="#E65C3C" opacity=".85"/><polygon points="27,16 38,27 27,38 16,27" fill="#7A2D4E" opacity=".85"/></svg>);
+    const AppHeader=({subtitle})=>(<div style={{background:"linear-gradient(135deg,#1B3A5C 0%,#2A9D8F 100%)",padding:"12px 20px",display:"flex",alignItems:"center",gap:10,borderBottom:`3px solid ${GOLD}`}}><WovenLogo size={24}/><div style={{flex:1}}><div style={{fontSize:15,fontWeight:800,color:WHITE,letterSpacing:.3}}>Chabot STEM 2026</div><div style={{fontSize:11,color:"rgba(255,255,255,.75)",fontWeight:500}}>{subtitle||"AI Inspector"}</div></div><span style={{fontSize:20}}>{"\u{1F916}"}</span></div>);
+    const AppFooter=()=>(<div style={{textAlign:"center",padding:"14px 20px",borderTop:`3px solid ${GOLD}`,background:WHITE,fontSize:11,color:"#999",display:"flex",alignItems:"center",justifyContent:"center",gap:6,marginTop:24}}><WovenLogo size={14}/><span>Built by <strong style={{color:TEAL_DARK}}>Woven Learning & Technology</strong></span></div>);
+    const Btn=({children,onClick,primary,disabled,style={}})=>(<button onClick={onClick} disabled={disabled} style={{background:disabled?"#D8DEE5":primary?`linear-gradient(135deg,${TEAL},${TEAL_DARK})`:WHITE,color:disabled?"#999":primary?WHITE:NAVY,border:primary||disabled?"none":`2px solid ${TEAL}`,borderRadius:10,padding:"11px 24px",fontSize:14,fontWeight:700,cursor:disabled?"not-allowed":"pointer",transition:"all .2s",boxShadow:primary?"0 2px 8px rgba(42,157,143,.25)":SHADOW,fontFamily:"inherit",...style}}>{children}</button>);
+    const Card=({children,style={}})=>(<div style={{background:WHITE,borderRadius:R,padding:20,boxShadow:"0 4px 20px rgba(0,0,0,.08)",marginBottom:16,...style}}>{children}</div>);
+    const SectionLabel=({children,style={}})=>(<div style={{fontSize:10,fontWeight:700,color:MED,textTransform:"uppercase",letterSpacing:1.5,marginBottom:6,...style}}>{children}</div>);
+    const Pearl=({text})=>(<div style={{background:"#FFF9E6",borderRadius:R,padding:14,borderLeft:`4px solid ${GOLD}`,marginTop:12}}><div style={{fontSize:10,fontWeight:700,color:"#8B6914",textTransform:"uppercase",letterSpacing:1.5,marginBottom:4}}>{"\u{2696}\u{FE0F}"} Ethics Pearl</div><p style={{fontSize:13,color:DARK,margin:0,lineHeight:1.6,fontStyle:"italic"}}>{text}</p></div>);
+    const BackBtn=({onClick})=>(<div style={{marginBottom:14}}><button onClick={onClick} style={{background:"none",border:`2px solid ${TEAL}`,color:TEAL,borderRadius:10,padding:"8px 16px",fontSize:13,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>{"←"} Menu</button></div>);
+
+    // ===== MODE 1: HALLUCINATION HUNTER =====
+    // Each item: { id, source, prompt, segments: [{text, bad, truth}], categoryLabel, citation }
+    function buildHallucinations(){
+      return [
+        {
+          id:"cite",
+          categoryLabel:"Invented Citation",
+          source:"AI Research Assistant",
+          prompt:"\"Give me a study about teen social-media use and sleep.\"",
+          segments:[
+            {text:"A landmark 2019 study by "},
+            {text:"Smith, J., & Patel, R. (2019)",bad:true,truth:"This author/year combo was fabricated. The closest real work is Twenge & Campbell (2018) in Preventive Medicine Reports. LLMs invent author names that 'sound plausible' but don't exist."},
+            {text:" titled \"Adolescent Screen Time and REM Cycles,\" published in the "},
+            {text:"Journal of Pediatric Sleep Medicine, 45(3), 412-428",bad:true,truth:"This journal does not exist. LLMs commonly hallucinate journal names that combine real-sounding fragments. Real fact-check tool: Google Scholar + DOI lookup. If the DOI doesn't resolve, the citation is fake."},
+            {text:", found that students who scroll past midnight lose an average of 47 minutes of REM sleep nightly."}
+          ]
+        },
+        {
+          id:"stat",
+          categoryLabel:"Fabricated Statistic",
+          source:"AI Tutor",
+          prompt:"\"Tell me an interesting fact about dolphin communication.\"",
+          segments:[
+            {text:"Dolphins are highly intelligent. Studies have shown that "},
+            {text:"78% of bottlenose dolphins in the Pacific have demonstrated the ability to use sign language with human trainers",bad:true,truth:"This statistic is invented. No published study supports this claim. Dolphins use signature whistles and can be trained to associate hand gestures with actions, but 'sign language' is a hallucinated framing. Real fact-check method: search NOAA fisheries or peer-reviewed marine-biology journals."},
+            {text:", a discovery first noted at the Monterey Bay Aquarium in the 1990s."}
+          ]
+        },
+        {
+          id:"history",
+          categoryLabel:"Fake Historical Event",
+          source:"AI History Helper",
+          prompt:"\"What happened at the 1962 World's Fair in Seattle?\"",
+          segments:[
+            {text:"The 1962 Seattle World's Fair was famous for the Space Needle and "},
+            {text:"the live televised debate between President Kennedy and Soviet Premier Khrushchev held at the Pacific Science Center on April 21st",bad:true,truth:"This event never happened. JFK and Khrushchev never met or debated at the 1962 World's Fair. LLMs often graft real names onto fake events because the names 'fit the era.' Real fact-check method: cross-check with Library of Congress newspaper archives."},
+            {text:", which drew an estimated 80 million viewers."}
+          ]
+        },
+        {
+          id:"code",
+          categoryLabel:"Wrong Code Logic",
+          source:"AI Code Assistant",
+          prompt:"\"Write a Python function to find the average of a list.\"",
+          segments:[
+            {text:"Here's a clean implementation: def average(nums): return "},
+            {text:"sum(nums) * len(nums)",bad:true,truth:"This is multiplication, not division. The correct formula is sum(nums) / len(nums). LLMs frequently flip operators near edge cases. Real fact-check method: actually run the code on a known input. average([2,4,6]) should equal 4, not 36."},
+            {text:". Call it with average([10, 20, 30]) and you'll get 20."}
+          ]
+        },
+        {
+          id:"quote",
+          categoryLabel:"Misattributed Quote",
+          source:"AI Writing Coach",
+          prompt:"\"Find me a great quote about creativity and AI.\"",
+          segments:[
+            {text:"As "},
+            {text:"Albert Einstein famously said, \"The true sign of intelligence is not knowledge but imagination, especially when machines learn to dream.\"",bad:true,truth:"Einstein died in 1955, before machine learning existed. The first half is loosely Einstein-adjacent ('imagination is more important than knowledge'), but the back half about 'machines learning to dream' is invented. Real fact-check method: Quote Investigator, or search Einstein's actual published works."},
+            {text:" This idea echoes through modern AI ethics today."}
+          ]
+        },
+        {
+          id:"law",
+          categoryLabel:"Fake Law",
+          source:"AI Legal Helper",
+          prompt:"\"What California laws protect students from AI surveillance in school?\"",
+          segments:[
+            {text:"California's "},
+            {text:"AB-2317 (the 'Student AI Monitoring Disclosure Act' of 2022)",bad:true,truth:"This bill does not exist. AB-2317 is a real bill number but covers a different topic. LLMs invent bill names by combining a real-sounding number with a 'plausible' title. Real fact-check method: search leginfo.legislature.ca.gov directly."},
+            {text:" requires schools to notify families within 30 days if AI is used to monitor student devices."}
+          ]
+        },
+        {
+          id:"sci",
+          categoryLabel:"Fake Scientific Claim",
+          source:"AI Science Bot",
+          prompt:"\"Tell me a cool fact about the human brain.\"",
+          segments:[
+            {text:"The human brain "},
+            {text:"only uses 10% of its capacity at any given time, with the remaining 90% reserved for emergency situations",bad:true,truth:"This is the famous '10% myth.' Brain imaging (fMRI, PET) shows we use virtually all of the brain over a 24-hour period. LLMs repeat popular myths because the myths appear thousands of times in training data. Real fact-check method: peer-reviewed neuroscience journals or Scientific American debunks."},
+            {text:", which is why training in meditation can 'unlock' new abilities."}
+          ]
+        },
+        {
+          id:"geo",
+          categoryLabel:"Wrong Geography",
+          source:"AI Travel Helper",
+          prompt:"\"Tell me about the geography of the Bay Area.\"",
+          segments:[
+            {text:"The San Francisco Bay Area sits at the meeting of three tectonic plates: the Pacific, the North American, and "},
+            {text:"the Bay Area Microplate, a small plate unique to Northern California",bad:true,truth:"There is no 'Bay Area Microplate.' The San Andreas system is the boundary between the Pacific and North American plates. LLMs invent fake-sounding geological terms by combining a real region name with a real-sounding term. Real fact-check method: USGS Earthquake Hazards Program."},
+            {text:", which causes the unique 'rolling' earthquake patterns the region is known for."}
+          ]
+        }
+      ];
+    }
+
+    function HallucinationMode(){
+      const items=useMemo(buildHallucinations,[]);
+      const[idx,setIdx]=useState(0);
+      const[caught,setCaught]=useState({});  // {idx: Set of segment indexes caught}
+      const[checked,setChecked]=useState({}); // {idx: bool}
+      const[done,setDone]=useState(false);
+
+      const item=items[idx];
+      const myCaught=caught[idx]||new Set();
+      const isChecked=!!checked[idx];
+
+      const totalBad=items.reduce((acc,it)=>acc+it.segments.filter(s=>s.bad).length,0);
+      const myBadCount=item.segments.filter(s=>s.bad).length;
+
+      const totalCaught=Object.values(caught).reduce((acc,set)=>acc+(set?set.size:0),0);
+
+      const clickSegment=(segIdx)=>{
+        if(isChecked) return;
+        const seg=item.segments[segIdx];
+        if(!seg.bad) return; // can't click clean text
+        const next=new Set(myCaught);
+        if(next.has(segIdx)) next.delete(segIdx);
+        else next.add(segIdx);
+        setCaught({...caught,[idx]:next});
+      };
+
+      const reveal=()=>{
+        setChecked({...checked,[idx]:true});
+      };
+
+      const reset=()=>{
+        const c={...caught};delete c[idx];setCaught(c);
+        const ck={...checked};delete ck[idx];setChecked(ck);
+      };
+
+      const next=()=>{
+        if(idx<items.length-1) setIdx(idx+1);
+        else setDone(true);
+      };
+
+      const restart=()=>{
+        setIdx(0);setCaught({});setChecked({});setDone(false);
+      };
+
+      if(done){
+        const pct=totalBad>0?Math.round(totalCaught/totalBad*100):0;
+        return(<div className="fade-in">
+          <Card style={{textAlign:"center"}}>
+            <div style={{fontSize:48,marginBottom:8}}>{pct>=80?"\u{1F50D}":pct>=60?"\u{1F914}":"\u{1F4DA}"}</div>
+            <div style={{fontSize:44,fontWeight:800,color:pct>=80?GREEN:pct>=60?GOLD:RED,lineHeight:1}}>{pct}%</div>
+            <div style={{fontSize:15,fontWeight:700,color:NAVY,margin:"8px 0"}}>{totalCaught}/{totalBad} hallucinations caught</div>
+            <p style={{fontSize:13,color:MED,maxWidth:420,margin:"8px auto 16px",lineHeight:1.6}}>{pct>=80?"You read AI output the way auditors should: with healthy skepticism. That's the AI Ethicist mindset.":pct>=60?"Solid eye. The trick is treating every AI fact as a hypothesis until you check the source.":"Hallucinations slip past everyone at first. Real fact-checking takes practice and the right tools (Google Scholar, DOI lookup, primary sources)."}</p>
+            <Btn primary onClick={restart}>Try Again</Btn>
+          </Card>
+          <Pearl text={randomPearl()}/>
+        </div>);
+      }
+
+      return(<div>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12,flexWrap:"wrap",gap:8}}>
+          <span style={{fontSize:13,fontWeight:700,color:MED}}>Output {idx+1}/{items.length}</span>
+          <span style={{fontSize:13,fontWeight:700,color:TEAL}}>Caught: {totalCaught}/{totalBad}</span>
+        </div>
+        <div style={{height:6,background:"#E8EDF2",borderRadius:3,marginBottom:16,overflow:"hidden"}}>
+          <div style={{height:"100%",background:`linear-gradient(90deg,${TEAL},${TEAL_DARK})`,width:`${((idx+1)/items.length)*100}%`,transition:"width .4s",borderRadius:3}}/>
+        </div>
+
+        <Card>
+          <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:6,flexWrap:"wrap"}}>
+            <span style={{fontSize:11,fontWeight:800,letterSpacing:1.5,color:RED,background:"#FADBD8",padding:"4px 10px",borderRadius:8,textTransform:"uppercase"}}>{item.categoryLabel}</span>
+            <span style={{fontSize:11,fontWeight:700,color:MED}}>via {item.source}</span>
+          </div>
+          <SectionLabel style={{marginTop:8}}>User Prompt</SectionLabel>
+          <p style={{fontSize:13,color:DARK,fontStyle:"italic",marginBottom:14,padding:"8px 12px",background:LIGHT,borderRadius:8,borderLeft:`3px solid ${MED}`}}>{item.prompt}</p>
+
+          <SectionLabel>AI Response</SectionLabel>
+          <p style={{fontSize:11,color:MED,marginBottom:10,lineHeight:1.5,fontStyle:"italic"}}>Click any phrase that looks like a hallucination. You're hunting for invented facts, fake names, wrong logic.</p>
+
+          <div style={{padding:"14px 16px",background:LIGHT,borderRadius:10,fontSize:14,lineHeight:1.85,color:DARK,marginBottom:14}}>
+            {item.segments.map((seg,si)=>{
+              if(!seg.bad){
+                return <span key={si}>{seg.text}</span>;
+              }
+              const isCaught=myCaught.has(si);
+              if(isChecked){
+                return <span key={si} className={isCaught?"hl-caught":"hl-miss"}>{seg.text}</span>;
+              }
+              return <span key={si} className={isCaught?"hl-caught":"hl-bad"} onClick={()=>clickSegment(si)}>{seg.text}</span>;
+            })}
+          </div>
+
+          {isChecked && (
+            <div className="fade-in">
+              {item.segments.filter(s=>s.bad).map((seg,bi)=>{
+                // find original index
+                const origIdx=item.segments.indexOf(seg);
+                const wasCaught=myCaught.has(origIdx);
+                return(<div key={bi} style={{background:wasCaught?"#E8F8F1":"#FFF4D1",borderRadius:10,padding:"12px 14px",borderLeft:`4px solid ${wasCaught?GREEN:GOLD}`,marginBottom:10}}>
+                  <div style={{fontSize:13,fontWeight:800,color:wasCaught?GREEN:"#8B6914",marginBottom:4}}>{wasCaught?"✅ Caught":"⚠️ Missed"}: <span style={{fontWeight:700}}>{seg.text.length>50?seg.text.slice(0,50)+"…":seg.text}</span></div>
+                  <p style={{fontSize:12,color:DARK,margin:0,lineHeight:1.55}}><strong>Truth:</strong> {seg.truth}</p>
+                </div>);
+              })}
+            </div>
+          )}
+
+          <div style={{display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap"}}>
+            {!isChecked && <Btn onClick={reset}>Reset</Btn>}
+            {!isChecked && <Btn primary onClick={reveal}>Check My Answers</Btn>}
+            {isChecked && <Btn primary onClick={next}>{idx<items.length-1?"Next Output →":"View Results"}</Btn>}
+          </div>
+        </Card>
+
+        <Card>
+          <SectionLabel>Real Fact-Check Toolkit</SectionLabel>
+          <div style={{display:"grid",gap:8,fontSize:12,color:DARK,lineHeight:1.55}}>
+            <div style={{padding:"8px 12px",background:LIGHT,borderRadius:8}}><strong style={{color:NAVY}}>Citations:</strong> Google Scholar + DOI resolver. If the DOI doesn't load, the paper is fake.</div>
+            <div style={{padding:"8px 12px",background:LIGHT,borderRadius:8}}><strong style={{color:NAVY}}>Statistics:</strong> Trace to original source (CDC, NOAA, BLS). LLMs invent specific percentages.</div>
+            <div style={{padding:"8px 12px",background:LIGHT,borderRadius:8}}><strong style={{color:NAVY}}>Quotes:</strong> Quote Investigator (quoteinvestigator.com). Most viral quotes are misattributed.</div>
+            <div style={{padding:"8px 12px",background:LIGHT,borderRadius:8}}><strong style={{color:NAVY}}>Code:</strong> Run it. AI math errors disappear when you actually execute the function.</div>
+          </div>
+        </Card>
+      </div>);
+    }
+
+    // ===== MODE 2: BIAS VISUALIZER =====
+    // We simulate a hiring algorithm trained on biased data.
+    // Group A = 70% of training pool, Group B = 30% (over- and under-represented)
+    // The "bias" slider sets what fraction of Group A is labeled "qualified" in training.
+    // Group B fraction is held at 50% (the "true rate"). The model overfits to A.
+    function BiasMode(){
+      const[bias,setBias]=useState(80); // % of Group A labeled qualified in training
+      const[showCases,setShowCases]=useState(true);
+
+      // Compute model behavior
+      // Assume model learns: P(qualified | groupA) = bias/100
+      //                      P(qualified | groupB) = 0.5
+      // Test set: 100 candidates, 50 in each group, true qualification rate = 50% in both.
+      // Model predicts everyone in A as qualified if bias > 50, else not (rough proxy).
+      // Better simulation: model's predicted probability gets calibrated to training distribution.
+      // Approximation: accuracy_A = max(bias, 100-bias), but flipped vs truth means many false positives.
+      // Use this simple model: model predicts groupA as qualified with prob = bias/100,
+      //                       groupB as qualified with prob = 0.5
+      // True label prob = 0.5 in both groups (the ground truth).
+      // Accuracy_A = (bias/100)*0.5 + (1-bias/100)*0.5 = always 0.5? No - we need a deterministic threshold.
+      //
+      // Use: model predicts "qualified" for an A applicant with probability = bias/100,
+      //      and "qualified" for a B applicant with probability = (100-bias)/100 (mirror).
+      // For each true label (50/50), accuracy is: P(predict=true)*0.5 + P(predict=false)*0.5
+      // That's still 0.5. We need a model that's actually pretty accurate but unfairly so.
+      //
+      // Better: model gets the right answer 90% of the time on Group A (well-represented),
+      //         but only (bias) accuracy on Group B (the mirror).
+      // We re-frame: bias slider = % of training data that came from Group A.
+      // Default: 80% Group A.
+      //
+      // Group A test accuracy: 0.95 (well-represented, well-fit)
+      // Group B test accuracy: scales from 0.50 to 0.95 as bias drops from 95% A to 50% A.
+      //
+      // We'll let bias slider go 50-95.
+      const groupAFrac=bias/100;
+      const groupBFrac=1-groupAFrac;
+      const accA=0.95; // model is consistently good at Group A
+      // Group B accuracy: starts at 50% (random) when training is 95% A, climbs to 95% at 50/50
+      // Linear from (95% -> 0.50) to (50% -> 0.95)
+      const accB=Math.max(0.50, 0.95 - (groupAFrac-0.5)*1.0); // at 0.5 bias accB=0.95, at 0.95 bias accB=0.50
+      // Overall accuracy: weighted by TEST set distribution. Test set we keep 50/50.
+      const overallAcc=(accA+accB)/2;
+      const fairnessGap=Math.abs(accA-accB)*100;
+
+      // Visualize 100 face icons
+      const facesPerSide=10;
+      const totalFaces=facesPerSide*facesPerSide;
+
+      // Real-world cases
+      const cases=[
+        {key:"compas",name:"COMPAS (ProPublica, 2016)",detail:"Recidivism-prediction tool used by US courts. False-positive rate (predicted high-risk but didn't reoffend) was 45% for Black defendants vs 23% for white. Same model, different impact."},
+        {key:"amazon",name:"Amazon Hiring AI (2018)",detail:"Trained on 10 years of Amazon resumes (mostly male). Learned to penalize the word 'women's' (e.g. 'women's chess club captain'). Amazon scrapped it."},
+        {key:"applecard",name:"Apple Card (2019)",detail:"Goldman Sachs's algorithm gave women lower credit limits than husbands with shared finances. NY DFS investigated. No 'gender' input was used, but proxies (job history, spending pattern) carried bias."},
+        {key:"obermeyer",name:"Healthcare Risk Algorithm (2019)",detail:"Obermeyer et al. (Science) found a widely-used hospital algorithm assigned Black patients lower risk scores than equally sick white patients. It used past spending as a proxy for need - and Black patients historically received less care."}
+      ];
+
+      return(<div className="fade-in">
+        <Card>
+          <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:6}}>
+            <span style={{fontSize:22}}>{"\u{1F4CA}"}</span>
+            <div style={{fontSize:18,fontWeight:800,color:NAVY}}>How Training Bias Becomes Algorithmic Bias</div>
+          </div>
+          <p style={{fontSize:13,color:MED,lineHeight:1.55,marginBottom:14}}>You're auditing a hiring algorithm. Training data has 100 candidates labeled "qualified" or "not qualified." Slide to change the share that came from Group A.</p>
+
+          <SectionLabel>Training Data Composition</SectionLabel>
+          <div style={{display:"flex",justifyContent:"space-between",fontSize:11,fontWeight:700,color:MED,marginBottom:6}}>
+            <span>50% / 50%</span>
+            <span>{Math.round(groupAFrac*100)}% / {Math.round(groupBFrac*100)}%</span>
+            <span>95% / 5%</span>
+          </div>
+          <input type="range" min="50" max="95" value={bias} onChange={e=>setBias(parseInt(e.target.value))} style={{marginBottom:12}}/>
+
+          {/* 100 face icons visualization */}
+          <div style={{display:"grid",gridTemplateColumns:`repeat(${facesPerSide},1fr)`,gap:3,marginBottom:14,padding:8,background:LIGHT,borderRadius:10}}>
+            {Array.from({length:totalFaces}).map((_,i)=>{
+              // Distribute group A vs group B in training pool
+              const isGroupA=i<Math.round(totalFaces*groupAFrac);
+              return <div key={i} style={{aspectRatio:"1",borderRadius:"50%",background:isGroupA?TEAL:PURPLE,opacity:0.75,display:"flex",alignItems:"center",justifyContent:"center",fontSize:10,color:WHITE}}>{isGroupA?"A":"B"}</div>;
+            })}
+          </div>
+          <div style={{display:"flex",justifyContent:"center",gap:18,fontSize:12,color:DARK,marginBottom:8}}>
+            <div style={{display:"flex",alignItems:"center",gap:6}}><span style={{width:14,height:14,borderRadius:"50%",background:TEAL,opacity:0.75}}/> Group A: {Math.round(totalFaces*groupAFrac)} candidates</div>
+            <div style={{display:"flex",alignItems:"center",gap:6}}><span style={{width:14,height:14,borderRadius:"50%",background:PURPLE,opacity:0.75}}/> Group B: {Math.round(totalFaces*groupBFrac)} candidates</div>
+          </div>
+        </Card>
+
+        <Card>
+          <SectionLabel>Model Performance on Balanced Test Set (50/50)</SectionLabel>
+          <p style={{fontSize:12,color:MED,lineHeight:1.55,marginBottom:12,fontStyle:"italic"}}>The model trains on the biased pool above, then we test it on a fair 50/50 sample. Watch what happens to per-group accuracy.</p>
+
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:14}}>
+            <div style={{padding:"14px 14px",background:`${TEAL}10`,border:`2px solid ${TEAL}40`,borderRadius:10}}>
+              <div style={{fontSize:10,fontWeight:700,color:TEAL_DARK,letterSpacing:1.2,textTransform:"uppercase"}}>Group A Accuracy</div>
+              <div className="mono" style={{fontSize:28,fontWeight:800,color:TEAL_DARK}}>{(accA*100).toFixed(1)}%</div>
+            </div>
+            <div style={{padding:"14px 14px",background:accB<0.7?"#FADBD8":`${PURPLE}10`,border:`2px solid ${accB<0.7?RED:PURPLE}40`,borderRadius:10}}>
+              <div style={{fontSize:10,fontWeight:700,color:accB<0.7?RED:PURPLE,letterSpacing:1.2,textTransform:"uppercase"}}>Group B Accuracy</div>
+              <div className="mono" style={{fontSize:28,fontWeight:800,color:accB<0.7?RED:PURPLE}}>{(accB*100).toFixed(1)}%</div>
+            </div>
+          </div>
+
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:8}}>
+            <div style={{padding:"12px 14px",background:LIGHT,border:"2px solid #E0E8EE",borderRadius:10}}>
+              <div style={{fontSize:10,fontWeight:700,color:MED,letterSpacing:1.2,textTransform:"uppercase"}}>Overall Accuracy</div>
+              <div className="mono" style={{fontSize:22,fontWeight:800,color:NAVY}}>{(overallAcc*100).toFixed(1)}%</div>
+              <div style={{fontSize:10,color:MED,marginTop:2}}>The number stakeholders see</div>
+            </div>
+            <div style={{padding:"12px 14px",background:fairnessGap>20?"#FADBD8":fairnessGap>10?"#FFF4D1":"#E8F8F1",border:`2px solid ${fairnessGap>20?RED:fairnessGap>10?GOLD:GREEN}40`,borderRadius:10}}>
+              <div style={{fontSize:10,fontWeight:700,color:fairnessGap>20?RED:fairnessGap>10?"#8B6914":GREEN,letterSpacing:1.2,textTransform:"uppercase"}}>Fairness Gap</div>
+              <div className="mono" style={{fontSize:22,fontWeight:800,color:fairnessGap>20?RED:fairnessGap>10?"#8B6914":GREEN}}>{fairnessGap.toFixed(1)} pts</div>
+              <div style={{fontSize:10,color:MED,marginTop:2}}>The number ethicists watch</div>
+            </div>
+          </div>
+
+          {fairnessGap>20 && <div className="fade-in" style={{marginTop:12,padding:"10px 14px",background:"#FADBD8",borderRadius:10,borderLeft:`4px solid ${RED}`,fontSize:12,color:DARK,lineHeight:1.55}}><strong style={{color:RED}}>{"⚠️"} Disparate Impact:</strong> A {fairnessGap.toFixed(1)}-point gap between groups would fail the EEOC's "four-fifths rule" (the impact ratio must be at least 80%). This algorithm would be illegal to use in US hiring as-is.</div>}
+          {fairnessGap<=20 && fairnessGap>10 && <div className="fade-in" style={{marginTop:12,padding:"10px 14px",background:"#FFF4D1",borderRadius:10,borderLeft:`4px solid ${GOLD}`,fontSize:12,color:DARK,lineHeight:1.55}}><strong style={{color:"#8B6914"}}>Caution:</strong> The overall accuracy looks acceptable, but the gap between groups is large enough to trigger an audit under most fairness frameworks (Equalized Odds, Demographic Parity).</div>}
+          {fairnessGap<=10 && <div className="fade-in" style={{marginTop:12,padding:"10px 14px",background:"#E8F8F1",borderRadius:10,borderLeft:`4px solid ${GREEN}`,fontSize:12,color:DARK,lineHeight:1.55}}><strong style={{color:GREEN}}>Reasonable balance.</strong> Training data is more representative. The model performs comparably on both groups. This is what auditors aim for.</div>}
+        </Card>
+
+        <Card>
+          <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10,flexWrap:"wrap",gap:8}}>
+            <SectionLabel style={{marginBottom:0}}>Real-World Cases</SectionLabel>
+            <button onClick={()=>setShowCases(!showCases)} style={{background:"none",border:`2px solid ${TEAL}`,color:TEAL,borderRadius:8,padding:"4px 10px",fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"inherit"}}>{showCases?"Hide":"Show"}</button>
+          </div>
+          {showCases && <div className="fade-in" style={{display:"grid",gap:10}}>
+            {cases.map(c=>(<div key={c.key} style={{padding:"12px 14px",background:LIGHT,borderRadius:10,borderLeft:`3px solid ${PURPLE}`}}>
+              <div style={{fontSize:13,fontWeight:800,color:NAVY,marginBottom:4}}>{c.name}</div>
+              <p style={{fontSize:12,color:DARK,margin:0,lineHeight:1.55}}>{c.detail}</p>
+            </div>))}
+          </div>}
+        </Card>
+
+        <Pearl text={ethicsPearls[1]}/>
+      </div>);
+    }
+
+    // ===== MODE 3: BLACK BOX INSPECTOR =====
+    function BlackBoxMode(){
+      // Cases: each is a loan applicant with feature contributions
+      const cases=useMemo(()=>[
+        {
+          id:"a",
+          name:"Applicant A",
+          summary:"32 yrs old, applying for $25,000 personal loan",
+          features:[
+            {name:"Annual Income",value:"$58,000",contribution:0.32,explain:"Above median for the region"},
+            {name:"Debt-to-Income Ratio",value:"22%",contribution:0.18,explain:"Below the 36% threshold"},
+            {name:"Employment Length",value:"4.5 years",contribution:0.21,explain:"Stable tenure"},
+            {name:"Credit Score",value:"712",contribution:0.28,explain:"Tier 2: prime"},
+            {name:"ZIP Code Default Rate",value:"6.8%",contribution:-0.12,explain:"⚠️ Proxy for race/income; flagged by auditors"},
+            {name:"Existing Loans",value:"1 active",contribution:-0.08,explain:"Below average burden"}
+          ],
+          decision:"APPROVED",
+          baseScore:0.5,
+          flippable:[
+            {feature:"ZIP Code Default Rate",altValue:"3.1% (low-default ZIP)",altContribution:0.10,note:"If we removed the ZIP feature entirely (the fairness fix), the decision still holds for this applicant. But for borderline applicants, ZIP can be the deciding factor."}
+          ]
+        },
+        {
+          id:"b",
+          name:"Applicant B",
+          summary:"29 yrs old, applying for $25,000 personal loan",
+          features:[
+            {name:"Annual Income",value:"$57,500",contribution:0.31,explain:"Nearly identical to Applicant A"},
+            {name:"Debt-to-Income Ratio",value:"24%",contribution:0.16,explain:"Below the 36% threshold"},
+            {name:"Employment Length",value:"4.0 years",contribution:0.19,explain:"Stable tenure"},
+            {name:"Credit Score",value:"708",contribution:0.26,explain:"Tier 2: prime"},
+            {name:"ZIP Code Default Rate",value:"14.2%",contribution:-0.31,explain:"⚠️ High-default ZIP, dominates decision"},
+            {name:"Existing Loans",value:"1 active",contribution:-0.07,explain:"Below average burden"}
+          ],
+          decision:"DENIED",
+          baseScore:0.5,
+          flippable:[
+            {feature:"ZIP Code Default Rate",altValue:"6.8% (Applicant A's ZIP)",altContribution:-0.12,note:"Counterfactual: if Applicant B lived in Applicant A's ZIP, the decision would FLIP to APPROVED. Two near-identical applicants. One feature, one decision."}
+          ]
+        },
+        {
+          id:"c",
+          name:"Applicant C",
+          summary:"45 yrs old, applying for $40,000 home-improvement loan",
+          features:[
+            {name:"Annual Income",value:"$92,000",contribution:0.38,explain:"Strong"},
+            {name:"Debt-to-Income Ratio",value:"31%",contribution:0.08,explain:"Acceptable, near threshold"},
+            {name:"Employment Length",value:"12 years",contribution:0.27,explain:"Long tenure"},
+            {name:"Credit Score",value:"680",contribution:0.05,explain:"Tier 3: near-prime"},
+            {name:"ZIP Code Default Rate",value:"5.2%",contribution:0.04,explain:"Low-risk ZIP"},
+            {name:"Recent Hard Inquiries",value:"4 in 6 months",contribution:-0.18,explain:"Suggests credit-shopping; mild penalty"}
+          ],
+          decision:"APPROVED",
+          baseScore:0.5,
+          flippable:[
+            {feature:"Recent Hard Inquiries",altValue:"0 in 6 months",altContribution:0.04,note:"Counterfactual: with no recent inquiries, the score climbs from 0.64 to 0.86. Same applicant, much stronger approval signal."}
+          ]
+        },
+        {
+          id:"d",
+          name:"Applicant D",
+          summary:"22 yrs old, recent grad, applying for $15,000 auto loan",
+          features:[
+            {name:"Annual Income",value:"$48,000",contribution:0.18,explain:"Entry-level salary"},
+            {name:"Debt-to-Income Ratio",value:"18%",contribution:0.22,explain:"Low, mostly student loans"},
+            {name:"Employment Length",value:"0.5 years",contribution:-0.16,explain:"⚠️ Short tenure penalized despite recent graduation"},
+            {name:"Credit Score",value:"695",contribution:0.10,explain:"Tier 3"},
+            {name:"ZIP Code Default Rate",value:"4.8%",contribution:0.06,explain:"Low-risk ZIP"},
+            {name:"Education Level",value:"Bachelor's degree (CS)",contribution:0.0,explain:"⚠️ NOT used by model. Education is excluded by fair-lending rules, but tenure penalty effectively undoes that."}
+          ],
+          decision:"APPROVED",
+          baseScore:0.5,
+          flippable:[
+            {feature:"Employment Length",altValue:"3.0 years",altContribution:0.14,note:"Counterfactual: same applicant with 3 years' employment becomes a much stronger approval. Young applicants are systematically punished by tenure features."}
+          ]
+        }
+      ],[]);
+
+      const[caseIdx,setCaseIdx]=useState(0);
+      const[opened,setOpened]=useState(false);
+      const[whatIf,setWhatIf]=useState(false);
+
+      const c=cases[caseIdx];
+
+      // Compute predicted "score" = baseScore + sum(contributions). Above 0.55 = approved.
+      const score=c.baseScore + c.features.reduce((a,f)=>a+f.contribution,0);
+      // What-if: apply flippable changes
+      const altContribution=c.flippable.reduce((a,f)=>{
+        const orig=c.features.find(x=>x.name===f.feature);
+        return a + (f.altContribution - (orig?orig.contribution:0));
+      },0);
+      const altScore=score + altContribution;
+      const altDecision=altScore>0.55?"APPROVED":"DENIED";
+
+      const switchCase=(i)=>{
+        setCaseIdx(i);setOpened(false);setWhatIf(false);
+      };
+
+      return(<div className="fade-in">
+        <Card>
+          <SectionLabel>Loan Approval Cases</SectionLabel>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(120px,1fr))",gap:8}}>
+            {cases.map((cc,i)=>(<button key={cc.id} onClick={()=>switchCase(i)} style={{padding:"10px 8px",border:`2px solid ${i===caseIdx?TEAL:"#E0E8EE"}`,background:i===caseIdx?`${TEAL}12`:WHITE,color:i===caseIdx?TEAL_DARK:DARK,borderRadius:10,fontWeight:700,fontSize:12,cursor:"pointer",fontFamily:"inherit",transition:"all .2s"}}>{cc.name}</button>))}
+          </div>
+        </Card>
+
+        <Card>
+          <div style={{fontSize:18,fontWeight:800,color:NAVY,marginBottom:4}}>{c.name}</div>
+          <p style={{fontSize:13,color:MED,lineHeight:1.55,marginBottom:14}}>{c.summary}</p>
+
+          {/* The black box */}
+          {!opened && <div className="fade-in">
+            <div style={{padding:"24px 20px",background:"linear-gradient(135deg,#1B3A5C 0%,#0F2238 100%)",borderRadius:14,textAlign:"center",color:WHITE,marginBottom:14}}>
+              <div style={{fontSize:11,fontWeight:700,letterSpacing:1.5,color:"rgba(255,255,255,.55)",textTransform:"uppercase",marginBottom:8}}>ML Model Output</div>
+              <div style={{fontSize:36,fontWeight:800,color:c.decision==="APPROVED"?"#7DEDA1":"#F5A0A0",letterSpacing:2,marginBottom:8}}>{c.decision}</div>
+              <div style={{fontSize:12,color:"rgba(255,255,255,.7)",fontStyle:"italic"}}>(no explanation provided)</div>
+            </div>
+
+            <SectionLabel>Visible Inputs</SectionLabel>
+            <div style={{display:"grid",gap:6,marginBottom:14}}>
+              {c.features.map((f,i)=>(<div key={i} style={{display:"flex",justifyContent:"space-between",padding:"8px 12px",background:LIGHT,borderRadius:8,fontSize:12}}>
+                <span style={{color:DARK,fontWeight:600}}>{f.name}</span>
+                <span className="mono" style={{color:NAVY,fontWeight:700}}>{f.value}</span>
+              </div>))}
+            </div>
+
+            <div style={{textAlign:"center"}}>
+              <Btn primary onClick={()=>setOpened(true)} style={{}} >{"\u{1F50D}"} Open the Box</Btn>
+            </div>
+          </div>}
+
+          {/* Opened box: SHAP-style waterfall */}
+          {opened && <div className="fade-in">
+            <SectionLabel>SHAP-Style Feature Contributions</SectionLabel>
+            <p style={{fontSize:11,color:MED,lineHeight:1.55,fontStyle:"italic",marginBottom:12}}>Each bar shows how much one feature pushed the decision toward approval (right) or denial (left). Base score: 0.50 (50/50).</p>
+
+            <div style={{display:"grid",gap:6,marginBottom:14}}>
+              {c.features.map((f,i)=>{
+                const pct=Math.abs(f.contribution)*200; // visual scaling
+                const pos=f.contribution>=0;
+                return(<div key={i} style={{padding:"8px 12px",background:LIGHT,borderRadius:8}}>
+                  <div style={{display:"flex",justifyContent:"space-between",fontSize:12,marginBottom:4}}>
+                    <span style={{color:DARK,fontWeight:600}}>{f.name} <span style={{color:MED,fontWeight:500}}>({f.value})</span></span>
+                    <span className="mono" style={{color:pos?GREEN:RED,fontWeight:800}}>{pos?"+":""}{f.contribution.toFixed(2)}</span>
+                  </div>
+                  {/* Bar */}
+                  <div style={{position:"relative",height:8,background:"#E0E8EE",borderRadius:4,overflow:"hidden"}}>
+                    <div style={{position:"absolute",left:"50%",top:0,bottom:0,width:1,background:MED,opacity:0.4}}/>
+                    <div style={{position:"absolute",top:0,bottom:0,...(pos?{left:"50%"}:{right:"50%"}),width:`${Math.min(pct,50)}%`,background:pos?GREEN:RED,borderRadius:2}}/>
+                  </div>
+                  <div style={{fontSize:11,color:MED,marginTop:4,fontStyle:"italic"}}>{f.explain}</div>
+                </div>);
+              })}
+            </div>
+
+            {/* Score readout */}
+            <div style={{padding:"14px 16px",background:NAVY,color:WHITE,borderRadius:10,marginBottom:14}} className="mono">
+              <div style={{fontSize:11,fontWeight:700,letterSpacing:1.5,color:"rgba(255,255,255,.55)",textTransform:"uppercase",marginBottom:6}}>Final Score</div>
+              <div style={{fontSize:13,color:"rgba(255,255,255,.85)",marginBottom:4}}>0.50 (base) {c.features.map(f=>` ${f.contribution>=0?"+":""}${f.contribution.toFixed(2)}`).join("")} = </div>
+              <div style={{fontSize:24,fontWeight:800,color:score>0.55?"#7DEDA1":"#F5A0A0"}}>{score.toFixed(2)} → {c.decision}</div>
+              <div style={{fontSize:11,color:"rgba(255,255,255,.6)",marginTop:4}}>Threshold: 0.55. Above = approved.</div>
+            </div>
+
+            {/* Counterfactual */}
+            <SectionLabel>What-If Counterfactual</SectionLabel>
+            <p style={{fontSize:12,color:MED,lineHeight:1.55,marginBottom:10,fontStyle:"italic"}}>Would this decision change if one feature were different? This is the test ethicists run to expose hidden bias.</p>
+            <div style={{padding:"12px 14px",background:`${GOLD}15`,border:`2px solid ${GOLD}50`,borderRadius:10,marginBottom:12}}>
+              {c.flippable.map((f,i)=>(<div key={i}>
+                <div style={{fontSize:13,fontWeight:700,color:NAVY,marginBottom:4}}>Flip <strong>{f.feature}</strong> to "{f.altValue}"</div>
+                <p style={{fontSize:12,color:DARK,margin:0,lineHeight:1.55}}>{f.note}</p>
+              </div>))}
+            </div>
+
+            {!whatIf && <div style={{textAlign:"center",marginBottom:14}}><Btn onClick={()=>setWhatIf(true)}>Run Counterfactual</Btn></div>}
+            {whatIf && <div className="fade-in" style={{padding:"14px 16px",background:"linear-gradient(135deg,#1B3A5C 0%,#0F2238 100%)",borderRadius:10,color:WHITE,marginBottom:14,textAlign:"center"}}>
+              <div style={{fontSize:11,fontWeight:700,letterSpacing:1.5,color:"rgba(255,255,255,.55)",textTransform:"uppercase",marginBottom:6}}>Counterfactual Score</div>
+              <div className="mono" style={{fontSize:24,fontWeight:800,color:altScore>0.55?"#7DEDA1":"#F5A0A0"}}>{altScore.toFixed(2)} → {altDecision}</div>
+              {altDecision!==c.decision && <div style={{fontSize:13,color:GOLD,marginTop:8,fontWeight:700}}>{"⚠️"} Decision FLIPPED. The flagged feature is decisive.</div>}
+              {altDecision===c.decision && <div style={{fontSize:12,color:"rgba(255,255,255,.7)",marginTop:8}}>Same decision. The feature contributes, but isn't the deciding factor for this applicant.</div>}
+            </div>}
+
+            <div style={{textAlign:"center"}}>
+              <Btn onClick={()=>{setOpened(false);setWhatIf(false);}}>Close the Box</Btn>
+            </div>
+          </div>}
+        </Card>
+
+        <Card>
+          <SectionLabel>Real Explainability Tools</SectionLabel>
+          <div style={{display:"grid",gap:10,fontSize:12,color:DARK,lineHeight:1.55}}>
+            <div style={{padding:"10px 12px",background:LIGHT,borderRadius:8,borderLeft:`3px solid ${TEAL}`}}><strong style={{color:NAVY}}>SHAP (SHapley Additive exPlanations):</strong> Game-theory-based; measures each feature's marginal contribution. The waterfall above is SHAP-style.</div>
+            <div style={{padding:"10px 12px",background:LIGHT,borderRadius:8,borderLeft:`3px solid ${TEAL}`}}><strong style={{color:NAVY}}>LIME (Local Interpretable Model-agnostic Explanations):</strong> Builds a simple linear model around one prediction to explain just that one case.</div>
+            <div style={{padding:"10px 12px",background:LIGHT,borderRadius:8,borderLeft:`3px solid ${TEAL}`}}><strong style={{color:NAVY}}>Attention Visualization:</strong> For language models, shows which words the model "looked at" for its answer.</div>
+            <div style={{padding:"10px 12px",background:LIGHT,borderRadius:8,borderLeft:`3px solid ${TEAL}`}}><strong style={{color:NAVY}}>Counterfactual Explanations:</strong> "What's the smallest change to your inputs that would flip the decision?" The fairness test the EU AI Act will likely require.</div>
+          </div>
+        </Card>
+
+        <Card>
+          <SectionLabel>Real Cases that Forced This Field to Exist</SectionLabel>
+          <div style={{display:"grid",gap:10,fontSize:12,color:DARK,lineHeight:1.55}}>
+            <div style={{padding:"10px 12px",background:LIGHT,borderRadius:8,borderLeft:`3px solid ${PURPLE}`}}><strong style={{color:NAVY}}>Apple Card (2019):</strong> Couples with shared finances reported very different limits by gender. Goldman Sachs couldn't explain the algorithm's reasoning. NY DFS investigated.</div>
+            <div style={{padding:"10px 12px",background:LIGHT,borderRadius:8,borderLeft:`3px solid ${PURPLE}`}}><strong style={{color:NAVY}}>Obermeyer et al., Science (2019):</strong> A healthcare risk algorithm used past medical spending as a proxy for need. Black patients historically received less care, so the algorithm flagged them as healthier than equally sick white patients. Affected ~200M Americans.</div>
+          </div>
+        </Card>
+
+        <Pearl text={ethicsPearls[4]}/>
+      </div>);
+    }
+
+    // ===== MODE 4: QUIZ =====
+    function QuizMode({onBack}){
+      const questions=useMemo(()=>[
+        {q:"An AI cites \"Smith, J. (2019). Effects of X on Y. Journal of Z, 45(3).\" The DOI doesn't resolve. What's the most likely explanation?",opts:["The journal is offline","The citation is hallucinated","The DOI server is down","The student typed it wrong"],ans:1,exp:"LLMs invent author/journal/page combinations that 'sound right' but don't exist. If a DOI doesn't resolve on doi.org, the citation is almost certainly fabricated. This is the #1 way AI hallucinations slip into student papers."},
+        {q:"A model has 92% overall accuracy but only 74% accuracy on Group B (a smaller minority group). What does this tell you?",opts:["The model is fine, 92% is good","Group B's performance is hidden by averaging","Group B has bad data","Random luck"],ans:1,exp:"Aggregate accuracy hides per-group disparity. This is exactly how the COMPAS algorithm passed initial review while being twice as wrong on Black defendants. Always disaggregate by protected attributes."},
+        {q:"An algorithm trained mostly on Group A then deployed on a 50/50 population will most likely:",opts:["Treat both groups equally well","Be more accurate on Group A and amplify any bias","Refuse to predict on Group B","Adapt automatically"],ans:1,exp:"Models become best at the patterns they've seen most. Underrepresented groups get worse predictions, AND any bias in the training labels becomes structural. This is why training-data audits come BEFORE model evaluation."},
+        {q:"What's the difference between an algorithm being 'accurate' and being 'fair'?",opts:["No difference","Accuracy measures overall correctness; fairness measures per-group impact","Fairness is just a marketing term","Accuracy is for code, fairness is for people"],ans:1,exp:"An algorithm can be 99% accurate AND deeply unfair if those errors are concentrated on one group. The COMPAS recidivism tool was 60-70% accurate overall but disproportionately flagged Black defendants as high-risk."},
+        {q:"Why does the Obermeyer (2019) healthcare-algorithm study matter?",opts:["It found a model that wasn't used","It showed an algorithm used on ~200M Americans gave Black patients lower risk scores than equally sick white patients","It proved AI is unbiased","It was retracted"],ans:1,exp:"Obermeyer et al. showed the algorithm used past spending as a proxy for medical need. Because Black patients historically received less care, the model rated them as healthier. It affected one of the most-deployed health algorithms in the US."},
+        {q:"The EU AI Act (2024) treats which use cases as 'high risk' requiring strict explainability?",opts:["Spam filters","Hiring, lending, education, and policing","Recommendation algorithms","Translation"],ans:1,exp:"The EU AI Act flags AI in employment, education, essential services (lending, healthcare), law enforcement, migration, and biometric ID as 'high-risk.' These systems must provide documentation, explainability, and human oversight."},
+        {q:"What does SHAP try to show?",opts:["The accuracy of a model","Each feature's contribution to a single prediction","The model's training data","The model's confidence"],ans:1,exp:"SHAP (SHapley Additive exPlanations) decomposes one prediction into feature contributions: this input pushed the score +0.4, that one pulled it -0.2, etc. It's the closest tool we have to opening a black box."},
+        {q:"The Apple Card controversy (2019) showed that even when an algorithm DOESN'T use gender as an input, it can still discriminate. Why?",opts:["The algorithm cheats","Proxy features like spending patterns and job history can carry gender bias","Gender bias is illegal in algorithms","It used hidden cameras"],ans:1,exp:"This is the proxy problem. ZIP code can proxy for race, job history can proxy for gender, names can proxy for ethnicity. Removing the protected attribute from the input doesn't remove its signal from correlated features."}
+      ],[]);
+      const[idx,setIdx]=useState(0);const[sel,setSel]=useState(null);const[answered,setAnswered]=useState(false);
+      const[score,setScore]=useState(0);const[done,setDone]=useState(false);
+      const q=questions[idx];
+
+      const pick=(i)=>{if(answered)return;setSel(i);setAnswered(true);if(i===q.ans)setScore(s=>s+1);};
+      const next=()=>{if(idx>=questions.length-1){setDone(true);}else{setIdx(idx+1);setSel(null);setAnswered(false);}};
+
+      if(done){
+        const pct=Math.round(score/questions.length*100);
+        return(<div className="fade-in"><Card style={{textAlign:"center"}}>
+          <div style={{fontSize:48,marginBottom:8}}>{pct>=80?"\u{2696}\u{FE0F}":pct>=60?"\u{1F50D}":"\u{1F4DA}"}</div>
+          <div style={{fontSize:44,fontWeight:800,color:pct>=80?GREEN:pct>=60?GOLD:RED,lineHeight:1}}>{pct}%</div>
+          <div style={{fontSize:15,fontWeight:700,color:NAVY,margin:"8px 0"}}>{score}/{questions.length} correct</div>
+          <p style={{fontSize:13,color:MED,maxWidth:440,margin:"8px auto 16px",lineHeight:1.6}}>{pct>=80?"You're thinking like an AI ethicist. UC Berkeley's AI Policy Hub and Stanford HAI both train people who do exactly this work.":pct>=60?"Strong foundation. The hardest part of AI ethics is staying skeptical when an algorithm sounds confident.":"AI ethics is its own discipline. Cal State East Bay's Philosophy/Ethics + CS pathway is where Bay Area students often start."}</p>
+          <div style={{display:"flex",gap:10,justifyContent:"center"}}>
+            <Btn primary onClick={()=>{setIdx(0);setSel(null);setAnswered(false);setScore(0);setDone(false);}}>Try Again</Btn>
+            <Btn onClick={onBack}>Menu</Btn>
+          </div>
+        </Card>
+        <Pearl text={randomPearl()}/>
+        </div>);
+      }
+
+      return(<div>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12}}><span style={{fontSize:13,fontWeight:700,color:MED}}>{idx+1}/{questions.length}</span><span style={{fontSize:13,fontWeight:700,color:TEAL}}>Score: {score}</span></div>
+        <div style={{height:6,background:"#E8EDF2",borderRadius:3,marginBottom:16,overflow:"hidden"}}><div style={{height:"100%",background:`linear-gradient(90deg,${TEAL},${TEAL_DARK})`,width:`${((idx+1)/questions.length)*100}%`,transition:"width .4s",borderRadius:3}}/></div>
+        <Card>
+          <p style={{fontSize:15,fontWeight:700,color:NAVY,marginBottom:16,lineHeight:1.5}}>{q.q}</p>
+          <div style={{display:"grid",gap:8}}>
+            {q.opts.map((o,i)=>{
+              let bg=WHITE,border="#E0E8EE";
+              if(answered&&i===q.ans){bg="#E8F8F1";border=GREEN;}
+              else if(answered&&i===sel){bg="#FFF5F5";border=RED;}
+              return(<button key={i} onClick={()=>pick(i)} style={{padding:"12px 16px",background:bg,border:`2px solid ${border}`,borderRadius:10,fontSize:14,fontWeight:600,color:DARK,cursor:answered?"default":"pointer",textAlign:"left",fontFamily:"inherit",transition:"all .2s"}}>{o}</button>);
+            })}
+          </div>
+          {answered&&<div className="fade-in" style={{marginTop:14,padding:"12px 16px",borderRadius:10,background:sel===q.ans?"#E8F8F1":"#FFF5F5",borderLeft:`4px solid ${sel===q.ans?GREEN:RED}`,fontSize:13,color:DARK,lineHeight:1.6}}>{q.exp}</div>}
+          {answered&&<div style={{textAlign:"right",marginTop:12}}><Btn primary onClick={next}>{idx<questions.length-1?"Next →":"View Results"}</Btn></div>}
+        </Card>
+      </div>);
+    }
+
+    // ===== MAIN =====
+    function App(){
+      const[screen,setScreen]=useState("welcome");
+
+      if(screen==="welcome") return(
+        <div style={{fontFamily:"'Segoe UI',Tahoma,Geneva,Verdana,sans-serif",minHeight:"100vh",display:"flex",flexDirection:"column"}}>
+          <AppHeader/>
+          <div className="fade-in" style={{maxWidth:700,margin:"0 auto",padding:"0 16px 24px",flex:1,width:"100%"}}>
+            <div style={{textAlign:"center",padding:"28px 16px 20px"}}>
+              <div style={{fontSize:48,marginBottom:8}}>{"\u{1F916}"}</div>
+              <h1 style={{fontSize:26,fontWeight:800,color:NAVY,margin:"0 0 8px"}}>AI Inspector</h1>
+              <p style={{fontSize:14,color:MED,lineHeight:1.6,maxWidth:440,margin:"0 auto"}}>An AI Ethicist's toolkit. Hunt hallucinations, watch how training bias becomes algorithmic bias, and crack open a black-box decision. Three days, three modes.</p>
+            </div>
+
+            <div style={{background:`${TEAL}08`,border:`2px solid ${TEAL}30`,borderRadius:R,padding:"12px 16px",marginBottom:16,fontSize:12,color:NAVY,lineHeight:1.5}}>
+              <strong style={{color:TEAL_DARK}}>{"\u{1F393}"} Career Anchor:</strong> AI Ethicist, ML Auditor, Responsible AI Researcher. Bay Area pathways: <strong>UC Berkeley AI Policy Hub</strong>, <strong>Stanford HAI (Human-Centered AI)</strong>, <strong>Cal State East Bay</strong> (Philosophy + CS for AI Ethics).
+            </div>
+
+            <div style={{display:"grid",gap:12,marginBottom:20}}>
+              {[
+                {key:"hallu",icon:"\u{1F50D}",title:"Hallucination Hunter",day:"Day 4",desc:"8 AI outputs containing fabricated citations, statistics, quotes, and code bugs. Click the lies. Each catch shows the truth and the fact-check method.",color:TEAL},
+                {key:"bias",icon:"\u{1F4CA}",title:"Bias Visualizer",day:"Day 7",desc:"Slide to change training-data composition. Watch overall accuracy stay high while the fairness gap explodes. See COMPAS, Amazon hiring, Apple Card laid out alongside.",color:GOLD},
+                {key:"box",icon:"\u{1F50E}",title:"Black Box Inspector",day:"Day 8",desc:"4 loan-approval cases. Open each one with a SHAP-style waterfall, then run a counterfactual: would the decision change if one feature flipped? It usually does.",color:PURPLE},
+                {key:"quiz",icon:"\u{2696}\u{FE0F}",title:"Ethics Quiz",day:"All 3 days",desc:"8 questions across hallucinations, bias, fairness vs accuracy, the EU AI Act, SHAP, and the Apple Card proxy problem.",color:RED}
+              ].map(m=>(<div key={m.key} onClick={()=>setScreen(m.key)} style={{background:WHITE,borderRadius:R,padding:"18px 20px",boxShadow:SHADOW,border:"2px solid #E0E8EE",cursor:"pointer",transition:"all .25s",display:"flex",alignItems:"center",gap:16}} onMouseOver={e=>{e.currentTarget.style.borderColor=m.color;e.currentTarget.style.transform="translateY(-2px)";e.currentTarget.style.boxShadow=`0 6px 20px ${m.color}25`}} onMouseOut={e=>{e.currentTarget.style.borderColor="#E0E8EE";e.currentTarget.style.transform="none";e.currentTarget.style.boxShadow=SHADOW}}>
+                <div style={{width:52,height:52,borderRadius:14,background:`${m.color}12`,border:`2px solid ${m.color}25`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:26,flexShrink:0}}>{m.icon}</div>
+                <div style={{flex:1,minWidth:0}}>
+                  <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:4,flexWrap:"wrap"}}>
+                    <div style={{fontSize:16,fontWeight:800,color:NAVY}}>{m.title}</div>
+                    <span style={{fontSize:10,fontWeight:800,letterSpacing:1.2,color:m.color,background:`${m.color}18`,padding:"2px 8px",borderRadius:6,textTransform:"uppercase"}}>{m.day}</span>
+                  </div>
+                  <p style={{fontSize:12,color:MED,margin:0,lineHeight:1.5}}>{m.desc}</p>
+                </div>
+              </div>))}
+            </div>
+
+            <div style={{background:"#FFF9E6",border:`2px solid ${GOLD}`,borderRadius:R,padding:14,textAlign:"center"}}>
+              <div style={{fontSize:13,fontWeight:700,color:NAVY,marginBottom:4}}>{"\u{1F4A1}"} Start with Hallucination Hunter</div>
+              <p style={{fontSize:12,color:MED,margin:0,lineHeight:1.5}}>Day 4 sets the tone: AI lies fluently. Day 7 shows where the lies come from in the training data. Day 8 shows you how to open the box and check.</p>
+            </div>
+          </div>
+          <AppFooter/>
+        </div>
+      );
+
+      const titleMap={hallu:"Hallucination Hunter",bias:"Bias Visualizer",box:"Black Box Inspector",quiz:"Ethics Quiz"};
+      return(
+        <div style={{fontFamily:"'Segoe UI',Tahoma,Geneva,Verdana,sans-serif",minHeight:"100vh",display:"flex",flexDirection:"column"}}>
+          <AppHeader subtitle={titleMap[screen]}/>
+          <div style={{maxWidth:700,margin:"0 auto",padding:"16px 16px 24px",flex:1,width:"100%"}}>
+            <BackBtn onClick={()=>setScreen("welcome")}/>
+            {screen==="hallu"&&<HallucinationMode/>}
+            {screen==="bias"&&<BiasMode/>}
+            {screen==="box"&&<BlackBoxMode/>}
+            {screen==="quiz"&&<QuizMode onBack={()=>setScreen("welcome")}/>}
+          </div>
+          <AppFooter/>
+        </div>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  </script>
+</body>
+</html>

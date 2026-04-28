@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evidence Synthesizer - Chabot STEM 2026</title>
+  <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.23.9/babel.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #F0F4F8;
+      min-height: 100vh;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px);} to { opacity: 1; transform: translateY(0);} }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(16px);} to { opacity: 1; transform: translateY(0);} }
+    @keyframes pop { 0% { transform: scale(0.85); opacity: 0;} 60% { transform: scale(1.06);} 100% { transform: scale(1); opacity: 1;} }
+    @keyframes meterFill { from { width: 0; } }
+    @keyframes glow { 0%,100% { box-shadow: 0 0 0 0 rgba(42,157,143,0.4); } 50% { box-shadow: 0 0 0 10px rgba(42,157,143,0); } }
+    .fade-in { animation: fadeIn 0.3s ease-out; }
+    .slide-up { animation: slideUp 0.4s ease-out; }
+    .pop { animation: pop 0.45s ease-out; }
+    .glow { animation: glow 1.4s ease-in-out infinite; }
+
+    input[type=range] {
+      -webkit-appearance: none; appearance: none;
+      height: 6px; border-radius: 3px;
+      background: #E0E8EE; outline: none; cursor: pointer; width: 100%;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 18px; height: 18px;
+      border-radius: 50%;
+      background: linear-gradient(135deg,#2A9D8F,#1A6B6B);
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(42,157,143,.3);
+    }
+    input[type=range]::-moz-range-thumb {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: linear-gradient(135deg,#2A9D8F,#1A6B6B);
+      cursor: pointer; border: none;
+      box-shadow: 0 2px 6px rgba(42,157,143,.3);
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+
+    .mono {
+      font-family: 'Courier New', Consolas, monospace;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useMemo } = React;
+
+const NAVY="#1B3A5C", TEAL="#2A9D8F", TEAL_DARK="#1A6B6B",
+      GOLD="#D4A843", WHITE="#FFFFFF",
+      RED="#C0392B", GREEN="#27AE60", YELLOW="#F39C12",
+      DARK="#333", MED="#666",
+      R=14, SHADOW="0 2px 10px rgba(0,0,0,.08)";
+
+// ===== Required Components =====
+const WovenLogo = ({ size = 20 }) => (
+  <svg viewBox="0 0 40 40" width={size} height={size} style={{ flexShrink: 0 }}>
+    <polygon points="13,2 24,13 13,24 2,13" fill="#0ABAB5" opacity=".85" />
+    <polygon points="27,2 38,13 27,24 16,13" fill="#F5B731" opacity=".85" />
+    <polygon points="13,16 24,27 13,38 2,27" fill="#E65C3C" opacity=".85" />
+    <polygon points="27,16 38,27 27,38 16,27" fill="#7A2D4E" opacity=".85" />
+  </svg>
+);
+
+const AppHeader = ({ subtitle }) => (
+  <div style={{ background: "linear-gradient(135deg,#1B3A5C 0%,#2A9D8F 100%)", padding: "12px 20px", display: "flex", alignItems: "center", gap: 10, borderBottom: `3px solid ${GOLD}` }}>
+    <WovenLogo size={24} />
+    <div style={{ flex: 1 }}>
+      <div style={{ fontSize: 15, fontWeight: 800, color: WHITE, letterSpacing: 0.3 }}>Chabot STEM 2026</div>
+      <div style={{ fontSize: 11, color: "rgba(255,255,255,.75)", fontWeight: 500 }}>{subtitle || "Evidence Synthesizer"}</div>
+    </div>
+    <span style={{ fontSize: 20 }}>🧩</span>
+  </div>
+);
+
+const AppFooter = () => (
+  <div style={{ textAlign: "center", padding: "14px 20px", borderTop: `3px solid ${GOLD}`, background: WHITE, fontSize: 11, color: "#999", display: "flex", alignItems: "center", justifyContent: "center", gap: 6, marginTop: 24 }}>
+    <WovenLogo size={14} />
+    <span>Built by <strong style={{ color: TEAL_DARK }}>Woven Learning & Technology</strong></span>
+  </div>
+);
+
+const Btn = ({ children, onClick, primary, style = {}, disabled }) => (
+  <button onClick={onClick} disabled={disabled} style={{
+    background: disabled ? "#E0E8EE" : (primary ? `linear-gradient(135deg,${TEAL},${TEAL_DARK})` : WHITE),
+    color: disabled ? "#999" : (primary ? WHITE : NAVY),
+    border: primary ? "none" : `2px solid ${TEAL}`,
+    borderRadius: 10,
+    padding: "11px 24px",
+    fontSize: 14,
+    fontWeight: 700,
+    cursor: disabled ? "not-allowed" : "pointer",
+    transition: "all .2s",
+    boxShadow: primary && !disabled ? "0 2px 8px rgba(42,157,143,.25)" : SHADOW,
+    fontFamily: "inherit",
+    ...style
+  }}>{children}</button>
+);
+
+const Card = ({ children, style = {} }) => (
+  <div style={{ background: WHITE, borderRadius: R, padding: 20, boxShadow: "0 4px 20px rgba(0,0,0,.08)", marginBottom: 16, ...style }}>
+    {children}
+  </div>
+);
+
+const SectionLabel = ({ children }) => (
+  <div style={{ fontSize: 10, fontWeight: 700, color: MED, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 6 }}>{children}</div>
+);
+
+const BackBtn = ({ onClick }) => (
+  <button onClick={onClick} style={{
+    background: WHITE, color: NAVY, border: `2px solid ${TEAL}`,
+    borderRadius: 10, padding: "8px 16px", fontSize: 13, fontWeight: 700,
+    cursor: "pointer", marginBottom: 14, fontFamily: "inherit",
+    display: "inline-flex", alignItems: "center", gap: 6
+  }}>← Back to Menu</button>
+);
+
+// ===== DATA =====
+
+// Cases for Mode 1 - Build the Case
+// Each case has 4-6 evidence items. Each evidence item has:
+//   id, label, description, sliderMin, sliderMax, sliderDefault, sliderUnit,
+//   priorLR (a function that maps slider value → likelihood ratio)
+const CASES = [
+  {
+    id: "pinehills",
+    title: "The Burglar in the Pine Hills",
+    location: "Oakland Hills, jurisdiction: Oakland PD CSI",
+    summary: "A home burglary in the Oakland Pine Hills neighborhood. Limited evidence: a partial fingerprint on the window sill, a single fiber on the broken glass, and an inconclusive surveillance still from a neighbor's doorbell camera. The suspect is a known parolee with prior B&E.",
+    prior: 0.20,
+    threshold: 0.95,
+    evidence: [
+      { id: "fp", label: "Partial fingerprint on sill", description: "The lab found 6 minutiae points. Adjust the match strength based on how many points were confirmed.",
+        slider: { min: 4, max: 14, default: 6, step: 1, unit: "minutiae", labelFn: (v) => `${v} minutiae points` },
+        lrFn: (v) => Math.pow(10, (v - 7) * 0.45) },
+      { id: "fiber", label: "Blue cotton fiber on glass", description: "Trace fibers can match a class of garment but rarely an individual.",
+        slider: { min: 1, max: 100, default: 20, step: 1, unit: "% match population", labelFn: (v) => `Fiber type in ${v}% of population` },
+        lrFn: (v) => Math.max(0.5, 100 / Math.max(v, 1) * 0.3) },
+      { id: "cam", label: "Doorbell camera still", description: "Grainy facial features. Forensic facial analysts use 14 landmark points.",
+        slider: { min: 30, max: 95, default: 55, step: 1, unit: "% confidence", labelFn: (v) => `${v}% facial ID confidence` },
+        lrFn: (v) => v <= 50 ? 0.7 : Math.pow(10, (v - 50) / 25) }
+    ]
+  },
+  {
+    id: "riverside",
+    title: "The Riverside Murder",
+    location: "Sacramento River, jurisdiction: SF Coroner & DOJ Lab",
+    summary: "A body recovered from the river, near the Carquinez bridge. Strong forensic recovery: complete STR DNA profile under fingernails, blood spatter on suspect's truck consistent with cast-off pattern, and an alibi the suspect cannot verify. The victim and suspect were last seen arguing publicly.",
+    prior: 0.45,
+    threshold: 0.99,
+    evidence: [
+      { id: "dna", label: "STR DNA profile (13 loci)", description: "Standard CODIS profile. Random match probability scales by number of matching loci.",
+        slider: { min: 6, max: 13, default: 13, step: 1, unit: "loci", labelFn: (v) => `${v} of 13 STR loci match` },
+        lrFn: (v) => Math.pow(10, v * 0.7) },
+      { id: "spatter", label: "Cast-off blood spatter on truck", description: "Angle of impact and directionality consistent with the swing pattern reconstructed from the wound.",
+        slider: { min: 1, max: 15, default: 5, step: 1, unit: "° deviation", labelFn: (v) => `${v}° deviation from predicted angle` },
+        lrFn: (v) => Math.max(0.5, 30 / Math.max(v, 1)) },
+      { id: "alibi", label: "Alibi inconsistency", description: "Phone tower data places suspect's phone within 2 miles of the scene during the window of death. Suspect claims he was 40 miles away.",
+        slider: { min: 0, max: 100, default: 70, step: 1, unit: "% inconsistency", labelFn: (v) => `${v}% inconsistent with claim` },
+        lrFn: (v) => v < 30 ? 0.8 : 1 + (v - 30) * 0.06 },
+      { id: "witness", label: "Eyewitness (public argument)", description: "Two bystanders independently place suspect with victim 90 minutes before time of death.",
+        slider: { min: 0, max: 100, default: 75, step: 1, unit: "% confidence", labelFn: (v) => `${v}% witness confidence` },
+        lrFn: (v) => v < 50 ? 0.9 : 1 + (v - 50) * 0.04 }
+    ]
+  },
+  {
+    id: "lexus",
+    title: "The Stolen Lexus",
+    location: "Berkeley waterfront, jurisdiction: CHP forensic services",
+    summary: "A 2024 Lexus reported stolen from Berkeley Marina. Recovered 12 days later with prints on the steering wheel and surveillance footage from the marina parking lot. The lab found 8 minutiae points on the right index finger.",
+    prior: 0.30,
+    threshold: 0.95,
+    evidence: [
+      { id: "fp", label: "Steering wheel fingerprint", description: "Lab confirmed 8 minutiae. Each additional minutia roughly multiplies the match strength by ~3-4x.",
+        slider: { min: 6, max: 14, default: 8, step: 1, unit: "minutiae", labelFn: (v) => `${v} minutiae points` },
+        lrFn: (v) => Math.pow(10, (v - 7) * 0.5) },
+      { id: "cam", label: "Marina parking lot camera", description: "Suspect filmed walking toward vehicle 4 minutes before theft. Hat and hoodie partially obscure face.",
+        slider: { min: 30, max: 95, default: 70, step: 1, unit: "% confidence", labelFn: (v) => `${v}% facial recognition match` },
+        lrFn: (v) => v <= 50 ? 0.8 : Math.pow(10, (v - 50) / 22) },
+      { id: "gps", label: "Phone GPS location", description: "Suspect's phone pinged the marina cell tower 6 minutes before theft. He claims he was at home.",
+        slider: { min: 0, max: 100, default: 80, step: 1, unit: "% inconsistent", labelFn: (v) => `${v}% inconsistent with claim` },
+        lrFn: (v) => v < 30 ? 0.7 : 1 + (v - 30) * 0.07 },
+      { id: "trace", label: "Carpet fiber on jacket", description: "Fibers from suspect's jacket match the Lexus interior carpet.",
+        slider: { min: 1, max: 100, default: 12, step: 1, unit: "% population", labelFn: (v) => `Fiber type in ${v}% of vehicles` },
+        lrFn: (v) => Math.max(0.6, 50 / Math.max(v, 1) * 0.4) }
+    ]
+  },
+  {
+    id: "workshop",
+    title: "The Workshop Stabbing",
+    location: "Hayward industrial district, jurisdiction: Alameda County Sheriff",
+    summary: "A worker found stabbed in a Hayward warehouse. Medium evidence yield: blood spatter on a co-worker's coveralls, partial palm print on the toolbox, and trace evidence (sawdust species). Multi-modal integration is the only path to conviction.",
+    prior: 0.35,
+    threshold: 0.97,
+    evidence: [
+      { id: "spatter", label: "Blood spatter on coveralls", description: "Forward spatter pattern. Director must determine if pattern is consistent with attacker position.",
+        slider: { min: 1, max: 15, default: 4, step: 1, unit: "° deviation", labelFn: (v) => `${v}° deviation from predicted angle` },
+        lrFn: (v) => Math.max(0.6, 25 / Math.max(v, 1)) },
+      { id: "palm", label: "Partial palm print on toolbox", description: "9 ridge characteristics visible. Lab considers 12+ a strong individualization.",
+        slider: { min: 5, max: 14, default: 9, step: 1, unit: "ridge points", labelFn: (v) => `${v} ridge characteristics` },
+        lrFn: (v) => Math.pow(10, (v - 8) * 0.42) },
+      { id: "sawdust", label: "Redwood sawdust on suspect's boots", description: "Workshop floor was redwood. Sawdust species match is class-level evidence, not unique.",
+        slider: { min: 1, max: 100, default: 8, step: 1, unit: "% population", labelFn: (v) => `Wood species in ${v}% of sites` },
+        lrFn: (v) => Math.max(0.7, 50 / Math.max(v, 1) * 0.5) },
+      { id: "dna", label: "Trace DNA on toolbox handle", description: "Mixed profile - victim plus 1 contributor. Partial profile, 8 STR loci.",
+        slider: { min: 4, max: 12, default: 8, step: 1, unit: "loci", labelFn: (v) => `${v} STR loci recovered` },
+        lrFn: (v) => Math.pow(10, v * 0.55) },
+      { id: "witness", label: "Co-worker witness statement", description: "Saw suspect arguing with victim 20 minutes prior, but did not see attack.",
+        slider: { min: 0, max: 100, default: 60, step: 1, unit: "% confidence", labelFn: (v) => `${v}% witness confidence` },
+        lrFn: (v) => v < 50 ? 0.9 : 1 + (v - 50) * 0.03 }
+    ]
+  }
+];
+
+// Mode 2 - Wrong Conviction cases
+const EXONERATIONS = [
+  {
+    id: "mayfield",
+    name: "Brandon Mayfield",
+    year: "2004",
+    evidenceType: "Fingerprint",
+    crime: "2004 Madrid train bombings (193 killed)",
+    convictedOn: "FBI fingerprint examiners declared a '100% match' between Mayfield's print and a partial print on a bag of detonators recovered in Madrid. Three FBI examiners + an independent court-appointed examiner all confirmed the match.",
+    held: "Held for 2 weeks under material witness warrant",
+    truth: "Spanish National Police identified the actual print as belonging to an Algerian national, Ouhnane Daoud. The FBI used a flawed automated search that returned similar but not identical prints, then succumbed to confirmation bias.",
+    lesson: "A single fingerprint match — even one confirmed by multiple expert examiners — is NOT proof. The 'no error rate' assumption of fingerprint analysis was shattered. Mayfield, a Muslim convert, received a $2 million settlement and a formal apology from the FBI.",
+    multimodal: "DNA evidence from the bag (which the FBI never tested before arresting him) would have eliminated him in hours."
+  },
+  {
+    id: "canen",
+    name: "Lana Canen",
+    year: "2010",
+    evidenceType: "Fingerprint",
+    crime: "Murder of 94-year-old Helen Sailor in Indiana, 2002",
+    convictedOn: "A latent fingerprint from a pill container at the crime scene was identified as Canen's by a sheriff's detective. She was sentenced to 55 years in prison in 2005.",
+    held: "Served 8 years in prison before exoneration",
+    truth: "On re-examination in 2012 by an FBI-trained latent print examiner, the print was definitively NOT Canen's. The original detective who 'identified' it admitted on the stand that he had only basic fingerprint training. Canen was exonerated December 2012.",
+    lesson: "Examiner qualifications matter as much as the technique. Without national certification standards, a 'fingerprint match' can be only as reliable as the person who declares it. The Daubert standard requires known error rates AND professional credentialing.",
+    multimodal: "Phone records and an alibi witness existed but were dismissed because the print 'match' seemed conclusive. Co-defendant Andrew Royer later admitted Canen had no involvement."
+  },
+  {
+    id: "cotton",
+    name: "Ronald Cotton",
+    year: "1984",
+    evidenceType: "Eyewitness ID",
+    crime: "Rape of Jennifer Thompson in Burlington, NC, 1984",
+    convictedOn: "Victim Jennifer Thompson identified Cotton from a photo lineup, then again from a physical lineup, then in court. She was 100% certain. Sentenced to life + 54 years.",
+    held: "Served 11 years before DNA exoneration in 1995",
+    truth: "DNA testing identified the actual rapist as Bobby Poole, a man Cotton had met in prison who bore him a resemblance. Thompson had been shown photo arrays where Cotton's photo was the only one repeated, biasing her selection. Cotton and Thompson are now friends and co-authors of 'Picking Cotton.'",
+    lesson: "Eyewitness testimony is the WEAKEST single forensic evidence type — and the most persuasive to juries. The Innocence Project found that mistaken eyewitness ID contributed to ~70% of DNA exonerations. Thompson now advocates for double-blind lineup procedures.",
+    multimodal: "DNA evidence existed at the scene from 1984 but was not tested until 1995. A single test could have prevented an 11-year wrongful imprisonment."
+  },
+  {
+    id: "camm",
+    name: "David Camm",
+    year: "2002",
+    evidenceType: "Blood Spatter",
+    crime: "Murder of his wife and two children, Indiana, 2000",
+    convictedOn: "Blood spatter analysts testified that 8 microscopic blood droplets on Camm's t-shirt were 'high-velocity impact spatter,' meaning he must have been at the scene during the shooting. He was a former state trooper. Convicted three times across three trials.",
+    held: "Served 13 years total across three trials",
+    truth: "Re-analysis showed the droplets were transfer stains from when Camm pulled his son from the car after the shooting. DNA on a sweatshirt at the scene was eventually traced to Charles Boney, a convicted felon with no connection to the family. Boney's DNA was in the database the whole time.",
+    lesson: "Blood spatter analysis has been called into question repeatedly. The Texas Forensic Science Commission and the National Academy of Sciences (2009) both warned that BSA conclusions often exceed what the science supports. The Daubert standard is supposed to filter this out.",
+    multimodal: "DNA from the third party at the scene was available from day one. Combining DNA + spatter (rather than relying on spatter alone) would have prevented all three trials."
+  }
+];
+
+// Career Pearls (Synthesis Pearls)
+const PEARLS = [
+  "No single evidence type wins a modern murder case. Fingerprint alone is ~99% confidence — and 'beyond reasonable doubt' is closer to 99.9%.",
+  "Bayesian reasoning is how every modern jury actually decides — they just don't call it that.",
+  "Brandon Mayfield was wrongly held for 2 weeks based on a fingerprint match. DNA evidence alone could have prevented it.",
+  "Eyewitness testimony is the WEAKEST single evidence type — but feels the strongest to a jury. That's the jury's job: to know which to trust.",
+  "The Daubert standard (1993) requires that scientific evidence have a known error rate AND be peer-reviewed. Multi-modal analysis often does both better than single types.",
+  "The SF Coroner's Office runs DNA, toxicology, AND digital forensics on every suspicious death — never just one. That is the modern standard.",
+  "A likelihood ratio of 1,000 means the evidence is a thousand times more likely if the suspect is guilty than if innocent. That is one piece. You usually need three or four.",
+  "The FBI Lab in Quantico made the Brandon Mayfield error. If they can be wrong, anyone can — which is why peer review is non-negotiable.",
+  "Crime labs in California must be ANSI-NATIONAL accredited. Oakland PD CSI, CHP, and DOJ Berkeley all carry this credential — and all use multi-modal analysis on every felony.",
+  "A court-qualified expert witness can be challenged at any time under Daubert. If your method has no published error rate, your testimony can be excluded.",
+  "Bayesian reasoning is the difference between 'looks like him' and 'mathematically must be him.' One gets thrown out on appeal. The other stands.",
+  "The Innocence Project has exonerated 375+ people via DNA. In ~70% of those cases, eyewitness ID was the original evidence."
+];
+
+// Quiz questions
+const QUIZ = [
+  {
+    q: "In Bayesian reasoning, what is a 'likelihood ratio'?",
+    options: [
+      "The probability that a suspect is guilty",
+      "How many times more likely the evidence is if the suspect is guilty vs. if innocent",
+      "The percentage of jurors who voted to convict",
+      "The error rate of a forensic test"
+    ],
+    correct: 1,
+    explanation: "Likelihood ratio = P(evidence | guilty) / P(evidence | innocent). It tells you how much the new evidence should shift your belief. A ratio of 1,000 means the evidence is 1,000x more likely under guilt than innocence."
+  },
+  {
+    q: "What does 'beyond reasonable doubt' translate to as a probability threshold?",
+    options: [
+      "About 51% (more likely than not)",
+      "About 75% (preponderance)",
+      "About 95-99% (clear and convincing → reasonable doubt)",
+      "Exactly 100%"
+    ],
+    correct: 2,
+    explanation: "Civil cases use 'preponderance' (~51%). Criminal cases use 'beyond reasonable doubt' — never formally quantified, but legal scholars and jurors typically converge on 95-99% confidence. A single piece of evidence rarely reaches this on its own."
+  },
+  {
+    q: "Brandon Mayfield was held for 2 weeks based on what type of evidence?",
+    options: [
+      "DNA profile",
+      "Fingerprint match",
+      "Eyewitness identification",
+      "Blood spatter"
+    ],
+    correct: 1,
+    explanation: "Three FBI fingerprint examiners and an independent expert all confirmed a 'match' between Mayfield's print and a partial print from the 2004 Madrid bombing. Spanish police later linked the print to a different person. The FBI issued a formal apology and $2M settlement."
+  },
+  {
+    q: "The Daubert standard (1993) requires that scientific evidence in court have:",
+    options: [
+      "A celebrity expert witness",
+      "Been featured on a TV show",
+      "A known error rate AND peer review AND general acceptance in the field",
+      "100% confidence with zero margin of error"
+    ],
+    correct: 2,
+    explanation: "Daubert v. Merrell Dow Pharmaceuticals established that judges are 'gatekeepers' for scientific evidence. The four-part test: tested method, peer-reviewed, known error rate, generally accepted. Many traditional forensic disciplines (bite marks, hair comparison, some spatter analysis) struggle to meet this."
+  },
+  {
+    q: "Which evidence type led to ~70% of DNA-overturned wrongful convictions, according to the Innocence Project?",
+    options: [
+      "Fingerprint analysis",
+      "Eyewitness identification",
+      "Blood spatter analysis",
+      "Trace fibers"
+    ],
+    correct: 1,
+    explanation: "Mistaken eyewitness ID is the leading cause of wrongful conviction in DNA-exonerated cases. It feels persuasive to juries — a victim looks at the defendant and says 'that's him.' But human memory is reconstructive, and lineup procedures can bias selection. Ronald Cotton served 11 years on Jennifer Thompson's certain ID."
+  },
+  {
+    q: "If your prior probability is 30% (some suspicion) and a piece of evidence has a likelihood ratio of 100, what is the new posterior probability (using Bayes)?",
+    options: [
+      "About 30% (no change)",
+      "About 50%",
+      "About 98%",
+      "About 100%"
+    ],
+    correct: 2,
+    explanation: "Posterior odds = prior odds × LR. Prior odds = 0.30/0.70 ≈ 0.43. New odds = 0.43 × 100 = 43. New probability = 43/(43+1) ≈ 97.7%. This is exactly how forensic Bayesian reasoning works in practice."
+  },
+  {
+    q: "An expert witness's testimony can be excluded from a trial under Daubert if:",
+    options: [
+      "They have not appeared on television",
+      "Their methodology has no published error rate or peer review",
+      "They have an accent",
+      "The defendant disagrees with their findings"
+    ],
+    correct: 1,
+    explanation: "Daubert challenges happen in pre-trial 'gatekeeper' hearings. If a methodology cannot show a known error rate, peer-reviewed validation, or general acceptance, the judge can exclude that expert. This has affected bite-mark analysis, hair microscopy, and some forms of spatter interpretation."
+  },
+  {
+    q: "Why does combining fingerprint + DNA + blood spatter produce a stronger case than any one alone?",
+    options: [
+      "Three pieces of evidence look more impressive to a jury",
+      "Each evidence type's likelihood ratio multiplies, raising the posterior probability dramatically",
+      "Judges require at least three pieces by law",
+      "It makes the trial last longer"
+    ],
+    correct: 1,
+    explanation: "If evidence types are INDEPENDENT, their likelihood ratios multiply. LR(fp) × LR(DNA) × LR(spatter) might be 10⁵ × 10⁹ × 10² = 10¹⁶. A prior of 1% becomes a posterior so close to 1.0 that the calculator displays 99.999...%. This is why modern crime labs ALWAYS run multi-modal."
+  }
+];
+
+// ===== Helper math =====
+// Bayesian update: prior probability + likelihood ratio → posterior probability
+function bayesUpdate(prior, lr) {
+  if (prior <= 0) return 0;
+  if (prior >= 1) return 1;
+  const priorOdds = prior / (1 - prior);
+  const newOdds = priorOdds * lr;
+  return newOdds / (newOdds + 1);
+}
+
+// Combine: start with prior, apply each LR in sequence
+function combinePosterior(prior, lrs) {
+  let p = prior;
+  for (const lr of lrs) p = bayesUpdate(p, lr);
+  return p;
+}
+
+function fmtProb(p) {
+  if (p >= 0.99999) return ">99.999%";
+  if (p >= 0.999) return (p * 100).toFixed(3) + "%";
+  if (p >= 0.99) return (p * 100).toFixed(2) + "%";
+  return (p * 100).toFixed(1) + "%";
+}
+
+function fmtLR(lr) {
+  if (lr >= 1000) return lr.toExponential(1).replace("+", "");
+  if (lr >= 10) return lr.toFixed(0);
+  if (lr >= 1) return lr.toFixed(2);
+  return lr.toFixed(2);
+}
+
+// ===== Welcome =====
+function Welcome({ onPick }) {
+  const modes = [
+    { id: "build", emoji: "🧩", title: "Build the Case", sub: "Combine 4-6 pieces of evidence using Bayesian reasoning. Watch the case strength meter climb. (Apply mode)" },
+    { id: "wrong", emoji: "⚖️", title: "The Wrong Conviction", sub: "Four real exoneration cases — Mayfield, Canen, Cotton, Camm. See what single-evidence reliance cost." },
+    { id: "lab", emoji: "🧮", title: "Bayesian Logic Lab", sub: "Step-by-step interactive on Bayes' theorem applied to forensic evidence. Sliders, real math, real posterior." },
+    { id: "quiz", emoji: "📋", title: "Quiz", sub: "8 questions on Bayesian reasoning, Daubert, expert witnesses, and 'beyond reasonable doubt' as a probability threshold." }
+  ];
+  return (
+    <div className="fade-in" style={{ padding: "20px 16px", maxWidth: 720, margin: "0 auto" }}>
+      <div style={{ textAlign: "center", marginBottom: 24, padding: "20px 12px" }}>
+        <div style={{ fontSize: 56, marginBottom: 8 }}>🧩</div>
+        <div style={{ fontSize: 26, fontWeight: 800, color: NAVY, lineHeight: 1.2, marginBottom: 10 }}>Evidence Synthesizer</div>
+        <div style={{ fontSize: 14, color: MED, lineHeight: 1.55, maxWidth: 440, margin: "0 auto" }}>
+          You're a Forensic Lab Director. No single piece of evidence wins a modern court case — fingerprints, DNA, spatter, and surveillance must combine. Today you'll see <em>how</em> the math works.
+        </div>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 12 }}>
+        {modes.map(m => (
+          <div key={m.id} onClick={() => onPick(m.id)}
+               style={{ background: WHITE, borderRadius: R, padding: 18, boxShadow: SHADOW, cursor: "pointer", display: "flex", gap: 14, alignItems: "center", border: "2px solid transparent", transition: "all .2s" }}
+               onMouseOver={e => e.currentTarget.style.borderColor = TEAL}
+               onMouseOut={e => e.currentTarget.style.borderColor = "transparent"}>
+            <div style={{ fontSize: 34 }}>{m.emoji}</div>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 16, fontWeight: 800, color: NAVY, marginBottom: 4 }}>{m.title}</div>
+              <div style={{ fontSize: 12, color: MED, lineHeight: 1.5 }}>{m.sub}</div>
+            </div>
+            <div style={{ fontSize: 22, color: TEAL, fontWeight: 800 }}>›</div>
+          </div>
+        ))}
+      </div>
+      <Card style={{ marginTop: 20, background: "linear-gradient(135deg, #FFF8E1 0%, #FEF3D1 100%)", borderLeft: `4px solid ${GOLD}` }}>
+        <SectionLabel>Bay Area career anchors</SectionLabel>
+        <div style={{ fontSize: 13, lineHeight: 1.6, color: NAVY }}>
+          <strong>SF Office of the Chief Medical Examiner</strong> · <strong>CHP forensic services (Sacramento DOJ Bureau of Forensic Services)</strong> · <strong>Oakland PD CSI Unit</strong> · <strong>Alameda County Sheriff Crime Lab</strong>. All require ANSI-NATIONAL accreditation, all use multi-modal analysis on every felony case.
+        </div>
+      </Card>
+    </div>
+  );
+}
+
+// ===== Mode 1: Build the Case =====
+function BuildCase({ onBack }) {
+  const [caseId, setCaseId] = useState(null);
+  const selectedCase = CASES.find(c => c.id === caseId);
+  // Slider state per evidence id
+  const [sliders, setSliders] = useState({});
+  const [showVerdict, setShowVerdict] = useState(false);
+  const [pearl, setPearl] = useState("");
+
+  useEffect(() => {
+    if (selectedCase) {
+      const init = {};
+      selectedCase.evidence.forEach(e => { init[e.id] = e.slider.default; });
+      setSliders(init);
+      setShowVerdict(false);
+    }
+  }, [caseId]);
+
+  function pickCase(id) {
+    setCaseId(id);
+    setPearl(PEARLS[Math.floor(Math.random() * PEARLS.length)]);
+  }
+
+  if (!selectedCase) {
+    return (
+      <div className="fade-in" style={{ padding: "16px", maxWidth: 720, margin: "0 auto" }}>
+        <BackBtn onClick={onBack} />
+        <div style={{ fontSize: 22, fontWeight: 800, color: NAVY, marginBottom: 6 }}>Build the Case</div>
+        <div style={{ fontSize: 13, color: MED, lineHeight: 1.55, marginBottom: 16 }}>
+          Pick one of four cases. You'll be given the evidence, you adjust each piece's match strength, and the app combines them via Bayes' theorem to produce a case strength meter. Threshold for conviction: ~95-99%.
+        </div>
+        <div style={{ display: "grid", gap: 12 }}>
+          {CASES.map(c => (
+            <div key={c.id} onClick={() => pickCase(c.id)}
+                 style={{ background: WHITE, borderRadius: R, padding: 18, boxShadow: SHADOW, cursor: "pointer", border: "2px solid transparent", transition: "all .2s" }}
+                 onMouseOver={e => e.currentTarget.style.borderColor = TEAL}
+                 onMouseOut={e => e.currentTarget.style.borderColor = "transparent"}>
+              <SectionLabel>{c.location}</SectionLabel>
+              <div style={{ fontSize: 17, fontWeight: 800, color: NAVY, marginBottom: 6 }}>{c.title}</div>
+              <div style={{ fontSize: 13, color: MED, lineHeight: 1.55 }}>{c.summary}</div>
+              <div style={{ marginTop: 10, fontSize: 11, fontWeight: 700, color: TEAL_DARK, letterSpacing: 1, textTransform: "uppercase" }}>
+                {c.evidence.length} evidence items · prior {(c.prior * 100).toFixed(0)}% · threshold {(c.threshold * 100).toFixed(0)}%
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // Compute likelihood ratios for each evidence item
+  const lrs = selectedCase.evidence.map(e => e.lrFn(sliders[e.id] ?? e.slider.default));
+  const posterior = combinePosterior(selectedCase.prior, lrs);
+  const meets = posterior >= selectedCase.threshold;
+  // Compute single-evidence-only posterior, for comparison
+  const singleBest = Math.max(...lrs.map(lr => bayesUpdate(selectedCase.prior, lr)));
+
+  return (
+    <div className="fade-in" style={{ padding: "16px", maxWidth: 720, margin: "0 auto" }}>
+      <BackBtn onClick={() => setCaseId(null)} />
+      <Card>
+        <SectionLabel>{selectedCase.location}</SectionLabel>
+        <div style={{ fontSize: 19, fontWeight: 800, color: NAVY, marginBottom: 8 }}>{selectedCase.title}</div>
+        <div style={{ fontSize: 13, color: MED, lineHeight: 1.55, marginBottom: 12 }}>{selectedCase.summary}</div>
+        <div style={{ display: "flex", gap: 10, fontSize: 11, fontWeight: 700, color: TEAL_DARK, letterSpacing: 1, textTransform: "uppercase" }}>
+          <span style={{ background: "#E8F5F2", padding: "4px 10px", borderRadius: 6 }}>Prior P(guilt) {(selectedCase.prior * 100).toFixed(0)}%</span>
+          <span style={{ background: "#FFF8E1", padding: "4px 10px", borderRadius: 6, color: "#8B6914" }}>Threshold {(selectedCase.threshold * 100).toFixed(0)}%</span>
+        </div>
+      </Card>
+
+      <Card>
+        <SectionLabel>Evidence — adjust match strength</SectionLabel>
+        {selectedCase.evidence.map((e, idx) => {
+          const v = sliders[e.id] ?? e.slider.default;
+          const lr = e.lrFn(v);
+          return (
+            <div key={e.id} style={{ marginBottom: 18, paddingBottom: 14, borderBottom: idx < selectedCase.evidence.length - 1 ? "1px dashed #E0E8EE" : "none" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
+                <div style={{ fontSize: 14, fontWeight: 700, color: NAVY }}>{e.label}</div>
+                <div className="mono" style={{ fontSize: 12, color: TEAL_DARK, fontWeight: 700 }}>LR = {fmtLR(lr)}</div>
+              </div>
+              <div style={{ fontSize: 12, color: MED, lineHeight: 1.5, marginBottom: 8 }}>{e.description}</div>
+              <input type="range"
+                     min={e.slider.min} max={e.slider.max} step={e.slider.step} value={v}
+                     onChange={ev => setSliders(s => ({ ...s, [e.id]: parseFloat(ev.target.value) }))} />
+              <div className="mono" style={{ fontSize: 11, color: MED, marginTop: 4, textAlign: "center" }}>
+                {e.slider.labelFn(v)}
+              </div>
+            </div>
+          );
+        })}
+      </Card>
+
+      <Card style={{ background: meets ? "linear-gradient(135deg, #E8F8F1 0%, #D4F0E1 100%)" : "linear-gradient(135deg, #FFF8E1 0%, #FEF3D1 100%)", border: `2px solid ${meets ? GREEN : GOLD}` }}>
+        <SectionLabel>Case strength meter</SectionLabel>
+        <div className="mono" style={{ fontSize: 28, fontWeight: 800, color: meets ? GREEN : "#8B6914", textAlign: "center", marginBottom: 4 }}>
+          {fmtProb(posterior)}
+        </div>
+        <div style={{ fontSize: 11, color: MED, textAlign: "center", marginBottom: 12 }}>
+          P(suspect did it | all evidence)
+        </div>
+        <div style={{ background: "#E0E8EE", borderRadius: 6, height: 14, position: "relative", overflow: "hidden", marginBottom: 12 }}>
+          <div style={{ background: meets ? `linear-gradient(135deg, ${GREEN}, #1E8449)` : `linear-gradient(135deg, ${YELLOW}, #B7740C)`, width: `${posterior * 100}%`, height: "100%", transition: "width 0.4s" }} />
+          <div style={{ position: "absolute", left: `${selectedCase.threshold * 100}%`, top: 0, bottom: 0, width: 2, background: RED, opacity: 0.6 }} />
+        </div>
+        <div style={{ fontSize: 11, color: MED, display: "flex", justifyContent: "space-between" }}>
+          <span>0%</span>
+          <span style={{ color: RED }}>↑ threshold {(selectedCase.threshold * 100).toFixed(0)}%</span>
+          <span>100%</span>
+        </div>
+        <div style={{ marginTop: 14, padding: "10px 14px", background: "rgba(255,255,255,0.6)", borderRadius: 8, fontSize: 12, color: NAVY, lineHeight: 1.55 }}>
+          <strong>Single best evidence alone:</strong> <span className="mono">{fmtProb(singleBest)}</span> — {singleBest >= selectedCase.threshold ? "would meet threshold" : "INSUFFICIENT alone"}.<br />
+          <strong>Combined Bayesian:</strong> <span className="mono">{fmtProb(posterior)}</span> — {meets ? "meets threshold." : "still below threshold."}
+        </div>
+      </Card>
+
+      <Btn primary onClick={() => setShowVerdict(true)} style={{ width: "100%", marginBottom: 16 }}>
+        Take it to the jury →
+      </Btn>
+
+      {showVerdict && (
+        <Card className="slide-up" style={{ background: meets ? "linear-gradient(135deg, #1B3A5C 0%, #2A9D8F 100%)" : "linear-gradient(135deg, #7A2D4E 0%, #C0392B 100%)", color: WHITE }}>
+          <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: 2, color: GOLD, textTransform: "uppercase", marginBottom: 8 }}>Verdict in this case</div>
+          <div style={{ fontSize: 18, fontWeight: 800, lineHeight: 1.4, marginBottom: 10 }}>
+            {meets
+              ? `${fmtProb(posterior)} confidence — meets the "${(selectedCase.threshold * 100).toFixed(0)}%" threshold for beyond reasonable doubt.`
+              : `${fmtProb(posterior)} confidence — INSUFFICIENT to convict. Defense will argue reasonable doubt.`}
+          </div>
+          <div style={{ fontSize: 13, lineHeight: 1.6, opacity: 0.95 }}>
+            {meets
+              ? "In a real trial, the prosecution presents each evidence type independently. Their multiplicative effect on a juror's belief — the implicit Bayesian update — is what produces conviction-grade certainty."
+              : "If you went to trial with this evidence, a court-qualified defense expert would attack each piece individually. You need additional evidence — physical, digital, or testimonial — before charging."}
+          </div>
+          <div style={{ marginTop: 14, padding: 12, background: "rgba(255,255,255,0.12)", borderRadius: 8, fontSize: 12, lineHeight: 1.55 }}>
+            <strong style={{ color: GOLD }}>Director's Pearl:</strong> {pearl}
+          </div>
+          <div style={{ marginTop: 14, display: "flex", gap: 8 }}>
+            <Btn onClick={() => { setCaseId(null); setShowVerdict(false); }} style={{ background: WHITE, color: NAVY, flex: 1 }}>Try another case</Btn>
+          </div>
+        </Card>
+      )}
+    </div>
+  );
+}
+
+// ===== Mode 2: Wrong Conviction =====
+function WrongConviction({ onBack }) {
+  const [picked, setPicked] = useState(null);
+  const [step, setStep] = useState(0);
+  const c = EXONERATIONS.find(e => e.id === picked);
+
+  function pick(id) {
+    setPicked(id);
+    setStep(0);
+  }
+
+  if (!c) {
+    return (
+      <div className="fade-in" style={{ padding: "16px", maxWidth: 720, margin: "0 auto" }}>
+        <BackBtn onClick={onBack} />
+        <div style={{ fontSize: 22, fontWeight: 800, color: NAVY, marginBottom: 6 }}>The Wrong Conviction</div>
+        <div style={{ fontSize: 13, color: MED, lineHeight: 1.55, marginBottom: 16 }}>
+          Four real cases where reliance on a single evidence type led to wrongful conviction. Click through the timeline of each.
+        </div>
+        <div style={{ display: "grid", gap: 12 }}>
+          {EXONERATIONS.map(e => (
+            <div key={e.id} onClick={() => pick(e.id)}
+                 style={{ background: WHITE, borderRadius: R, padding: 18, boxShadow: SHADOW, cursor: "pointer", border: "2px solid transparent", transition: "all .2s" }}
+                 onMouseOver={ev => ev.currentTarget.style.borderColor = TEAL}
+                 onMouseOut={ev => ev.currentTarget.style.borderColor = "transparent"}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                <div style={{ fontSize: 17, fontWeight: 800, color: NAVY }}>{e.name}</div>
+                <div className="mono" style={{ fontSize: 12, color: MED, fontWeight: 700 }}>{e.year}</div>
+              </div>
+              <div style={{ fontSize: 11, fontWeight: 700, color: RED, letterSpacing: 1, textTransform: "uppercase", marginTop: 4 }}>
+                Convicted on: {e.evidenceType}
+              </div>
+              <div style={{ fontSize: 13, color: MED, lineHeight: 1.55, marginTop: 6 }}>{e.crime}</div>
+              <div style={{ marginTop: 8, fontSize: 12, fontWeight: 700, color: TEAL_DARK }}>{e.held}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  const steps = [
+    { tag: "The Conviction", color: RED, body: c.convictedOn },
+    { tag: "The Imprisonment", color: "#7A2D4E", body: c.held },
+    { tag: "The Truth", color: NAVY, body: c.truth },
+    { tag: "The Lesson", color: TEAL_DARK, body: c.lesson },
+    { tag: "Multi-Modal Could Have Saved Them", color: GREEN, body: c.multimodal }
+  ];
+  const s = steps[step];
+
+  return (
+    <div className="fade-in" style={{ padding: "16px", maxWidth: 720, margin: "0 auto" }}>
+      <BackBtn onClick={() => setPicked(null)} />
+      <Card>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
+          <div style={{ fontSize: 22, fontWeight: 800, color: NAVY }}>{c.name}</div>
+          <div className="mono" style={{ fontSize: 13, color: MED, fontWeight: 700 }}>{c.year}</div>
+        </div>
+        <div style={{ fontSize: 11, fontWeight: 700, color: RED, letterSpacing: 1, textTransform: "uppercase", marginBottom: 8 }}>
+          Convicted on: {c.evidenceType}
+        </div>
+        <div style={{ fontSize: 13, color: MED, lineHeight: 1.55 }}>{c.crime}</div>
+      </Card>
+
+      <Card className="slide-up" style={{ borderLeft: `5px solid ${s.color}` }}>
+        <SectionLabel>Step {step + 1} of {steps.length} · {s.tag}</SectionLabel>
+        <div style={{ fontSize: 14, color: NAVY, lineHeight: 1.65 }}>{s.body}</div>
+      </Card>
+
+      <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+        <Btn onClick={() => setStep(Math.max(0, step - 1))} disabled={step === 0}>← Previous</Btn>
+        <div style={{ flex: 1 }} />
+        {step < steps.length - 1 ? (
+          <Btn primary onClick={() => setStep(step + 1)}>Next →</Btn>
+        ) : (
+          <Btn primary onClick={() => setPicked(null)}>Pick another case</Btn>
+        )}
+      </div>
+
+      {/* Step indicator */}
+      <div style={{ display: "flex", gap: 6, justifyContent: "center", marginBottom: 12 }}>
+        {steps.map((st, i) => (
+          <div key={i}
+               onClick={() => setStep(i)}
+               style={{ width: i === step ? 24 : 10, height: 10, borderRadius: 5,
+                        background: i <= step ? st.color : "#E0E8EE",
+                        cursor: "pointer", transition: "width 0.2s" }} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ===== Mode 3: Bayesian Logic Lab =====
+function BayesLab({ onBack }) {
+  const [prior, setPrior] = useState(0.20);
+  const [lrFp, setLrFp] = useState(50);
+  const [lrDna, setLrDna] = useState(1000);
+  const [lrSpatter, setLrSpatter] = useState(8);
+  const [lrCam, setLrCam] = useState(15);
+  const [steps, setSteps] = useState({ fp: true, dna: true, spatter: true, cam: false });
+
+  // Compute step-by-step posterior
+  const sequence = [];
+  let p = prior;
+  sequence.push({ name: "Prior (base rate)", lr: null, p });
+  if (steps.fp) { p = bayesUpdate(p, lrFp); sequence.push({ name: "Fingerprint", lr: lrFp, p }); }
+  if (steps.dna) { p = bayesUpdate(p, lrDna); sequence.push({ name: "DNA profile", lr: lrDna, p }); }
+  if (steps.spatter) { p = bayesUpdate(p, lrSpatter); sequence.push({ name: "Blood spatter", lr: lrSpatter, p }); }
+  if (steps.cam) { p = bayesUpdate(p, lrCam); sequence.push({ name: "Surveillance camera", lr: lrCam, p }); }
+
+  return (
+    <div className="fade-in" style={{ padding: "16px", maxWidth: 720, margin: "0 auto" }}>
+      <BackBtn onClick={onBack} />
+      <Card>
+        <SectionLabel>Bayesian Logic Lab</SectionLabel>
+        <div style={{ fontSize: 19, fontWeight: 800, color: NAVY, marginBottom: 8 }}>How a juror's belief actually updates</div>
+        <div style={{ fontSize: 13, color: MED, lineHeight: 1.55, marginBottom: 12 }}>
+          Bayes' theorem: <strong className="mono" style={{ color: NAVY }}>posterior odds = prior odds × likelihood ratio</strong>. Each new piece of evidence multiplies the odds. Toggle evidence on/off and watch the posterior climb (or stall).
+        </div>
+        <div style={{ background: "#F0F6F5", padding: 12, borderRadius: 8, fontSize: 12, color: NAVY, lineHeight: 1.6 }} className="mono">
+          P(guilt | evidence) = (P(evidence | guilt) × P(guilt)) / P(evidence)
+        </div>
+      </Card>
+
+      <Card>
+        <SectionLabel>Prior probability of guilt</SectionLabel>
+        <div style={{ fontSize: 12, color: MED, lineHeight: 1.5, marginBottom: 8 }}>
+          Before any forensic evidence, how likely was the suspect — based on motive, opportunity, and investigation context? Most criminal investigations start at 10-30%.
+        </div>
+        <input type="range" min="0.01" max="0.5" step="0.01" value={prior}
+               onChange={e => setPrior(parseFloat(e.target.value))} />
+        <div className="mono" style={{ textAlign: "center", marginTop: 6, fontSize: 14, fontWeight: 700, color: NAVY }}>
+          Prior P(guilt) = {(prior * 100).toFixed(0)}%
+        </div>
+      </Card>
+
+      <Card>
+        <SectionLabel>Evidence likelihood ratios</SectionLabel>
+        <div style={{ fontSize: 12, color: MED, lineHeight: 1.5, marginBottom: 14 }}>
+          Each LR = how many times more likely this evidence is if the suspect is guilty than if innocent. Toggle each piece on/off and adjust the strength.
+        </div>
+
+        <EvidenceSlider label="Fingerprint match"
+                        on={steps.fp} setOn={(v) => setSteps(s => ({...s, fp: v}))}
+                        v={lrFp} setV={setLrFp} min={1} max={1000} step={1}
+                        format={(x) => `LR = ${fmtLR(x)}`}
+                        hint="6-8 minutiae ≈ LR 10-100. 12+ minutiae ≈ LR 10⁴+." />
+        <EvidenceSlider label="DNA STR profile"
+                        on={steps.dna} setOn={(v) => setSteps(s => ({...s, dna: v}))}
+                        v={lrDna} setV={setLrDna} min={1} max={1000000} step={1}
+                        format={(x) => `LR = ${fmtLR(x)}`}
+                        hint="Typical 13-loci CODIS profile: LR ≈ 10⁹. Partial profile: 10³-10⁶." />
+        <EvidenceSlider label="Blood spatter analysis"
+                        on={steps.spatter} setOn={(v) => setSteps(s => ({...s, spatter: v}))}
+                        v={lrSpatter} setV={setLrSpatter} min={1} max={50} step={1}
+                        format={(x) => `LR = ${fmtLR(x)}`}
+                        hint="BSA is class-level, not individualizing. Typical LR = 5-20." />
+        <EvidenceSlider label="Surveillance facial ID"
+                        on={steps.cam} setOn={(v) => setSteps(s => ({...s, cam: v}))}
+                        v={lrCam} setV={setLrCam} min={1} max={200} step={1}
+                        format={(x) => `LR = ${fmtLR(x)}`}
+                        hint="Modern FR algorithms claim LR up to 10³ in good lighting; lower with hat/mask/grain." />
+      </Card>
+
+      <Card>
+        <SectionLabel>Step-by-step posterior</SectionLabel>
+        <div style={{ display: "grid", gap: 8 }}>
+          {sequence.map((row, i) => (
+            <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 12px", background: i === sequence.length - 1 ? "#E8F8F1" : "#F7F9FC", borderRadius: 8, border: i === sequence.length - 1 ? `2px solid ${GREEN}` : "1px solid #E0E8EE" }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>
+                {i === 0 ? "" : `+ `}{row.name}
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                {row.lr != null && <span className="mono" style={{ fontSize: 11, color: MED }}>×{fmtLR(row.lr)}</span>}
+                <span className="mono" style={{ fontSize: 14, fontWeight: 800, color: i === sequence.length - 1 ? GREEN : NAVY }}>{fmtProb(row.p)}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style={{ marginTop: 16, padding: 14, background: "linear-gradient(135deg, #FFF8E1 0%, #FEF3D1 100%)", borderLeft: `4px solid ${GOLD}`, borderRadius: 8, fontSize: 12, color: NAVY, lineHeight: 1.6 }}>
+          <strong style={{ color: "#8B6914" }}>Watch the multiplication:</strong> turn off DNA. Watch the posterior collapse. Then turn on just spatter + camera. Notice that "lots of weak evidence" can be weaker than one strong piece — but combined STRONG evidence types are nearly impossible to argue against.
+        </div>
+      </Card>
+    </div>
+  );
+}
+
+function EvidenceSlider({ label, on, setOn, v, setV, min, max, step, format, hint }) {
+  return (
+    <div style={{ marginBottom: 14, paddingBottom: 12, borderBottom: "1px dashed #E0E8EE", opacity: on ? 1 : 0.5 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+        <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, fontWeight: 700, color: NAVY, cursor: "pointer" }}>
+          <input type="checkbox" checked={on} onChange={e => setOn(e.target.checked)} style={{ width: 16, height: 16 }} />
+          {label}
+        </label>
+        <span className="mono" style={{ fontSize: 12, color: TEAL_DARK, fontWeight: 700 }}>{format(v)}</span>
+      </div>
+      <div style={{ fontSize: 11, color: MED, lineHeight: 1.4, marginBottom: 6 }}>{hint}</div>
+      <input type="range" min={min} max={max} step={step} value={v}
+             disabled={!on}
+             onChange={e => setV(parseFloat(e.target.value))} />
+    </div>
+  );
+}
+
+// ===== Mode 4: Quiz =====
+function Quiz({ onBack }) {
+  const [idx, setIdx] = useState(0);
+  const [picked, setPicked] = useState(null);
+  const [score, setScore] = useState(0);
+  const [done, setDone] = useState(false);
+
+  if (done) {
+    const pct = Math.round((score / QUIZ.length) * 100);
+    return (
+      <div className="fade-in" style={{ padding: "16px", maxWidth: 720, margin: "0 auto" }}>
+        <BackBtn onClick={onBack} />
+        <Card style={{ textAlign: "center", background: "linear-gradient(135deg, #1B3A5C 0%, #2A9D8F 100%)", color: WHITE }}>
+          <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: 2, color: GOLD, textTransform: "uppercase", marginBottom: 8 }}>Court is adjourned</div>
+          <div style={{ fontSize: 56, marginBottom: 8 }}>{pct >= 75 ? "⚖️" : "📋"}</div>
+          <div className="mono" style={{ fontSize: 36, fontWeight: 800, marginBottom: 4 }}>{score} / {QUIZ.length}</div>
+          <div style={{ fontSize: 14, opacity: 0.92, marginBottom: 16 }}>
+            {pct >= 87 ? "Court-qualified expert. You'd survive a Daubert hearing."
+             : pct >= 62 ? "Solid analyst. Brush up on Bayesian odds vs. probability."
+             : "Worth a re-read. Bayes is a tool you'll keep using."}
+          </div>
+          <div style={{ padding: 12, background: "rgba(255,255,255,0.12)", borderRadius: 8, fontSize: 12, lineHeight: 1.6, marginBottom: 14 }}>
+            <strong style={{ color: GOLD }}>Pearl:</strong> {PEARLS[Math.floor(Math.random() * PEARLS.length)]}
+          </div>
+          <Btn onClick={() => { setIdx(0); setPicked(null); setScore(0); setDone(false); }} style={{ background: WHITE, color: NAVY }}>Retry</Btn>
+        </Card>
+      </div>
+    );
+  }
+
+  const q = QUIZ[idx];
+  const showExplain = picked != null;
+
+  return (
+    <div className="fade-in" style={{ padding: "16px", maxWidth: 720, margin: "0 auto" }}>
+      <BackBtn onClick={onBack} />
+      <Card>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+          <SectionLabel>Question {idx + 1} of {QUIZ.length}</SectionLabel>
+          <div className="mono" style={{ fontSize: 12, color: TEAL_DARK, fontWeight: 700 }}>Score: {score}</div>
+        </div>
+        <div style={{ fontSize: 16, fontWeight: 700, color: NAVY, lineHeight: 1.5, marginBottom: 16 }}>{q.q}</div>
+        <div style={{ display: "grid", gap: 8 }}>
+          {q.options.map((opt, i) => {
+            const isPicked = picked === i;
+            const isCorrect = i === q.correct;
+            let bg = WHITE, color = NAVY, border = `2px solid #E0E8EE`;
+            if (showExplain) {
+              if (isCorrect) { bg = "#E8F8F1"; border = `2px solid ${GREEN}`; }
+              else if (isPicked) { bg = "#FADBD8"; border = `2px solid ${RED}`; }
+            } else if (isPicked) {
+              border = `2px solid ${TEAL}`;
+            }
+            return (
+              <button key={i}
+                      onClick={() => {
+                        if (showExplain) return;
+                        setPicked(i);
+                        if (i === q.correct) setScore(s => s + 1);
+                      }}
+                      style={{
+                        background: bg, color, border, borderRadius: 10,
+                        padding: "12px 14px", fontSize: 13, fontWeight: 600,
+                        textAlign: "left", cursor: showExplain ? "default" : "pointer",
+                        fontFamily: "inherit", transition: "all .2s",
+                        display: "flex", alignItems: "center", gap: 10
+                      }}>
+                <div style={{ width: 22, height: 22, borderRadius: 11, background: showExplain && isCorrect ? GREEN : (showExplain && isPicked ? RED : "#F0F4F8"), color: showExplain && (isCorrect || isPicked) ? WHITE : MED, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 800, flexShrink: 0 }}>
+                  {String.fromCharCode(65 + i)}
+                </div>
+                <div style={{ flex: 1, lineHeight: 1.45 }}>{opt}</div>
+              </button>
+            );
+          })}
+        </div>
+        {showExplain && (
+          <div className="slide-up" style={{ marginTop: 16, padding: 14, background: picked === q.correct ? "#E8F8F1" : "#FADBD8", borderLeft: `4px solid ${picked === q.correct ? GREEN : RED}`, borderRadius: 8 }}>
+            <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: 1, textTransform: "uppercase", color: picked === q.correct ? GREEN : RED, marginBottom: 6 }}>
+              {picked === q.correct ? "Correct" : "Not quite"}
+            </div>
+            <div style={{ fontSize: 13, color: NAVY, lineHeight: 1.6 }}>{q.explanation}</div>
+          </div>
+        )}
+        {showExplain && (
+          <div style={{ marginTop: 14, display: "flex", justifyContent: "flex-end" }}>
+            {idx < QUIZ.length - 1 ? (
+              <Btn primary onClick={() => { setIdx(idx + 1); setPicked(null); }}>Next question →</Btn>
+            ) : (
+              <Btn primary onClick={() => setDone(true)}>See verdict</Btn>
+            )}
+          </div>
+        )}
+      </Card>
+    </div>
+  );
+}
+
+// ===== Root =====
+function App() {
+  const [mode, setMode] = useState(null);
+  return (
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <AppHeader subtitle="Evidence Synthesizer" />
+      <div style={{ flex: 1 }}>
+        {mode == null && <Welcome onPick={setMode} />}
+        {mode === "build" && <BuildCase onBack={() => setMode(null)} />}
+        {mode === "wrong" && <WrongConviction onBack={() => setMode(null)} />}
+        {mode === "lab" && <BayesLab onBack={() => setMode(null)} />}
+        {mode === "quiz" && <Quiz onBack={() => setMode(null)} />}
+      </div>
+      <AppFooter />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

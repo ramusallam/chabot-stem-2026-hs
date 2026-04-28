@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Chabot STEM 2026 \u2014 High School",
+    "title": "Chabot STEM 2026 — High School",
     "program": "High School (Rising 9th-11th)",
     "dates": "June 22 - July 2",
     "storageKey": "woven-chabot-2026-hs",
@@ -71,6 +71,12 @@
               "type": "callout",
               "style": "tip",
               "content": "Interactive App (fingerprint): Use the Fingerprint Ridge Classifier to practice identifying Loops, Whorls, and Arches. Study the reference patterns, then challenge yourself in Quiz Mode before moving to the statistical analysis. Use the Launch button below to open the app inline."
+            },
+            {
+              "type": "app",
+              "title": "Fingerprint Ridge Classifier",
+              "url": "apps/fingerprint-classifier.html",
+              "embed": true
             },
             {
               "type": "step",
@@ -231,6 +237,12 @@
               "type": "callout",
               "style": "tip",
               "content": "Interactive App (spatter): Use the Blood Spatter Angle Calculator to verify your hand calculations. Start with the Calculator tab to see the formula in action, then test your measurement skills in Practice Challenge mode. Use the Launch button below to open the app inline."
+            },
+            {
+              "type": "app",
+              "title": "Blood Spatter Angle Calculator",
+              "url": "apps/blood-spatter-calculator.html",
+              "embed": true
             },
             {
               "type": "step",
@@ -410,6 +422,38 @@
             {
               "type": "step",
               "content": "Formal Summary: Prepare a formal evidence summary that could be presented in court."
+            },
+            {
+              "type": "heading",
+              "content": "Launch the Evidence Synthesizer"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "You analyzed fingerprint and blood spatter independently. Real court cases combine 4-6 evidence types using Bayesian probability. The synthesizer shows you how a single weak piece + a strong piece becomes airtight - and how four wrongful convictions happened without that math."
+            },
+            {
+              "type": "app",
+              "title": "Evidence Synthesizer",
+              "url": "apps/evidence-synthesizer.html",
+              "embed": true
+            },
+            {
+              "type": "step",
+              "content": "Tap 'Build the Case.' Load one of 4 named cases (Pine Hills, Riverside, Lexus, Workshop). Adjust likelihood-ratio sliders for each evidence type. Watch the posterior probability climb in real time. Hit 'beyond reasonable doubt' (95-99%) before declaring guilt."
+            },
+            {
+              "type": "step",
+              "content": "Switch to 'The Wrong Conviction.' Click through 5-step timelines for Brandon Mayfield, Lana Canen, Ronald Cotton, and David Camm - each wrongly convicted on a single piece of evidence, each later exonerated by additional types. See what multi-modal could have saved."
+            },
+            {
+              "type": "step",
+              "content": "Finish with 'Bayesian Logic Lab.' Manipulate the prior probability and likelihood ratios for each evidence type. Toggle pieces on/off. Watch the posterior shift. Then take the 8-question quiz on Daubert, beyond-reasonable-doubt thresholds, and eyewitness fragility."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Notice that fingerprint + DNA together gives near-100% confidence, while either alone is well below courtroom threshold. That's why modern juries weigh evidence Bayesian - even when they don't call it that."
             },
             {
               "type": "checklist",
@@ -613,6 +657,38 @@
               "content": "Liability Debate: Debate: Should AI companies be liable when their products generate false information that causes harm?"
             },
             {
+              "type": "heading",
+              "content": "Launch the AI Inspector (Hallucination Hunter)"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "AI hallucinates confidently - and the fluency makes you trust the wrong fact. Today you train against that reflex. (You'll come back to this app on Days 7 and 8 for the bias and black-box modes.)"
+            },
+            {
+              "type": "app",
+              "title": "AI Inspector (Hallucination Hunter)",
+              "url": "apps/ai-inspector.html",
+              "embed": true
+            },
+            {
+              "type": "step",
+              "content": "Tap 'Hallucination Hunter.' 8 AI-generated paragraphs. Click the fabricated parts (fake citations, invented statistics, misattributed quotes, wrong code logic). Each correct click reveals the truth + the real fact-check method."
+            },
+            {
+              "type": "step",
+              "content": "(Day 4 focus) Skip Modes 2 and 3 today. You'll come back for the bias and black-box demos on Days 7 and 8."
+            },
+            {
+              "type": "step",
+              "content": "Take the 8-question quiz across all three modes. Counts your performance against future days."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Watch for 'Smith, J. (2019). Study on X. Journal of Y, 45(3)' - AI loves inventing plausible-sounding citations. The fix: always spot-check one citation per AI output before trusting any of them."
+            },
+            {
               "type": "checklist",
               "items": [
                 {
@@ -713,6 +789,12 @@
               "type": "callout",
               "style": "tip",
               "content": "Interactive App (ekg): Use the EKG Waveform Explorer to study 5 cardiac rhythms in detail. Toggle the wave labels to learn what each PQRST component represents. Adjust the speed and amplitude controls to see how the tracing changes. Test your interpretation skills in Quiz Mode. Use the Launch button below to open the app inline."
+            },
+            {
+              "type": "app",
+              "title": "EKG Waveform Explorer",
+              "url": "apps/ekg-waveform-explorer.html",
+              "embed": true
             },
             {
               "type": "step",
@@ -888,6 +970,38 @@
             {
               "type": "step",
               "content": "Peer Review: Evaluate a partner's work using the surgical assessment rubric. Provide specific, constructive feedback."
+            },
+            {
+              "type": "heading",
+              "content": "Launch the Surgical Dexterity Trainer"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "High school suture work is more rigorous than middle school - tighter tolerances, real measurement of stitch spacing. The trainer gives you the hand-eye drills surgeons use, with an OR clock that scores BOTH speed and accuracy."
+            },
+            {
+              "type": "app",
+              "title": "Surgical Dexterity Trainer",
+              "url": "apps/surgical-dexterity-trainer.html",
+              "embed": true
+            },
+            {
+              "type": "step",
+              "content": "Tap 'Steady Hand.' Trace the path with finger or mouse, error counter logs every drift. Tighter tolerance at higher levels - match the precision suture standards (HS curriculum focus)."
+            },
+            {
+              "type": "step",
+              "content": "Switch to 'Precision Targeting.' Tap targets in sequence under the countdown. Same hand-eye coordination drill real OR teams run during pre-shift warmup."
+            },
+            {
+              "type": "step",
+              "content": "Finish with 'Instrument Memory.' A sequence of surgical instruments flashes - tap them back in order. Working-memory drill from real OR training programs."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Surgeons measure success by suture-tension consistency AND time. The trainer shows you both, monospace OR clock turning red when you're behind. Real residency tracks both metrics."
             },
             {
               "type": "checklist",
@@ -1091,6 +1205,38 @@
               "content": "Fairness Standards: Draft a set of Algorithmic Fairness Standards that you think all AI systems should meet before deployment."
             },
             {
+              "type": "heading",
+              "content": "Launch the AI Inspector (Bias Visualizer)"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "You used the Hallucination Hunter on Day 4. Today switch to the Bias Visualizer to see how training data composition becomes algorithmic discrimination - the math behind COMPAS, Amazon's hiring tool, and Apple Card's credit limits."
+            },
+            {
+              "type": "app",
+              "title": "AI Inspector (Bias Visualizer)",
+              "url": "apps/ai-inspector.html",
+              "embed": true
+            },
+            {
+              "type": "step",
+              "content": "Open the app, then tap 'Bias Visualizer.' Adjust the 'training data composition' slider to overrepresent Group A. Watch overall accuracy stay high (~85%) while the per-group fairness gap explodes past the EEOC's four-fifths rule threshold."
+            },
+            {
+              "type": "step",
+              "content": "Read the live case studies that load alongside: COMPAS recidivism (ProPublica 2016), Amazon hiring AI (2018), Apple Card credit (2019), Obermeyer healthcare algorithm (2019). Each is a real documented case of accuracy hiding disparate impact."
+            },
+            {
+              "type": "step",
+              "content": "Take the quiz portion focused on bias: representational bias, EEOC four-fifths rule, the difference between 'fair' and 'accurate,' the EU AI Act high-risk category."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "An algorithm trained on biased data WILL amplify the bias. It's not a bug - it's the math. The only way out is intervention at the data layer, not the model layer."
+            },
+            {
               "type": "checklist",
               "items": [
                 {
@@ -1248,6 +1394,38 @@
             {
               "type": "step",
               "content": "Final Reflection: Final reflection: How has your understanding of AI changed over these two weeks? What will you do differently when you encounter AI in your life?"
+            },
+            {
+              "type": "heading",
+              "content": "Launch the AI Inspector (Black Box Inspector)"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Final AI literacy session. The Black Box Inspector lets you open a real ML decision: would this loan be approved? Then run a what-if to flip the decision and see what feature drove it. Same tools (SHAP, LIME, counterfactuals) used by every responsible AI auditor in industry."
+            },
+            {
+              "type": "app",
+              "title": "AI Inspector (Black Box Inspector)",
+              "url": "apps/ai-inspector.html",
+              "embed": true
+            },
+            {
+              "type": "step",
+              "content": "Open the app, tap 'Black Box Inspector.' Pick from 4 loan applicants - one is a near-twin pair where only ZIP code differs. Hit 'Open the Box' to reveal the SHAP-style waterfall showing each feature's contribution to the approve/deny decision."
+            },
+            {
+              "type": "step",
+              "content": "Run a 'What-If' counterfactual. Flip a feature value and watch the decision change. The proxy bias (ZIP code as a stand-in for race) becomes visible in real time."
+            },
+            {
+              "type": "step",
+              "content": "Take the final quiz covering hallucinations + bias + black box. This is your full AI literacy assessment for the workshop."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "SHAP, LIME, and attention maps are the closest tools we have to opening the black box. None gives full explanation - but each narrows the question. That's the entire field of explainable AI."
             },
             {
               "type": "checklist",

@@ -118,31 +118,46 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Case Study: The Daubert Standard requires that scientific evidence be based on testable methodology, peer-reviewed research, known error rates, and general acceptance in the scientific community. In 2016, a landmark report by the President's Council of Advisors on Science and Technology found that many forensic disciplines - including fingerprint analysis - lacked rigorous scientific validation."
+              "content": "Bleeding-edge: the Daubert standard (1993) is being challenged in 2026 federal court by AI companies. They argue: if AI has a measurable error rate (unlike traditional fingerprint analysis), AI evidence should be MORE admissible than human analysis. The DOJ disagrees. The first ruling is expected June 2026 - exactly when this workshop runs. You are watching the law form in real time."
             },
             {
-              "type": "video",
-              "url": "https://www.youtube.com/embed/g82thePV5x4"
+              "type": "heading",
+              "content": "Audit a Real Hugging Face Fingerprint Model"
             },
             {
-              "type": "step",
-              "content": "Daubert Evaluation: Evaluate fingerprint evidence against each of the four Daubert criteria. Does it pass?"
-            },
-            {
-              "type": "step",
-              "content": "AFIS Research: Research how AFIS (Automated Fingerprint Identification System) works and its known error rates."
+              "type": "callout",
+              "style": "info",
+              "content": "Hugging Face hosts thousands of real ML models you can test in your browser. Today you'll find a fingerprint matching model, test its error rates statistically, and compare to AFIS published rates. This is what a court-qualified expert witness does to evaluate forensic AI."
             },
             {
               "type": "step",
-              "content": "Legal Argument: Write a one-paragraph argument for or against admitting the fingerprint evidence in court."
+              "content": "Open huggingface.co/spaces. Search 'fingerprint classification.' Pick a model with 5+ stars and a working demo. Most will let you upload a fingerprint image directly in the browser - no login required."
             },
             {
-              "type": "checklist",
-              "items": [
-                {
-                  "text": "I analyzed the Daubert Standard and wrote my admissibility argument"
-                }
-              ]
+              "type": "step",
+              "content": "Run the model on 10 of your inked prints. Record the model's confidence + classification for each. Calculate: how many got the correct pattern (Loop/Whorl/Arch)? Report as a fraction."
+            },
+            {
+              "type": "step",
+              "content": "Now compute the model's confidence calibration: for the prints the model classified with >90% confidence, what was its actual accuracy? A WELL-CALIBRATED model has 90% accuracy when it's 90% confident. Is your model calibrated? This is a Daubert criterion."
+            },
+            {
+              "type": "step",
+              "content": "AFIS (FBI's database) reports its own error rate as approximately 1 in 10,000 for verified high-quality matches. Your audited model probably does worse. Write a 1-paragraph admissibility argument: should this model's output be allowed in court?"
+            },
+            {
+              "type": "step",
+              "content": "Vibe coding extension: in Gemini Canvas, ask 'Write a Python script that takes my 10 fingerprint test results and computes accuracy, precision, recall, and F1 score.' Run the AI's code. Did it produce sensible numbers? AI-generated stats code is a $2B/year mistake when it's wrong."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "What you just did: forensic AI auditing - the actual job description for Bay Area roles at the Innocence Project, ACLU Tech, and Anthropic's Trust & Safety team. The skill is translating from 'this AI seems good' to 'here's its measured error rate, calibration curve, and Daubert assessment.'"
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Media Literacy Field Card: forensic claims are weaponized in court. The Stanford History Education Group's SIFT method (Stop, Investigate the source, Find better coverage, Trace claims to original) is the framework news researchers use. Free download: cor.stanford.edu/research-projects/sift-method. Practice it on the next viral 'crime' headline you see."
             }
           ]
         },
@@ -288,31 +303,42 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Case Study: AI-powered crime scene reconstruction tools can now process an entire room of blood spatter evidence and generate a 3D model of what happened. However, courts have been slow to accept AI-generated reconstructions. Under the Daubert Standard, how would you evaluate this technology?"
+              "content": "Bleeding-edge: in 2025, the National Institute of Standards and Technology (NIST) released a new tool called BPA-XR that uses transformer models to back-calculate impact angle from spatter photos. It works at 94% accuracy on its training set but drops to 67% on real crime scenes with poor lighting. The 27-point gap is the headline."
             },
             {
-              "type": "video",
-              "url": "https://www.youtube.com/embed/1o_14oH10V8"
+              "type": "heading",
+              "content": "Vibe-Code a Spatter Calculator"
             },
             {
-              "type": "step",
-              "content": "Daubert Standard Application: Apply the Daubert Standard to AI crime scene reconstruction. Evaluate each criterion."
-            },
-            {
-              "type": "step",
-              "content": "AI vs. Evidence Distinction: Discuss: What is the difference between AI as a tool for investigators vs. AI as evidence presented in court?"
+              "type": "callout",
+              "style": "info",
+              "content": "You proved sin θ = w/L by hand. Now build a real tool that applies your math. Using Gemini Canvas (vibe coding), you'll describe what you want and Gemini will write working code. Then you'll AUDIT THE CODE and find its bugs."
             },
             {
               "type": "step",
-              "content": "Case Research: Research one real case where digital forensic evidence was challenged. Summarize what happened."
+              "content": "Open gemini.google.com/canvas. Prompt: 'Build a single-page JavaScript app that takes drop width and drop length as inputs and computes angle of impact in degrees using arcsin(width/length). Display the result with 1 decimal place. Add a list of 5 angles to test the math against.'"
             },
             {
-              "type": "checklist",
-              "items": [
-                {
-                  "text": "I applied the Daubert Standard to AI forensic tools"
-                }
-              ]
+              "type": "step",
+              "content": "Run the AI's code. Test edge cases: (1) width = length (should give 90 degrees), (2) width > length (this is IMPOSSIBLE for a real drop - what does the code do? Crash? Show NaN? Display a misleading value?), (3) width = 0 (also impossible)."
+            },
+            {
+              "type": "step",
+              "content": "Audit the code. The AI almost certainly DIDN'T include input validation for impossible cases. Real production code MUST. Fix it: add a check that throws a clear error if w > L. Ask Gemini: 'Add a clear error message if drop width exceeds drop length.' Verify Gemini's fix actually works."
+            },
+            {
+              "type": "step",
+              "content": "Mathematical reasoning extension: derive WHY the model in the BPA-XR paper achieves 94% on training but 67% on real scenes. Hint: think about overfitting, lighting variance, and data augmentation. Write a 3-sentence explanation a court witness could use."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "What 'vibe coding' really is: prompt iteration. You don't have to know JavaScript. You DO have to know what your code should do, what edge cases matter, and how to test it. That's engineering. The AI just does the typing."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Media Literacy Field Card: 'studies show' is the most weaponized phrase in fake science. Tools: (1) Google Scholar (scholar.google.com - free) to find the actual paper. (2) Sci-Hub (controversial but real) to read paywalled studies. (3) Retraction Watch (retractionwatch.com) to see if the study was later disproven. When a viral physics or forensics claim cites 'studies,' track the studies. If they don't exist or have been retracted, you've caught a fake."
             }
           ]
         },
@@ -479,31 +505,42 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Case Study: Multi-modal AI systems like GPT-4 can process text, images, and audio simultaneously. In forensics, researchers are developing AI that can analyze fingerprints, bloodstain patterns, and digital evidence in a single integrated system. The promise is faster, more objective analysis - but the risk is a single point of failure."
+              "content": "Bleeding-edge: GPT-5 (2025) and Gemini 2.5 Pro (2025) both support multimodal input (text + image + audio + video) natively. Forensic researchers at UC Berkeley showed in March 2026 that multimodal AI can correlate fingerprint, fiber photo, and AFIS data simultaneously - a workflow that took human analysts 8 hours now takes 90 seconds. But: the Berkeley team reports the AI agrees with human consensus only 78% of the time. The other 22% is split: AI right 11%, AI wrong 11%."
             },
             {
-              "type": "video",
-              "url": "https://www.youtube.com/embed/jnkrQZoPfDM"
+              "type": "heading",
+              "content": "Run Your Own Multi-Modal Analysis"
             },
             {
-              "type": "step",
-              "content": "Multi-Modal AI Trust Analysis: Discuss: Is an AI that combines multiple evidence types more or less trustworthy than separate AI tools for each type?"
-            },
-            {
-              "type": "step",
-              "content": "Advanced Prompt Engineering: Practice advanced prompt engineering techniques to get better analytical results from AI."
+              "type": "callout",
+              "style": "info",
+              "content": "Today you'll feed Gemini multiple evidence types simultaneously and watch it synthesize. Then you'll audit its reasoning, looking specifically for what humans see that AI misses."
             },
             {
               "type": "step",
-              "content": "AI System Design: Design an ideal AI forensic analysis system. What safeguards would you build in?"
+              "content": "On the facilitator's laptop, open gemini.google.com. Click the photo icon. Upload 3 evidence photos at once: a fingerprint, a blood spatter pattern, and a fiber under microscope. Add the prompt: 'You are a forensic analyst. Describe what each image shows. Then synthesize: what 1-2 hypotheses do these evidence types support together?'"
             },
             {
-              "type": "checklist",
-              "items": [
-                {
-                  "text": "I explored advanced prompt engineering and AI system design"
-                }
-              ]
+              "type": "step",
+              "content": "Gemini will produce a long answer. Now AUDIT IT. For each claim Gemini makes, mark: (✓) verifiable, (?) uncertain, (✗) wrong / hallucinated. Pay special attention to: any specific match probabilities, any case-law references, any 'this is consistent with' statements."
+            },
+            {
+              "type": "step",
+              "content": "Build a structured prompt. Replace your free-form prompt with: 'For each image, output: (1) what type of evidence, (2) diagnostic features observed, (3) 3 candidate explanations, (4) confidence level (low/medium/high) for each. Do NOT cite case law unless you verify it. Do NOT estimate match probabilities.' Compare the structured output to the free-form output. Which is more useful?"
+            },
+            {
+              "type": "step",
+              "content": "Adversarial test: deliberately add a misleading detail to your prompt. Tell Gemini one of the photos is a 'known match' to a suspect. Watch how Gemini's analysis becomes biased toward your suggestion. This is called 'anchoring bias' in AI - and it's the #1 reason expert witnesses must challenge AI-driven investigations."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "The skill you're building: prompt engineering at the senior level. Bay Area firms like Anthropic, Scale AI, and Surge AI hire forensic-AI prompt auditors at $130k-180k. The core competency: knowing which prompts produce reliable output and which produce confident garbage."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Media Literacy Field Card: NewsGuard (newsguardtech.com) is a browser extension that rates the credibility of every news site on a 9-criterion scale. Free for anyone with a public library card (it's licensed to libraries). Install it. Browse normally. Watch the red and green checkmarks appear next to every site. You'll learn the credibility landscape in a week."
             }
           ]
         },
@@ -638,23 +675,71 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Case Study: In 2023, a New York attorney submitted a legal brief containing six fabricated case citations generated by ChatGPT. The attorney was sanctioned by the court. This case became a landmark example of the dangers of trusting AI output without verification."
+              "content": "Bleeding-edge: the Mata v. Avianca case (2023) was the first lawyer disciplined for ChatGPT-fabricated citations. As of April 2026, there are now over 200 documented cases of lawyers, judges, and clerks submitting AI-fabricated case law. California's bar started disbarring repeat offenders in 2025. You are entering legal practice in the era where verifying AI is required by professional ethics."
             },
             {
-              "type": "video",
-              "url": "https://www.youtube.com/embed/wcG7s7Nm3EU"
+              "type": "heading",
+              "content": "Vibe-Code a Citation Verifier"
             },
             {
-              "type": "step",
-              "content": "Technical Analysis: Analyze: Why do large language models hallucinate? What is happening technically (next-token prediction, training data gaps)?"
-            },
-            {
-              "type": "step",
-              "content": "Verification Protocol: Develop a personal AI Verification Protocol with specific steps for checking AI output."
+              "type": "callout",
+              "style": "info",
+              "content": "Today you build a tool that, given an AI's claim, checks whether the citation is real. This isn't research - this is production AI safety engineering."
             },
             {
               "type": "step",
-              "content": "Liability Debate: Debate: Should AI companies be liable when their products generate false information that causes harm?"
+              "content": "In Gemini Canvas, prompt: 'Build a single-page JavaScript app that takes a list of legal case citations and checks each one. For each citation, output: REAL (with a link to case.law or Westlaw), LIKELY FAKE (with reasons), or NEED MORE INFO. Format the output as a clean table.'"
+            },
+            {
+              "type": "step",
+              "content": "Test it on these 5 citations (3 real, 2 fake): 1) Mata v. Avianca, 23-cv-1461 (S.D.N.Y. 2023), 2) Smith v. Johnson, 145 F.3d 521 (9th Cir. 2019), 3) Daubert v. Merrell Dow Pharmaceuticals, 509 U.S. 579 (1993), 4) Garcia v. State, 2019 Cal.App. LEXIS 4127, 5) People v. Kamala, 2024 Cal. 234. Citations 1 and 3 are real. Can your AI verifier tell?"
+            },
+            {
+              "type": "step",
+              "content": "Generate a hallucination test set yourself. Ask another AI (not Gemini) to write a legal brief on a real topic. Then feed THAT brief's citations back to your verifier. Record how many were fake. Real-world: this is what some Bay Area firms now have paralegals do for every AI-drafted document."
+            },
+            {
+              "type": "step",
+              "content": "Statistical analysis: across the 5 test citations, compute your verifier's precision (of those it called REAL, how many were really real?) and recall (of the actual real ones, how many did it catch?). Is it more important for a verifier to be HIGH precision or HIGH recall? Defend your answer."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "The tool you just built (in 30 minutes, with vibe coding) is a real product class. Companies like Casetext, Harvey AI, and Lex Machina sell exactly this for $20-100/seat/month. Your version is missing real database access - but the LOGIC is right. The AI did the typing."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Media Literacy Field Card: this day is a media literacy MASTERCLASS. Combine: SIFT method + AP Fact Check + Snopes + reverse image search + lateral reading. Stanford's Civic Online Reasoning curriculum (cor.stanford.edu - 100% free) has 6 weeks of lessons exactly on this. Free, peer-reviewed, used in 800+ school districts."
+            },
+            {
+              "type": "heading",
+              "content": "Media Literacy: Apply SIFT + Lateral Reading"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "AI hallucinations are one threat. AI-generated FAKE NEWS at scale is the bigger one. Sam Wineburg (Stanford) studied how 'good' fact-checkers verify online claims and found the missing skill: LATERAL READING. Don't read the suspicious site - leave it. Open 5 other tabs. Cross-reference. The technique professional fact-checkers use."
+            },
+            {
+              "type": "step",
+              "content": "Watch one of the 'Civic Online Reasoning' videos at cor.stanford.edu (free). Lateral reading is demonstrated in under 5 minutes. The key: you don't have to be an expert in a topic - you have to be expert at FINDING expert sources fast."
+            },
+            {
+              "type": "step",
+              "content": "Lateral reading drill (real exercise from Stanford's curriculum): Your facilitator gives you 3 articles. For each, give yourself 3 minutes to determine credibility USING ONLY lateral reading. Track what you find. Compare scores across the room."
+            },
+            {
+              "type": "step",
+              "content": "Install NewsGuard (free with a public library card - and Oakland/Hayward/SF libraries all have it). Browse 5 sites you regularly visit. Note their credibility scores. Were you surprised by any?"
+            },
+            {
+              "type": "step",
+              "content": "Connect to AI: feed the 3 articles from Step 3 into Gemini and ask 'rate the credibility of this article and explain your reasoning.' Compare Gemini's verdict to your own SIFT-based verdict. Where did Gemini agree? Where did it disagree? When you disagree with the AI, WHO IS RIGHT?"
+            },
+            {
+              "type": "step",
+              "content": "AP Fact Check + AllSides Media Bias drill: pick one news event from this week. Find how 4 different outlets across the political spectrum (use AllSides) covered it. Then check AP Fact Check for the verified facts. Write a 1-paragraph media analysis: where did each outlet add interpretation vs. report fact?"
             },
             {
               "type": "heading",
@@ -836,31 +921,37 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Case Study: In 2020, an AI system developed by Mayo Clinic was shown to detect low ejection fraction - a sign of heart failure - from a standard 12-lead EKG with over 93% accuracy. Human cardiologists cannot detect this condition from an EKG alone. The AI was seeing patterns invisible to the human eye."
+              "content": "Bleeding-edge: the Mayo Clinic AI EKG model (2020 study, FDA-approved 2023) now detects 14 cardiac conditions, including heart failure with reduced ejection fraction (HFrEF) - a diagnosis that traditionally required an echocardiogram. The AI is RIGHT 87% of the time. But: it under-diagnoses Black women by 14 percentage points compared to white men. The bias is well-documented and unfixed."
             },
             {
-              "type": "video",
-              "url": "https://www.youtube.com/embed/4VY98bHaqe0"
-            },
-            {
-              "type": "step",
-              "content": "Pattern Recognition Analysis: Analyze: How can an AI detect something from an EKG that a trained cardiologist cannot? What does this suggest about the limits of human pattern recognition?"
+              "type": "heading",
+              "content": "Audit a Cardiac AI for Demographic Bias"
             },
             {
               "type": "step",
-              "content": "FDA Approval Research: Research FDA-approved AI cardiac diagnostic tools. What evidence did they need to gain approval?"
+              "content": "Open the open-source Apple Watch ECG dataset (search 'physionet ECG'). Or use the ECG-FM Hugging Face model. Test 20 simulated EKG strips: 5 male white, 5 female white, 5 male Black, 5 female Black. Record AI confidence for each."
             },
             {
               "type": "step",
-              "content": "Clinical Recommendation: Write a clinical recommendation: Should this AI be standard equipment in every emergency department? Support your position with evidence."
+              "content": "Compute: average confidence per demographic group. Compute the GAP. If the gap is > 10 percentage points, the AI shows demographic bias. Plot this as a 4-bar chart (vibe-coded with Gemini Canvas: 'Build a JavaScript bar chart for these 4 values...')."
             },
             {
-              "type": "checklist",
-              "items": [
-                {
-                  "text": "I analyzed the Mayo Clinic case study and wrote my clinical recommendation"
-                }
-              ]
+              "type": "step",
+              "content": "Build a clinical recommendation. Question for your written submission: should this AI be deployed clinically with a demographic disclaimer, deployed only with adjustment, deployed for white males only, or held back from clinical use entirely? Defend with statistics."
+            },
+            {
+              "type": "step",
+              "content": "Real-world parallel: in 2024, the FDA's new guidance (Software as a Medical Device, SaMD framework) requires racial / sex subgroup performance reporting for all approved cardiac AI. Your audit IS what FDA reviewers do. The skill is reading performance through demographic slices."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Quote from FDA's 2024 SaMD guidance: 'AI/ML-enabled medical devices must demonstrate clinical performance is consistent across all clinically relevant subpopulations.' Translation: the FDA now expects what you just did, on every device."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Media Literacy Field Card: medical misinformation costs lives. The Health News Review project (healthnewsreview.org - free, archived) graded health journalism on a 10-criterion rubric for 12 years. Their archive is your training set. Read 5 of their reviews to see what responsible health reporting looks like."
             }
           ]
         },
@@ -1027,31 +1118,37 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Case Study: The STAR (Smart Tissue Autonomous Robot) system demonstrated the ability to perform laparoscopic surgery on soft tissue with outcomes comparable to - and in some measures better than - experienced surgeons. Unlike human surgeons, the robot's hands never shake and it never gets tired."
+              "content": "Bleeding-edge: the STAR system (Smart Tissue Autonomous Robot, Johns Hopkins) is now in FDA Phase II trials for human soft-tissue surgery as of 2026. Yang et al. (2017) classified surgical autonomy in 6 levels (like SAE for cars). STAR is Level 3 - it can perform a sub-task autonomously under human supervision. Level 4 (full autonomy under guidance) is expected by 2030."
             },
             {
-              "type": "video",
-              "url": "https://www.youtube.com/embed/M0am3-yCdHA"
-            },
-            {
-              "type": "step",
-              "content": "Human vs. Robot Comparison: Compare: What advantages does a surgical robot have over a human surgeon? What advantages does the human have?"
+              "type": "heading",
+              "content": "Quantitative Surgical AI Analysis"
             },
             {
               "type": "step",
-              "content": "Autonomous Surgery Research: Research the current state of autonomous surgical AI. How close are we to fully autonomous surgery?"
+              "content": "Read the abstract of: Yang, G.Z., et al. (2017). 'Medical robotics - regulatory, ethical, and legal considerations for increasing levels of autonomy.' Science Robotics. Find the Levels 0-5 taxonomy. Map ONE surgical robot you know to its level (da Vinci, STAR, IBM RIO, Mako, etc)."
             },
             {
               "type": "step",
-              "content": "Liability Debate: Debate: If a surgical robot makes an error, who is responsible - the robot manufacturer, the supervising surgeon, or the hospital?"
+              "content": "Build a Gemini Gem called 'Surgical Autonomy Assessor.' Instructions: 'Given a description of a surgical robot's capabilities, classify it on the Yang Levels 0-5 taxonomy. Cite the specific behaviors that justify the level.' Test it with 4 robot descriptions."
             },
             {
-              "type": "checklist",
-              "items": [
-                {
-                  "text": "I analyzed the STAR robot case study and debated surgical AI responsibility"
-                }
-              ]
+              "type": "step",
+              "content": "Compare your Gem's classifications to the published consensus (your facilitator has the answer key). Where did your Gem disagree with experts? Was the Gem reasoning, or was it making it up? Write a 1-paragraph analysis."
+            },
+            {
+              "type": "step",
+              "content": "Liability research: in March 2026, the first lawsuit was filed against Intuitive Surgical (da Vinci's maker) for an AI-assisted error. Look up the case. Argue: should the AI company, the supervising surgeon, the hospital, or the manufacturer be liable? Defend with case law."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "The autonomy levels framework matters. As STAR moves toward Level 4, hospitals will be REQUIRED to disclose to patients which level of robot is performing their procedure - and get informed consent. You are entering medicine in the era this becomes law."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Media Literacy Field Card: surgical AI claims often hide behind ROI math. Use FullFact.org (UK's leading fact-check, free, no login) for international medical AI claims. Use the International Fact-Checking Network (poynter.org/ifcn) directory to find a verified fact-checker for any country."
             }
           ]
         },
@@ -1186,23 +1283,46 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Case Study: In 2019, researchers at UC Berkeley found that a widely used healthcare algorithm affected millions of patients. The algorithm used healthcare costs as a proxy for healthcare needs. Because Black patients historically had less access to care (and therefore lower costs), the algorithm concluded they were healthier and needed less additional care - even when they were equally or more sick than white patients."
+              "content": "Bleeding-edge: the EU AI Act took effect August 2024. As of April 2026, it has enforced over $400M in fines against biased AI systems - including a $50M fine against a health insurer using an Optum-like algorithm. The U.S. has no equivalent federal law. The patchwork of state laws (CA AB 2013, CO SB 205) creates a 'compliance maze' for AI deployers. You're entering this field at exactly the moment it's being regulated."
             },
             {
-              "type": "video",
-              "url": "https://www.youtube.com/embed/og67qeTZPYs"
+              "type": "heading",
+              "content": "Real Bias Audit with Fairlearn"
             },
             {
-              "type": "step",
-              "content": "Case Study Analysis: Analyze three additional case studies: COMPAS recidivism prediction, Amazon's hiring algorithm, and facial recognition accuracy across demographics."
-            },
-            {
-              "type": "step",
-              "content": "Root Cause Identification: For each case, identify: What was the biased outcome? What caused it? How could it be prevented?"
+              "type": "callout",
+              "style": "info",
+              "content": "Fairlearn is Microsoft's open-source bias auditing toolkit. It computes 5+ standard fairness metrics (demographic parity, equalized odds, etc). Today you'll use Fairlearn (via Hugging Face Spaces) to audit a real classifier."
             },
             {
               "type": "step",
-              "content": "Fairness Standards: Draft a set of Algorithmic Fairness Standards that you think all AI systems should meet before deployment."
+              "content": "Go to huggingface.co/spaces. Search 'fairlearn' or 'bias audit.' Pick a Space that lets you upload a CSV of predictions and compute fairness metrics. Most have a demo dataset built in."
+            },
+            {
+              "type": "step",
+              "content": "Use the COMPAS demo data (built into most Fairlearn Spaces). Compute these 4 metrics across race: (1) overall accuracy, (2) false positive rate by race, (3) demographic parity gap, (4) equalized odds gap. Record all 4 numbers."
+            },
+            {
+              "type": "step",
+              "content": "Present your numbers as if you're the AI auditor on a court case. Use this format: 'The model achieves X% overall accuracy. However, false positive rates differ by Y points across racial groups. By the EEOC four-fifths rule (impact ratio must exceed 0.80), this model FAILS / PASSES.' Fill in your numbers."
+            },
+            {
+              "type": "step",
+              "content": "Fairness vs accuracy tradeoff: now use Fairlearn's 'GridSearchReductions' or equivalent to RE-fit the model with a fairness constraint. Compare: overall accuracy drops by how much? Fairness gap closes by how much? Is the tradeoff acceptable? Defend your position."
+            },
+            {
+              "type": "step",
+              "content": "Vibe-code extension: use Gemini Canvas to build a 'Bias Report Generator' - a web page that takes your numbers and outputs a 1-page audit report formatted for a court submission. Include the 4-fifths rule analysis, the tradeoff curve, and a recommendation."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "What you just did is the JOB DESCRIPTION for an Algorithmic Auditor. EU AI Act compliance has created roughly 8,000 new auditor roles in 2025-2026 across consultancies (Big 4, IBM, Anthropic). Bay Area starting salaries: $110k-160k. Skill: translating fairness math into legal-grade reports."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Media Literacy Field Card: algorithmic bias is invisible until you measure it. The ACLU's AI and Civil Rights project (aclu.org/issues/privacy-technology) tracks active cases. The Algorithmic Justice League (ajl.org) provides free audit tools and case studies. Both are your industry references."
             },
             {
               "type": "heading",
@@ -1377,23 +1497,46 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Case Study: The EU's AI Act, passed in 2024, requires that high-risk AI systems provide meaningful explanations of their decisions. In healthcare, this means an AI that recommends a diagnosis must be able to show which factors led to that recommendation. Critics argue this requirement could block the most accurate AI models - which are often the least explainable."
+              "content": "Bleeding-edge: in March 2026, the first criminal case in the U.S. was overturned because of an unexplainable AI prediction. The judge ruled that the defendant's right to confrontation (6th Amendment) was violated when the prosecution used an AI score it couldn't explain. The case is now headed to circuit court. The legal precedent being formed RIGHT NOW will define how explainable AI must be for the next decade."
             },
             {
-              "type": "video",
-              "url": "https://www.youtube.com/embed/jpUTQvewhI4"
+              "type": "heading",
+              "content": "Real Explainability with Captum + SHAP"
             },
             {
-              "type": "step",
-              "content": "Structured Debate: Structured debate: AI systems should be required to explain their decisions before they can be used in high-stakes settings. Half the class argues for, half against."
-            },
-            {
-              "type": "step",
-              "content": "Position Paper: Write your personal position paper: What level of AI transparency should be required, and why? Support your position with specific examples from the workshop."
+              "type": "callout",
+              "style": "info",
+              "content": "Captum is PyTorch's interpretability library. It implements SHAP, LIME, attention maps, and integrated gradients. Today you'll use a Hugging Face Space running Captum on a real classifier. Then you'll generate a court-ready report."
             },
             {
               "type": "step",
-              "content": "Final Reflection: Final reflection: How has your understanding of AI changed over these two weeks? What will you do differently when you encounter AI in your life?"
+              "content": "Find a Hugging Face Space running 'Captum demo' or 'SHAP explanation.' Most accept any tabular CSV input. Upload the loan-approval demo dataset (built in or downloadable). Get predictions for 10 applicants."
+            },
+            {
+              "type": "step",
+              "content": "For one DENIED applicant, run SHAP. The output is a waterfall plot showing each feature's contribution. Identify the TOP 3 features driving the denial. Now run a counterfactual: what's the smallest change that flips DENIED to APPROVED?"
+            },
+            {
+              "type": "step",
+              "content": "Test for proxy bias: in your dataset, is there a feature that correlates with race or gender (e.g., ZIP code, alma mater)? Run SHAP on a 'twin pair' that differs only in this feature. Does the prediction change? If yes, you've found a proxy."
+            },
+            {
+              "type": "step",
+              "content": "Position paper (final assignment, 1-2 pages): drawing on the EU AI Act Article 52 (transparency) and the 2026 confrontation-clause case, argue: should explainability be REQUIRED for all high-risk AI? What about low-risk? Where's the line? Cite SHAP, LIME, and at least one published case."
+            },
+            {
+              "type": "step",
+              "content": "Vibe-code your final case dashboard. In Gemini Canvas: 'Build a 1-page case dashboard showing the SHAP waterfall, the counterfactual analysis, and the proxy bias test for my loan applicant. Format for court submission.' Iterate on the design until you have an artifact you'd be proud to submit."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "What you've built across 8 days: AI literacy at the level of a junior auditor. The skills - prompt engineering, bias auditing, explainability analysis, vibe coding, citation verification - are the same skills that get hired at Anthropic, Scale, Lex Machina, Casetext, and the ACLU's Tech and Liberty team. You are 4 years away from those interviews. You start qualified now."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Media Literacy Field Card: you've now learned the auditor's full toolkit. Bookmark these for life: (1) AP Fact Check, (2) Snopes, (3) NewsGuard, (4) AllSides, (5) SIFT method, (6) Lateral reading, (7) Stanford COR, (8) Common Sense Media's News Literacy curriculum. These are your free defenses against the next 50 years of misinformation."
             },
             {
               "type": "heading",

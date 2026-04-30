@@ -198,6 +198,19 @@
               "content": "Woven notebook: Part IV, End of Day. Look back at your Hook questions, your lab data, and your AI audit. What changed? What is still open? Close the day with one sentence on what you would do differently tomorrow."
             },
             {
+              "type": "heading",
+              "content": "Career Connection: Forensic Latent Print Examiner"
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/w4ncb3TYewU"
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "A Forensic Latent Print Examiner is a working scientist at FBI Latent Print Unit, California DOJ crime labs, county sheriff labs, and the Innocence Project. Salaries run roughly $60k to $110k from entry to senior. The Daubert calibration audit and probability work you did today is the exact analysis these examiners produce in court."
+            },
+            {
               "type": "callout",
               "style": "tip",
               "content": "Save your work: Save your Daubert analysis and probability calculations - they set the foundation for evaluating all forensic evidence this week!"
@@ -401,6 +414,19 @@
               "content": "Woven notebook: Part IV, End of Day. Look back at your Hook questions, your lab data, and your AI audit. What changed? What is still open? Close the day with one sentence on what you would do differently tomorrow."
             },
             {
+              "type": "heading",
+              "content": "Career Connection: Bloodstain Pattern Analyst"
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/0jltioeaEyY"
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Bloodstain Pattern Analysts (BPA-certified) work at state forensic labs, private consulting firms like Forensic Analytical Sciences in Hayward, and the FBI. Salary range is roughly $70k to $130k. The trigonometric derivation and error propagation you ran today is precisely the analysis they testify to under oath."
+            },
+            {
               "type": "callout",
               "style": "tip",
               "content": "Save your work: Save your trigonometric derivation and error analysis - these mathematical skills carry into every analytical challenge ahead!"
@@ -601,6 +627,19 @@
               "type": "callout",
               "style": "notebook",
               "content": "Woven notebook: Part IV, End of Day. Look back at your Hook questions, your lab data, and your AI audit. What changed? What is still open? Close the day with one sentence on what you would do differently tomorrow."
+            },
+            {
+              "type": "heading",
+              "content": "Career Connection: Forensic Lab Manager and Senior Evidence Analyst"
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/N0avxorvSOM"
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Forensic Lab Managers and Senior Evidence Analysts run cases at SF Bay Area DOJ regional labs, ACLU Tech, and the Innocence Project. Salary climbs from roughly $95k to $150k. Integrating fingerprint, spatter, and trace evidence into a single Bayesian-strength case file, the work you just did, is the lead-analyst skill that earns the promotion."
             },
             {
               "type": "callout",
@@ -928,6 +967,19 @@
               "content": "Woven notebook: Part IV, End of Day. Look back at your Hook questions, your lab data, and your AI audit. What changed? What is still open? Close the day with one sentence on what you would do differently tomorrow."
             },
             {
+              "type": "heading",
+              "content": "Career Connection: AI Trust and Safety Engineer and Legal Tech Auditor"
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/eEPu29AyM_4"
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "AI Trust and Safety Engineers and Legal Tech Auditors work at Anthropic Trust and Safety, OpenAI Trust and Safety, Scale AI, Casetext, Harvey AI, and Big-4 audit consulting. Salaries land around $130k to $220k. The citation verification and hallucination auditing protocol you built today is a real $130k-plus job category as of 2026."
+            },
+            {
               "type": "callout",
               "style": "tip",
               "content": "Save your work: Save your Hallucination Report and Verification Protocol - these critical thinking tools apply to everything you do with AI!"
@@ -1123,6 +1175,19 @@
               "type": "callout",
               "style": "notebook",
               "content": "Woven notebook: Part IV, End of Day. Look back at your Hook questions, your lab data, and your AI audit. What changed? What is still open? Close the day with one sentence on what you would do differently tomorrow."
+            },
+            {
+              "type": "heading",
+              "content": "Career Connection: Cardiac AI Safety Lead and Cardiologist"
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/ydB3GhmWDFc"
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Cardiac AI Safety Leads and Cardiologists work at Mayo Clinic AI safety teams, FDA SaMD reviewers, Stanford Hospital, UCSF, and Kaiser. Salary ranges from $90k for technologists up to $400k-plus for attending cardiologists. Knowing why a P wave looks the way it does and auditing AI for demographic bias, exactly what you did today, is the Mayo and FDA workflow."
             },
             {
               "type": "callout",
@@ -1324,6 +1389,19 @@
               "type": "callout",
               "style": "notebook",
               "content": "Woven notebook: Part IV, End of Day. Look back at your Hook questions, your lab data, and your AI audit. What changed? What is still open? Close the day with one sentence on what you would do differently tomorrow."
+            },
+            {
+              "type": "heading",
+              "content": "Career Connection: Surgical Resident and Trauma Surgeon"
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/6GmZ1GkNEfY"
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Surgical Residents, Surgical PAs, and Trauma Surgeons work at UCSF Surgery, Stanford Hospital, Kaiser, and the military medical corps. Salary spans $115k for a PA up to $400k-plus for an attending surgeon. The Vertical Mattress and suture-tension drills you ran today are the same OR skills surgical residents practice every week."
             },
             {
               "type": "callout",
@@ -1540,6 +1618,19 @@
               "content": "Woven notebook: Part IV, End of Day. Look back at your Hook questions, your lab data, and your AI audit. What changed? What is still open? Close the day with one sentence on what you would do differently tomorrow."
             },
             {
+              "type": "heading",
+              "content": "Career Connection: Algorithmic Auditor and AI Compliance Specialist"
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/UG_X_7g63rY"
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Algorithmic Auditors and AI Compliance Specialists work at Anthropic Responsible Scaling, Big-4 audit consulting (Deloitte AI Governance, EY AI Risk), the ACLU Tech and Liberty project, and the Algorithmic Justice League. Starting salary is around $110k to $180k. The COMPAS and EEOC four-fifths analysis you produced today is what an AI auditor delivers every day."
+            },
+            {
               "type": "callout",
               "style": "tip",
               "content": "Save your work: Save your bias audit report and fairness standards - these frameworks apply to every AI system you will ever encounter!"
@@ -1752,6 +1843,19 @@
               "type": "callout",
               "style": "notebook",
               "content": "Woven notebook: Part IV, End of Day. Look back at your Hook questions, your lab data, and your AI audit. What changed? What is still open? Close the day with one sentence on what you would do differently tomorrow."
+            },
+            {
+              "type": "heading",
+              "content": "Career Connection: AI Ethics Counsel and Explainable AI Researcher"
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/S7o2Rb37dV8"
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "AI Ethics Counsel and Explainable AI Researchers work at Anthropic, OpenAI Policy, EU AI Act compliance consulting, and ACLU AI projects. Salaries run roughly $140k to $240k. The SHAP, counterfactual, and proxy-bias analysis you wrote today is the explainable-AI portfolio piece that auditors and lawyers submit to regulators."
             },
             {
               "type": "callout",

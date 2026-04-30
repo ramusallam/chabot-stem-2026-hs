@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Chabot STEM 2026 \u2014 High School",
+    "title": "Chabot STEM 2026 — High School",
     "program": "High School (Rising 9th-11th)",
     "dates": "June 22 - July 2",
     "storageKey": "woven-chabot-2026-hs",
@@ -172,7 +172,7 @@
             },
             {
               "type": "step",
-              "content": "Vibe coding extension: in Gemini Canvas, prompt 'Write a Python script that takes my 10 fingerprint test results and computes accuracy, precision, recall, and F1 score.' Run the AI's code. Did it produce sensible numbers? AI-generated stats code is a $2B/year mistake when it's wrong."
+              "content": "Vibe coding extension: open Gemini Canvas (gemini.google.com/canvas). Type this prompt: 'Build a single page web app. It has 10 rows. Each row has three inputs: actual class (Loop / Whorl / Arch), predicted class, and confidence (0 to 100). Below the rows, add a Compute button. When I click Compute, show overall accuracy plus a clean table with precision, recall, and F1 score per class. Use simple modern styling.' Canvas will build a live web page on the right side of the screen. Type your 10 results, click Compute, and audit the numbers. Did it compute precision and recall correctly? F1 should be 2 times (precision times recall) divided by (precision plus recall) - did the AI use that formula? AI-generated stats code is a $2B/year mistake when it is wrong."
             },
             {
               "type": "callout",
@@ -359,7 +359,7 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "You proved sin \u03b8 = w/L by hand. Now build a real tool that applies your math. Using Gemini Canvas (vibe coding), you'll describe what you want and Gemini will write working code. Then you'll AUDIT THE CODE and find its bugs."
+              "content": "You proved sin θ = w/L by hand. Now build a real tool that applies your math. Using Gemini Canvas (vibe coding), you'll describe what you want and Gemini will write working code. Then you'll AUDIT THE CODE and find its bugs."
             },
             {
               "type": "step",
@@ -569,7 +569,7 @@
             },
             {
               "type": "step",
-              "content": "Gemini will produce a long answer. Now AUDIT IT. For each claim Gemini makes, mark: (\u2713) verifiable, (?) uncertain, (\u2717) wrong / hallucinated. Pay special attention to: any specific match probabilities, any case-law references, any 'this is consistent with' statements."
+              "content": "Gemini will produce a long answer. Now AUDIT IT. For each claim Gemini makes, mark: (✓) verifiable, (?) uncertain, (✗) wrong / hallucinated. Pay special attention to: any specific match probabilities, any case-law references, any 'this is consistent with' statements."
             },
             {
               "type": "step",

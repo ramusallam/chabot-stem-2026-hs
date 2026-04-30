@@ -175,6 +175,40 @@
               "content": "Vibe coding extension: open Gemini Canvas (gemini.google.com/canvas). Type this prompt: 'Build a single page web app. It has 10 rows. Each row has three inputs: actual class (Loop / Whorl / Arch), predicted class, and confidence (0 to 100). Below the rows, add a Compute button. When I click Compute, show overall accuracy plus a clean table with precision, recall, and F1 score per class. Use simple modern styling.' Canvas will build a live web page on the right side of the screen. Type your 10 results, click Compute, and audit the numbers. Did it compute precision and recall correctly? F1 should be 2 times (precision times recall) divided by (precision plus recall) - did the AI use that formula? AI-generated stats code is a $2B/year mistake when it is wrong."
             },
             {
+              "type": "heading",
+              "content": "Ship It Live: Deploy to Netlify"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "A Canvas preview lives inside Google's tab. The moment you close it, your app is gone. Today you go one step further: download the HTML, drag it into Netlify, and walk out with a real public URL anyone in the world can visit. This is the difference between 'I built a thing' and 'I shipped a thing.'"
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/mIciIho-05s"
+            },
+            {
+              "type": "step",
+              "content": "In Gemini Canvas, click the download icon (or hit the three-dot menu and pick Export HTML). You will get a single .html file with everything baked in, no separate CSS or JS files."
+            },
+            {
+              "type": "step",
+              "content": "Open netlify.com in a new tab. Click 'Sign up' or 'Log in.' Use your Google account (fastest) or sign up with email. Free tier handles everything you need today."
+            },
+            {
+              "type": "step",
+              "content": "Once logged in, look for the giant 'Add new site, Deploy manually' button (or the prompt that says 'Drag and drop your site folder here'). Drag your downloaded .html file (or the folder it lives in) onto that area. Netlify will deploy it in seconds."
+            },
+            {
+              "type": "step",
+              "content": "Copy the live URL Netlify gives you (looks like https://magnificent-llama-12345.netlify.app). Paste it into your Woven notebook. Open the URL on your phone. You just shipped a real, public, internet-accessible web app."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Bookmarked walkthrough if anything sticks: https://blog.julietedjere.com/posts/vibe-coding-how-to-host-websites-from-gemini-canvas-on-netlify-for-free covers the Canvas-to-Netlify path step-by-step with screenshots. Save it for the next time you build something on your own."
+            },
+            {
               "type": "callout",
               "style": "tip",
               "content": "What you just did: forensic AI auditing - the actual job description for Bay Area roles at the Innocence Project, ACLU Tech, and Anthropic's Trust & Safety team. The skill is translating from 'this AI seems good' to 'here's its measured error rate, calibration curve, and Daubert assessment.'"
@@ -389,6 +423,40 @@
             {
               "type": "step",
               "content": "Mathematical reasoning extension: derive WHY the model in the BPA-XR paper achieves 94% on training but 67% on real scenes. Hint: think about overfitting, lighting variance, and data augmentation. Write a 3-sentence explanation a court witness could use."
+            },
+            {
+              "type": "heading",
+              "content": "Ship It Live: Deploy to Netlify"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "A Canvas preview lives inside Google's tab. The moment you close it, your app is gone. Today you go one step further: download the HTML, drag it into Netlify, and walk out with a real public URL anyone in the world can visit. This is the difference between 'I built a thing' and 'I shipped a thing.'"
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/mIciIho-05s"
+            },
+            {
+              "type": "step",
+              "content": "In Gemini Canvas, click the download icon (or hit the three-dot menu and pick Export HTML). You will get a single .html file with everything baked in, no separate CSS or JS files."
+            },
+            {
+              "type": "step",
+              "content": "Open netlify.com in a new tab. Click 'Sign up' or 'Log in.' Use your Google account (fastest) or sign up with email. Free tier handles everything you need today."
+            },
+            {
+              "type": "step",
+              "content": "Once logged in, look for the giant 'Add new site, Deploy manually' button (or the prompt that says 'Drag and drop your site folder here'). Drag your downloaded .html file (or the folder it lives in) onto that area. Netlify will deploy it in seconds."
+            },
+            {
+              "type": "step",
+              "content": "Copy the live URL Netlify gives you (looks like https://magnificent-llama-12345.netlify.app). Paste it into your Woven notebook. Open the URL on your phone. You just shipped a real, public, internet-accessible web app."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Bookmarked walkthrough if anything sticks: https://blog.julietedjere.com/posts/vibe-coding-how-to-host-websites-from-gemini-canvas-on-netlify-for-free covers the Canvas-to-Netlify path step-by-step with screenshots. Save it for the next time you build something on your own."
             },
             {
               "type": "callout",
@@ -843,6 +911,40 @@
               "content": "Statistical analysis: across the 5 test citations, compute your verifier's precision (of those it called REAL, how many were really real?) and recall (of the actual real ones, how many did it catch?). Is it more important for a verifier to be HIGH precision or HIGH recall? Defend your answer."
             },
             {
+              "type": "heading",
+              "content": "Ship It Live: Deploy to Netlify"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "A Canvas preview lives inside Google's tab. The moment you close it, your app is gone. Today you go one step further: download the HTML, drag it into Netlify, and walk out with a real public URL anyone in the world can visit. This is the difference between 'I built a thing' and 'I shipped a thing.'"
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/mIciIho-05s"
+            },
+            {
+              "type": "step",
+              "content": "In Gemini Canvas, click the download icon (or hit the three-dot menu and pick Export HTML). You will get a single .html file with everything baked in, no separate CSS or JS files."
+            },
+            {
+              "type": "step",
+              "content": "Open netlify.com in a new tab. Click 'Sign up' or 'Log in.' Use your Google account (fastest) or sign up with email. Free tier handles everything you need today."
+            },
+            {
+              "type": "step",
+              "content": "Once logged in, look for the giant 'Add new site, Deploy manually' button (or the prompt that says 'Drag and drop your site folder here'). Drag your downloaded .html file (or the folder it lives in) onto that area. Netlify will deploy it in seconds."
+            },
+            {
+              "type": "step",
+              "content": "Copy the live URL Netlify gives you (looks like https://magnificent-llama-12345.netlify.app). Paste it into your Woven notebook. Open the URL on your phone. You just shipped a real, public, internet-accessible web app."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Bookmarked walkthrough if anything sticks: https://blog.julietedjere.com/posts/vibe-coding-how-to-host-websites-from-gemini-canvas-on-netlify-for-free covers the Canvas-to-Netlify path step-by-step with screenshots. Save it for the next time you build something on your own."
+            },
+            {
               "type": "callout",
               "style": "tip",
               "content": "The tool you just built (in 30 minutes, with vibe coding) is a real product class. Companies like Casetext, Harvey AI, and Lex Machina sell exactly this for $20-100/seat/month. Your version is missing real database access - but the LOGIC is right. The AI did the typing."
@@ -1152,6 +1254,40 @@
             {
               "type": "step",
               "content": "Vibe coding extension: in Gemini Canvas, prompt 'Build a single-page web app with 3 columns showing 3 different patient profiles, each with their AI diagnosis text. Add a Compare button that highlights words that differ across the columns. Use simple modern styling.' Paste your 3 Gemini responses in. Visualize the bias."
+            },
+            {
+              "type": "heading",
+              "content": "Ship It Live: Deploy to Netlify"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "A Canvas preview lives inside Google's tab. The moment you close it, your app is gone. Today you go one step further: download the HTML, drag it into Netlify, and walk out with a real public URL anyone in the world can visit. This is the difference between 'I built a thing' and 'I shipped a thing.'"
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/mIciIho-05s"
+            },
+            {
+              "type": "step",
+              "content": "In Gemini Canvas, click the download icon (or hit the three-dot menu and pick Export HTML). You will get a single .html file with everything baked in, no separate CSS or JS files."
+            },
+            {
+              "type": "step",
+              "content": "Open netlify.com in a new tab. Click 'Sign up' or 'Log in.' Use your Google account (fastest) or sign up with email. Free tier handles everything you need today."
+            },
+            {
+              "type": "step",
+              "content": "Once logged in, look for the giant 'Add new site, Deploy manually' button (or the prompt that says 'Drag and drop your site folder here'). Drag your downloaded .html file (or the folder it lives in) onto that area. Netlify will deploy it in seconds."
+            },
+            {
+              "type": "step",
+              "content": "Copy the live URL Netlify gives you (looks like https://magnificent-llama-12345.netlify.app). Paste it into your Woven notebook. Open the URL on your phone. You just shipped a real, public, internet-accessible web app."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Bookmarked walkthrough if anything sticks: https://blog.julietedjere.com/posts/vibe-coding-how-to-host-websites-from-gemini-canvas-on-netlify-for-free covers the Canvas-to-Netlify path step-by-step with screenshots. Save it for the next time you build something on your own."
             },
             {
               "type": "callout",
@@ -1555,6 +1691,40 @@
               "content": "Court memo: 'The model achieves [X]% overall accuracy. False positive rates differ by [Y] percentage points across groups. By the EEOC four-fifths rule (impact ratio = [Z]), this model FAILS / PASSES.' This is the format you'd submit to an algorithmic auditing role."
             },
             {
+              "type": "heading",
+              "content": "Ship It Live: Deploy to Netlify"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "A Canvas preview lives inside Google's tab. The moment you close it, your app is gone. Today you go one step further: download the HTML, drag it into Netlify, and walk out with a real public URL anyone in the world can visit. This is the difference between 'I built a thing' and 'I shipped a thing.'"
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/mIciIho-05s"
+            },
+            {
+              "type": "step",
+              "content": "In Gemini Canvas, click the download icon (or hit the three-dot menu and pick Export HTML). You will get a single .html file with everything baked in, no separate CSS or JS files."
+            },
+            {
+              "type": "step",
+              "content": "Open netlify.com in a new tab. Click 'Sign up' or 'Log in.' Use your Google account (fastest) or sign up with email. Free tier handles everything you need today."
+            },
+            {
+              "type": "step",
+              "content": "Once logged in, look for the giant 'Add new site, Deploy manually' button (or the prompt that says 'Drag and drop your site folder here'). Drag your downloaded .html file (or the folder it lives in) onto that area. Netlify will deploy it in seconds."
+            },
+            {
+              "type": "step",
+              "content": "Copy the live URL Netlify gives you (looks like https://magnificent-llama-12345.netlify.app). Paste it into your Woven notebook. Open the URL on your phone. You just shipped a real, public, internet-accessible web app."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Bookmarked walkthrough if anything sticks: https://blog.julietedjere.com/posts/vibe-coding-how-to-host-websites-from-gemini-canvas-on-netlify-for-free covers the Canvas-to-Netlify path step-by-step with screenshots. Save it for the next time you build something on your own."
+            },
+            {
               "type": "callout",
               "style": "tip",
               "content": "What you just did is the JOB DESCRIPTION for an Algorithmic Auditor. EU AI Act compliance has created roughly 8,000 new auditor roles in 2025-2026 across consultancies (Big 4, IBM, Anthropic). Bay Area starting salaries: $110k-160k. Skill: translating fairness math into legal-grade reports."
@@ -1776,6 +1946,40 @@
             {
               "type": "step",
               "content": "Vibe code your court-ready report. In Gemini Canvas: 'Build a single-page web app with 4 sections: SHAP Findings (the top 3 features driving the decision), Counterfactual Analysis (the minimum change to flip the decision), Proxy Bias Test (whether a near-twin pair was treated differently), and Recommendation (Approve / Modify / Reject the model for production use). Use a clean two-column legal-brief layout.'"
+            },
+            {
+              "type": "heading",
+              "content": "Ship It Live: Deploy to Netlify"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "A Canvas preview lives inside Google's tab. The moment you close it, your app is gone. Today you go one step further: download the HTML, drag it into Netlify, and walk out with a real public URL anyone in the world can visit. This is the difference between 'I built a thing' and 'I shipped a thing.'"
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/mIciIho-05s"
+            },
+            {
+              "type": "step",
+              "content": "In Gemini Canvas, click the download icon (or hit the three-dot menu and pick Export HTML). You will get a single .html file with everything baked in, no separate CSS or JS files."
+            },
+            {
+              "type": "step",
+              "content": "Open netlify.com in a new tab. Click 'Sign up' or 'Log in.' Use your Google account (fastest) or sign up with email. Free tier handles everything you need today."
+            },
+            {
+              "type": "step",
+              "content": "Once logged in, look for the giant 'Add new site, Deploy manually' button (or the prompt that says 'Drag and drop your site folder here'). Drag your downloaded .html file (or the folder it lives in) onto that area. Netlify will deploy it in seconds."
+            },
+            {
+              "type": "step",
+              "content": "Copy the live URL Netlify gives you (looks like https://magnificent-llama-12345.netlify.app). Paste it into your Woven notebook. Open the URL on your phone. You just shipped a real, public, internet-accessible web app."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Bookmarked walkthrough if anything sticks: https://blog.julietedjere.com/posts/vibe-coding-how-to-host-websites-from-gemini-canvas-on-netlify-for-free covers the Canvas-to-Netlify path step-by-step with screenshots. Save it for the next time you build something on your own."
             },
             {
               "type": "step",

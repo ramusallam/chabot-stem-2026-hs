@@ -873,13 +873,21 @@
             {
               "type": "callout",
               "style": "tip",
-              "content": "Interactive App (ekg): Use the EKG Waveform Explorer to study 5 cardiac rhythms in detail. Toggle the wave labels to learn what each PQRST component represents. Adjust the speed and amplitude controls to see how the tracing changes. Test your interpretation skills in Quiz Mode. Use the Launch button below to open the app inline."
+              "content": "Interactive App (ekg): Use the EKG Waveform Explorer to study 5 cardiac rhythms in detail. Toggle the wave labels to learn what each PQRST component represents. Adjust the speed and amplitude controls to see how the tracing changes. Test your interpretation skills in Quiz Mode. Toggle the Physiology overlay to see the heart anatomy light up at each waveform phase. Use the Launch button below to open the app inline."
             },
             {
               "type": "app",
               "title": "EKG Waveform Explorer",
               "url": "apps/ekg-waveform-explorer.html",
               "embed": true
+            },
+            {
+              "type": "step",
+              "content": "Conduction System Trace: Trace the conduction system: SA node fires (P wave = atrial depolarization), AV node delays the signal (the PR interval is that pause), the bundle branches carry it to the ventricles (QRS = ventricular depolarization), then the ventricles relax and reset (T wave = ventricular repolarization). Use the Explorer's drag labels and Physiology overlay to confirm each waveform corresponds to its anatomical event."
+            },
+            {
+              "type": "step",
+              "content": "Pathology Reasoning: in atrial fibrillation, why is there no clean P wave? In a STEMI, why does the ST segment elevate? Use the Explorer to compare the waveform shapes for each rhythm and write a 1-paragraph mechanism explanation for both, the kind a med student gives on rounds."
             },
             {
               "type": "step",
@@ -1010,7 +1018,7 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Today's Case Briefing: A patient requires a wound closure using both simple interrupted and continuous suture techniques. Your mission: master both patterns and meet the quantitative standards used in surgical training programs."
+              "content": "Today's Case Briefing: A patient has a high-tension forehead laceration that needs eversion of the wound edges to heal cleanly. Your mission: master the Vertical Mattress suture, the gold standard pattern ER attendings reach for when simple interrupted will not hold."
             },
             {
               "type": "video",
@@ -1040,23 +1048,23 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "Materials Needed: Advanced suture kits (blunt-tip needles), Foam practice pads, Surgical gloves, Rulers for measurement, Surgical assessment rubric, Timer, Feedback forms"
+              "content": "Materials Needed: Advanced suture kits (blunt-tip needles), Foam practice pads, Surgical gloves, Rulers for measurement, Surgical assessment rubric, Timer, Feedback forms, Vertical Mattress reference card"
             },
             {
               "type": "step",
-              "content": "Technique Review: Review the simple interrupted technique, then learn the continuous (running) suture."
+              "content": "Technique Review: Review the simple interrupted from Mini Med School, then learn the Vertical Mattress, the suture residents practice for high-tension wounds where edge eversion matters."
             },
             {
               "type": "step",
-              "content": "Continuous Suture Practice: Practice the continuous suture on your foam pad. Focus on even spacing (3-5mm between bites) and consistent tension."
+              "content": "Vertical Mattress Practice: Place your foam pad. Drive the needle 8-10mm from the wound edge for the deep bite (far), exit 8-10mm out on the opposite side (far), then re-enter 2-3mm from the edge for the superficial bite (near), exit 2-3mm out on the original side (near). Tie off. The far-far-near-near pattern everts the skin edges and distributes tension, exactly what an ER attending wants on a forehead laceration."
             },
             {
               "type": "step",
-              "content": "Timed Challenge: Perform a timed suture challenge: close a 5cm wound using the technique of your choice in under 3 minutes."
+              "content": "Timed Challenge: Place 3 Vertical Mattress sutures along a 5cm wound in under 5 minutes. Even spacing, consistent eversion."
             },
             {
               "type": "step",
-              "content": "Quantitative Assessment: Measure your stitch spacing, entry/exit distances from the wound edge, and overall uniformity. Record on the assessment sheet."
+              "content": "Quantitative Assessment: Measure your stitch spacing, entry/exit distances from the wound edge, eversion height, and overall uniformity. Record on the assessment sheet."
             },
             {
               "type": "step",
@@ -1069,7 +1077,7 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "High school suture work is more rigorous than middle school - tighter tolerances, real measurement of stitch spacing. The trainer gives you the hand-eye drills surgeons use, with an OR clock that scores BOTH speed and accuracy."
+              "content": "High school suture work is more rigorous than middle school, tighter tolerances, real measurement, and the Vertical Mattress pattern. The trainer adds a Vertical Mattress visualization on top of the dexterity drills surgeons use."
             },
             {
               "type": "app",
@@ -1090,15 +1098,19 @@
               "content": "Finish with 'Instrument Memory.' A sequence of surgical instruments flashes - tap them back in order. Working-memory drill from real OR training programs."
             },
             {
+              "type": "step",
+              "content": "Switch to 'Vertical Mattress.' Trace the far-far-near-near needle path on the on-screen wound. The trainer scores your path geometry against the ideal pattern, the same way a surgical sim grader scores residents."
+            },
+            {
               "type": "callout",
               "style": "tip",
-              "content": "Surgeons measure success by suture-tension consistency AND time. The trainer shows you both, monospace OR clock turning red when you're behind. Real residency tracks both metrics."
+              "content": "Surgeons measure success by suture-tension consistency AND time. The trainer shows you both, monospace OR clock turning red when you're behind. Vertical Mattress takes 3-4x longer than simple interrupted, that's normal, the eversion is the point."
             },
             {
               "type": "checklist",
               "items": [
                 {
-                  "text": "I completed both suture techniques and the quantitative assessment"
+                  "text": "I completed Vertical Mattress practice and the quantitative assessment"
                 }
               ]
             }

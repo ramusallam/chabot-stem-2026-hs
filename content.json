@@ -122,32 +122,57 @@
             },
             {
               "type": "heading",
-              "content": "Audit a Real Hugging Face Fingerprint Model"
+              "content": "Train Your Own Fingerprint Classifier (Daubert-Grade Audit)"
             },
             {
               "type": "callout",
               "style": "info",
-              "content": "Hugging Face hosts thousands of real ML models you can test in your browser. Today you'll find a fingerprint matching model, test its error rates statistically, and compare to AFIS published rates. This is what a court-qualified expert witness does to evaluate forensic AI."
+              "content": "Hugging Face's fingerprint demos are mostly broken or off-topic in 2026. Real forensic AI auditors don't rely on found tools, they BUILD and audit their own. Today you train a fingerprint classifier in Teachable Machine, then audit it against the criteria a Daubert expert witness uses: calibration, error rate, and admissibility."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Watch the 3 videos below FIRST. They walk you through Teachable Machine end-to-end so the lab time is for analysis, not setup."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/DFBbSTvtpy4"
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/CO67EQ0ZWgA"
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/n-zeeRLBgd0"
             },
             {
               "type": "step",
-              "content": "Open huggingface.co/spaces. Search 'fingerprint classification.' Pick a model with 5+ stars and a working demo. Most will let you upload a fingerprint image directly in the browser - no login required."
+              "content": "Open teachablemachine.withgoogle.com. Click 'Get Started' then 'Image Project' then 'Standard image model.' Create 3 classes named Loop, Whorl, Arch."
             },
             {
               "type": "step",
-              "content": "Run the model on 10 of your inked prints. Record the model's confidence + classification for each. Calculate: how many got the correct pattern (Loop/Whorl/Arch)? Report as a fraction."
+              "content": "Hold each of your inked prints up to your webcam. For each class, click 'Hold to Record' and capture 50+ samples (rotate the print, vary the lighting). More variety in training = better generalization."
             },
             {
               "type": "step",
-              "content": "Now compute the model's confidence calibration: for the prints the model classified with >90% confidence, what was its actual accuracy? A WELL-CALIBRATED model has 90% accuracy when it's 90% confident. Is your model calibrated? This is a Daubert criterion."
+              "content": "Click 'Train Model' and wait. Then test the model on 10 NEW prints from your team that the model NEVER saw during training. Record the predicted class and the confidence percentage for each."
             },
             {
               "type": "step",
-              "content": "AFIS (FBI's database) reports its own error rate as approximately 1 in 10,000 for verified high-quality matches. Your audited model probably does worse. Write a 1-paragraph admissibility argument: should this model's output be allowed in court?"
+              "content": "Compute accuracy: how many of the 10 got the correct pattern? Report as a fraction. This is your model's headline accuracy number, the kind a Daubert hearing demands."
             },
             {
               "type": "step",
-              "content": "Vibe coding extension: in Gemini Canvas, ask 'Write a Python script that takes my 10 fingerprint test results and computes accuracy, precision, recall, and F1 score.' Run the AI's code. Did it produce sensible numbers? AI-generated stats code is a $2B/year mistake when it's wrong."
+              "content": "Calibration check (the Daubert step that matters most): for the prints your model classified at >90% confidence, what was its actual accuracy? A well-calibrated model is ~90% accurate when it says 90% confident. If your model says 90% but is only right 60% of the time, it is OVERCONFIDENT, a red flag in court."
+            },
+            {
+              "type": "step",
+              "content": "AFIS (FBI's fingerprint database) reports its error rate as approximately 1 in 10,000 for verified high-quality matches. Your trained model is almost certainly worse. Write a 1-paragraph admissibility argument: should this model's output be allowed in court? Cite the Daubert criteria (testability, peer review, error rate, general acceptance)."
+            },
+            {
+              "type": "step",
+              "content": "Vibe coding extension: in Gemini Canvas, prompt 'Write a Python script that takes my 10 fingerprint test results and computes accuracy, precision, recall, and F1 score.' Run the AI's code. Did it produce sensible numbers? AI-generated stats code is a $2B/year mistake when it's wrong."
             },
             {
               "type": "callout",

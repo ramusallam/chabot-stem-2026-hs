@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Chabot STEM 2026 — High School",
+    "title": "Chabot STEM 2026 \u2014 High School",
     "program": "High School (Rising 9th-11th)",
     "dates": "June 22 - July 2",
     "storageKey": "woven-chabot-2026-hs",
@@ -406,7 +406,7 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "You proved sin θ = w/L by hand. Now build a real tool that applies your math. Using Gemini Canvas (vibe coding), you'll describe what you want and Gemini will write working code. Then you'll AUDIT THE CODE and find its bugs."
+              "content": "You proved sin \u03b8 = w/L by hand. Now build a real tool that applies your math. Using Gemini Canvas (vibe coding), you'll describe what you want and Gemini will write working code. Then you'll AUDIT THE CODE and find its bugs."
             },
             {
               "type": "step",
@@ -663,7 +663,7 @@
             },
             {
               "type": "step",
-              "content": "Gemini will produce a long answer. Now AUDIT IT. For each claim Gemini makes, mark: (✓) verifiable, (?) uncertain, (✗) wrong / hallucinated. Pay special attention to: any specific match probabilities, any case-law references, any 'this is consistent with' statements."
+              "content": "Gemini will produce a long answer. Now AUDIT IT. For each claim Gemini makes, mark: (\u2713) verifiable, (?) uncertain, (\u2717) wrong / hallucinated. Pay special attention to: any specific match probabilities, any case-law references, any 'this is consistent with' statements."
             },
             {
               "type": "step",
@@ -1017,7 +1017,7 @@
             },
             {
               "type": "step",
-              "content": "Image analysis using Detect Fakes Practice: open the Deepfake Detector app embedded below. Tap the 'Detect Fakes Practice' mode. For each of 8 images, choose Real / AI-generated / Not sure yet, rate your confidence Low / Medium / High, and pick which evidence you noticed. Submit to see what was actually real, what was AI, and how your accuracy and confidence calibration compare across the set. The methodology is from Northwestern Kellogg's PNAS 2022 paper on human-AI deepfake detection - you're running the same research protocol they use."
+              "content": "Image analysis: launch the Deepfake Detector below and tap Detect Fakes Practice. For each of 8 images, choose Real / AI-generated / Not sure yet, rate your confidence Low / Medium / High, and pick which evidence you noticed. Submit to see what was actually real, what was AI, and how your accuracy compared to your confidence. The methodology is from Northwestern Kellogg's PNAS 2022 paper on human-AI deepfake detection, you're running the same research protocol they use."
             },
             {
               "type": "app",

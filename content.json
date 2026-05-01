@@ -35,7 +35,7 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Today's Case Briefing: A fingerprint recovered at a crime scene partially matches a suspect. The defense attorney challenges the evidence under the Daubert Standard - the legal test for whether scientific evidence is admissible. Your mission: determine whether the fingerprint evidence meets the standard."
+              "content": "Today's Case Briefing: You step into the role of a forensic latent print examiner trainee at the FBI's Latent Print Unit. Your mission: classify fingerprint patterns and then audit a fingerprint AI against the Daubert Standard, the actual legal test for whether forensic evidence is admissible in court. The classification and audit skills you build today go into your toolkit for Day 8's full multi-evidence case."
             },
             {
               "type": "video",
@@ -301,7 +301,7 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Today's Case Briefing: Crime scene photos show elongated blood drops on the floor. The prosecution claims they prove the victim was standing when struck. The defense disagrees. Your mission: use trigonometry to calculate the exact impact angle and determine who is right."
+              "content": "Today's Case Briefing: You train as a bloodstain pattern analyst. Your mission: derive the trigonometric relationship between drop shape and impact angle from first principles, then prove your math by reproducing it with simulated drops at known angles. The technique you master today is what BPA-certified analysts use to testify in court, and it lands on Day 8 in your final integrated case."
             },
             {
               "type": "video",
@@ -551,7 +551,7 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Today's Case Briefing: A complex crime scene has yielded fingerprint evidence, blood spatter patterns, trace materials, and digital records. Each alone is inconclusive. Your mission: integrate all evidence types to build a case that meets the Daubert Standard."
+              "content": "Today's Case Briefing: You run point as a senior forensic analyst on a complex case. Your mission: learn to integrate multiple evidence types using Bayesian probability, the same math that turns weak individual evidence into a courtroom-strength case. This integration skill is the heart of Day 8's final case."
             },
             {
               "type": "video",
@@ -775,7 +775,7 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Today's Case Briefing: An attorney used an AI chatbot to research case law and submitted the citations in a legal brief. The judge discovered that several of the cited cases did not exist - the AI had fabricated them. Your mission: systematically test an AI for hallucinations and develop strategies for catching them."
+              "content": "Today's Case Briefing: An attorney used AI to draft a brief and submitted fabricated case citations to court. The judge caught it. The bar disciplined her. Your mission: master the verification skills that catch AI hallucinations BEFORE they go to court. Day 8 brings these AI auditing skills to bear on a real evidence question."
             },
             {
               "type": "video",
@@ -1141,7 +1141,7 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Today's Case Briefing: A patient in the emergency department has an abnormal EKG. The attending physician needs you to identify the rhythm, calculate the heart rate from the tracing, and determine if it requires immediate intervention. Your mission: master EKG interpretation."
+              "content": "Today's Case Briefing: You shadow a cardiac care team. Your mission: learn to read EKG waveforms by understanding the physiology behind every wave (P, QRS, T) AND audit a cardiac AI for demographic bias the way an FDA reviewer does. The dual lens, technical plus ethical, is the modern standard, and Day 8 ties it back to your full case."
             },
             {
               "type": "video",
@@ -1385,7 +1385,7 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Today's Case Briefing: A patient has a high-tension forehead laceration that needs eversion of the wound edges to heal cleanly. Your mission: master the Vertical Mattress suture, the gold standard pattern ER attendings reach for when simple interrupted will not hold."
+              "content": "Today's Case Briefing: You train as a surgical resident. Your mission: master the Vertical Mattress suture (the gold standard for high-tension wounds where edge eversion matters) AND analyze the autonomy ladder of surgical AI. The hands-on skill plus the AI analysis is what every modern surgical training program now teaches, and Day 8 brings it together."
             },
             {
               "type": "video",
@@ -1613,7 +1613,7 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Today's Case Briefing: A hospital has deployed an AI system to predict which patients are at highest risk and need extra care. An audit reveals that the algorithm systematically underestimates the needs of Black patients compared to white patients with the same conditions. Your mission: investigate why this happened and propose a fix."
+              "content": "Today's Case Briefing: A hospital deployed an AI that systematically under-served Black patients. An audit caught it. Lawsuits followed. Your mission: learn the bias auditing methods the EU AI Act now requires, by hand and via vibe-coded calculator. You will defend the math you produce as if a court was reading it. These methods carry into Day 8."
             },
             {
               "type": "video",
@@ -1874,7 +1874,7 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Today's Case Briefing: An AI diagnostic tool identifies a rare condition in a patient with 97% confidence, but the treating physician cannot understand the AI's reasoning. The patient wants to know why the AI thinks they are sick. Your mission: investigate the black box problem and determine what level of AI transparency should be required."
+              "content": "Today's Case Briefing: This is it. The full integrated case. Your mission: apply every skill from Days 1-7 (fingerprint analysis, spatter trigonometry, multi-modal integration, AI verification, clinical reading, bias auditing) to a complete forensic-and-medical case AND determine whether AI's role in your conclusion can be defended in court (the Black Box Problem). Day 8 IS the case all your training built toward."
             },
             {
               "type": "video",

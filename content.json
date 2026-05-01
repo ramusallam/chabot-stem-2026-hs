@@ -7,6 +7,10 @@
     "deployUrl": "https://chabot-stem-2026-hs.vercel.app",
     "slug": "chabot-stem-2026-hs"
   },
+  "weeks": [
+    { "label": "Week 1 - Forensics and the Digital Detective", "dayIndices": [0,1,2,3] },
+    { "label": "Week 2 - Mini Med School and the Clinical AI", "dayIndices": [4,5,6,7] }
+  ],
   "days": [
     {
       "title": "Day 1: Advanced Biometrics",
@@ -35,7 +39,7 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Today's Case Briefing: You step into the role of a forensic latent print examiner trainee at the FBI's Latent Print Unit. Your mission: classify fingerprint patterns and then audit a fingerprint AI against the Daubert Standard, the actual legal test for whether forensic evidence is admissible in court. The classification and audit skills you build today go into your toolkit for Day 8's full multi-evidence case."
+              "content": "Today's Case Briefing: You step into the role of a forensic latent print examiner trainee at the FBI's Latent Print Unit. Your mission: classify fingerprint patterns and then audit a fingerprint AI against the Daubert Standard, the actual legal test for whether forensic evidence is admissible in court. The classification and audit skills you build today go into your toolkit for Day 4's Week 1 forensics case."
             },
             {
               "type": "video",
@@ -301,7 +305,7 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Today's Case Briefing: You train as a bloodstain pattern analyst. Your mission: derive the trigonometric relationship between drop shape and impact angle from first principles, then prove your math by reproducing it with simulated drops at known angles. The technique you master today is what BPA-certified analysts use to testify in court, and it lands on Day 8 in your final integrated case."
+              "content": "Today's Case Briefing: You train as a bloodstain pattern analyst. Your mission: derive the trigonometric relationship between drop shape and impact angle from first principles, then prove your math by reproducing it with simulated drops at known angles. The technique you master today is what BPA-certified analysts use to testify in court, and it lands on Day 4 in your Week 1 case."
             },
             {
               "type": "video",
@@ -551,7 +555,7 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Today's Case Briefing: You run point as a senior forensic analyst on a complex case. Your mission: learn to integrate multiple evidence types using Bayesian probability, the same math that turns weak individual evidence into a courtroom-strength case. This integration skill is the heart of Day 8's final case."
+              "content": "Today's Case Briefing: You run point as a senior forensic analyst on a complex case. Your mission: learn to integrate multiple evidence types using Bayesian probability, the same math that turns weak individual evidence into a courtroom-strength case. This integration skill is the heart of Day 4's Week 1 case finale."
             },
             {
               "type": "video",
@@ -1075,14 +1079,96 @@
         },
         {
           "style": "maroon",
-          "title": "Part IV: End of Day",
+          "title": "Part IV: Week 1 Case Finale",
           "duration": "",
           "instructorNotes": "",
           "blocks": [
             {
               "type": "callout",
               "style": "notebook",
-              "content": "Woven notebook: Part IV, End of Day. Look back at your Hook questions, your lab data, and your AI audit. What changed? What is still open? Close the day with one sentence on what you would do differently tomorrow."
+              "content": "Woven notebook: Part IV, Week 1 Case Finale. This is where 4 days of forensic and digital-detective training come together. Capture the call you make at every station, the math you trust, and the call you stake your name on at the end."
+            },
+            {
+              "type": "heading",
+              "content": "The Pine Hills Case (Week 1 finale)"
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Today you've completed your forensic + digital detective training. Now apply all 4 days of skills to a real cold-case-style scenario. The DA is on the line, she needs your evidence-based recommendation by end of class."
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Pine Hills Burglary case file: A break-in at a Pine Hills jewelry store in Oakland. Recovered evidence: (1) partial fingerprint on the broken display case glass, (2) blood spatter pattern on the wall behind the case, (3) cotton fibers caught in the broken glass, (4) a viral social-media video allegedly showing the suspect at the scene. Your team's job: weigh each piece of evidence with the right standard, then render a verdict the DA can defend in court."
+            },
+            {
+              "type": "heading",
+              "content": "Step 1: Apply Day 1, The Fingerprint"
+            },
+            {
+              "type": "step",
+              "content": "Use the Fingerprint Ridge Classifier to classify the partial print recovered. Write the pattern type AND your confidence level in your notebook. (Day 1 calibration practice: a model's stated confidence should match its actual accuracy.)"
+            },
+            {
+              "type": "heading",
+              "content": "Step 2: Apply Day 2, The Blood Spatter"
+            },
+            {
+              "type": "step",
+              "content": "The blood spatter on the wall measures: width 8mm, length 14mm. Use the Blood Spatter Angle Calculator to compute the angle of impact. Write the angle in your notebook. What does it tell you about the suspect's height or stance?"
+            },
+            {
+              "type": "heading",
+              "content": "Step 3: Apply Day 3, The Trace Evidence"
+            },
+            {
+              "type": "step",
+              "content": "Open the Evidence Synthesizer (Day 3 app). Load the Pine Hills case. Use the Bayesian likelihood-ratio sliders for each piece of evidence (fingerprint, spatter, trace fiber). Push the posterior probability past the 95% beyond-reasonable-doubt threshold (or document why it falls short)."
+            },
+            {
+              "type": "heading",
+              "content": "Step 4: Apply Day 4, The Digital Evidence"
+            },
+            {
+              "type": "step",
+              "content": "The viral social-media video: open the Deepfake Detector app, run the video frame through Detect Fakes Practice. Determine whether the video is real footage, AI-generated, or inconclusive. Then verify using the Headline Lab Lateral Reading method: where else has this video been published? Is the source reputable?"
+            },
+            {
+              "type": "heading",
+              "content": "Step 5: Render the Verdict"
+            },
+            {
+              "type": "step",
+              "content": "Write a 1-page court memo answering: (1) What is your team's recommendation, prosecute, decline, or further investigation? (2) Which pieces of evidence carried the most weight, and what's their Daubert standing? (3) If the AI-generated video had been admitted as evidence without your audit, would the case have changed? Defend your reasoning."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "What you just did is a junior forensic analyst's actual job: weigh evidence, apply admissibility standards, write a court-ready memo. The skill stack is real. Bay Area DA offices and the Innocence Project hire entry-level analysts at $55k to $90k who do exactly this work."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                { "text": "I classified the fingerprint" },
+                { "text": "I computed the spatter angle" },
+                { "text": "I ran the Bayesian synthesis" },
+                { "text": "I audited the digital evidence" },
+                { "text": "I wrote the court memo" }
+              ]
+            }
+          ]
+        },
+        {
+          "style": "maroon",
+          "title": "Part V: End of Day",
+          "duration": "",
+          "instructorNotes": "",
+          "blocks": [
+            {
+              "type": "callout",
+              "style": "notebook",
+              "content": "Woven notebook: Part V, End of Day. Look back at your Hook questions, your lab data, your AI audit, and your Pine Hills verdict. What changed? What is still open? Close the day with one sentence on what you would do differently tomorrow."
             },
             {
               "type": "heading",
@@ -1100,7 +1186,7 @@
             {
               "type": "callout",
               "style": "tip",
-              "content": "Save your work: Save your Hallucination Report and Verification Protocol - these critical thinking tools apply to everything you do with AI!"
+              "content": "Save your work: Save your Hallucination Report, Verification Protocol, and Pine Hills court memo. Week 1 wraps here. Week 2 starts tomorrow with the same critical eye, applied to clinical AI."
             },
             {
               "type": "checklist",
@@ -1125,6 +1211,11 @@
           "duration": "",
           "instructorNotes": "",
           "blocks": [
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Bridge, Week 1 to Week 2: You've trained as a digital detective. Same critical eye, new domain: clinical medicine. The questions you've been asking AI in forensics (calibrate, audit, verify, demand explanations) come back today, applied to medical AI where the stakes are someone's heartbeat instead of a court verdict."
+            },
             {
               "type": "callout",
               "style": "notebook",
@@ -1865,7 +1956,7 @@
             },
             {
               "type": "text",
-              "content": "Welcome to Day 8 - the final day! Today you will confront the fundamental tension at the heart of AI."
+              "content": "Welcome to Day 8, the close of Week 2. Today you will confront the fundamental tension at the heart of clinical AI."
             },
             {
               "type": "text",
@@ -1874,7 +1965,7 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Today's Case Briefing: This is it. The full integrated case. Your mission: apply every skill from Days 1-7 (fingerprint analysis, spatter trigonometry, multi-modal integration, AI verification, clinical reading, bias auditing) to a complete forensic-and-medical case AND determine whether AI's role in your conclusion can be defended in court (the Black Box Problem). Day 8 IS the case all your training built toward."
+              "content": "Today's Case Briefing: Week 2's clinical case finale. Your mission: take a complex patient case and apply every Week 2 skill (cardiac physiology, surgical reasoning, diagnostic imaging, AI bias auditing, black-box explainability) to render a defensible diagnosis AND a court-ready position paper on the AI's role in your conclusion. The Black Box Problem comes home today."
             },
             {
               "type": "video",
@@ -1908,23 +1999,27 @@
             },
             {
               "type": "step",
-              "content": "Case File Review: Read your team's comprehensive case file. This case integrates forensic and medical evidence from the entire workshop."
+              "content": "Case File Review: Read your team's clinical case file. This case integrates the Week 2 medical evidence: cardiac physiology (Day 5), surgical reasoning (Day 6), diagnostic imaging (Day 7), and the AI bias and explainability questions you'll answer in Part III."
             },
             {
               "type": "step",
-              "content": "Evidence Station Analysis: At each evidence station, analyze the evidence and document whether AI could perform this analysis and whether it could explain its reasoning."
+              "content": "Station 1, Cardiac Physiology (Day 5 skill): Read the patient's EKG strip from the case file. Identify the rhythm. Flag any waveform abnormalities. Document whether a cardiac AI could interpret this strip and whether it could explain its reasoning."
             },
             {
               "type": "step",
-              "content": "AI Rating Scale: For each station, rate the AI's potential on two scales: accuracy (1-5) and explainability (1-5)."
+              "content": "Station 2, Surgical Reasoning (Day 6 skill): Walk the case team through the surgical decision tree (which procedure, which suture, which autonomy level for any AI-assisted step). Document whether a surgical AI could make this call."
             },
             {
               "type": "step",
-              "content": "AI Capability Map: Create a visual AI Capability Map showing where AI excels, where humans excel, and where collaboration is ideal."
+              "content": "Station 3, Diagnostic Imaging (Day 7 skill): Review the imaging findings in the case file. Apply the bias-audit lens: who is over- or under-represented in the training data behind a diagnostic AI for this case type? Document the bias risk."
             },
             {
               "type": "step",
-              "content": "Final Presentation: Prepare your team's final presentation: The case verdict plus your AI Capability Map."
+              "content": "AI Capability Map: For each Week 2 station, rate the AI's potential on two scales: accuracy (1-5) and explainability (1-5). Build a visual AI Capability Map showing where AI excels in clinical care, where human clinicians excel, and where collaboration is ideal."
+            },
+            {
+              "type": "step",
+              "content": "Final Presentation: Prepare your team's final presentation: the clinical verdict plus your AI Capability Map plus the explainability case you'll defend in Part III."
             },
             {
               "type": "checklist",

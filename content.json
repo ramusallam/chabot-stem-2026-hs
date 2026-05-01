@@ -828,36 +828,18 @@
               "content": "Deepfakes are getting better. Sometimes there are visual clues, sometimes there are not. A real image can also be shared with a false caption. Digital investigators don't only ask 'does this look fake?', they ask 'where did it come from, who shared it, what is the source, can I verify it somewhere else?'"
             },
             {
-              "type": "step",
-              "content": "Pause before reacting. Strong emotion is a manipulation signal."
-            },
-            {
-              "type": "step",
-              "content": "Identify the claim. What is the post or video actually asserting?"
-            },
-            {
-              "type": "step",
-              "content": "Look for visual or audio clues. Use the evidence list (face too smooth, weird eyes/blinking, robotic or mismatched voice, lips not matching audio, off lighting/shadows, blurred background, odd hands/fingers/teeth/text, suspicious context)."
-            },
-            {
-              "type": "step",
-              "content": "Check the source. Who runs the account or site? Is this their normal posting pattern?"
-            },
-            {
-              "type": "step",
-              "content": "Search for the same claim elsewhere. Two or more independent reputable sources reporting the same thing is a basic credibility floor."
-            },
-            {
-              "type": "step",
-              "content": "Use SIFT or lateral reading. Stop, Investigate the source, Find better coverage, Trace claims back to original."
-            },
-            {
-              "type": "step",
-              "content": "Decide: Real / Probably Real / Misleading / Probably Fake / Need More Information."
-            },
-            {
-              "type": "step",
-              "content": "Think before sharing. Sharing a deepfake amplifies it even if you debunk it."
+              "type": "collapsible-checklist",
+              "title": "Digital Truth Checklist (click to expand)",
+              "items": [
+                "Pause before reacting. Strong emotion is a manipulation signal.",
+                "Identify the claim. What is the post or video actually asserting?",
+                "Look for visual or audio clues (face too smooth, weird eyes/blinking, robotic or mismatched voice, lips not matching audio, off lighting/shadows, blurred background, odd hands/fingers/teeth/text, suspicious context).",
+                "Check the source. Who runs the account or site?",
+                "Search for the same claim elsewhere. Two or more independent reputable sources is the credibility floor.",
+                "Use SIFT or lateral reading: Stop, Investigate the source, Find better coverage, Trace claims back to original.",
+                "Decide: Real / Probably Real / Misleading / Probably Fake / Need More Information.",
+                "Think before sharing. Sharing a deepfake amplifies it even if you debunk it."
+              ]
             },
             {
               "type": "checklist",
@@ -1490,6 +1472,20 @@
             {
               "type": "step",
               "content": "Read the abstract of: Yang, G.Z., et al. (2017). 'Medical robotics - regulatory, ethical, and legal considerations for increasing levels of autonomy.' Science Robotics. Find the Levels 0-5 taxonomy. Map ONE surgical robot you know to its level (da Vinci, STAR, IBM RIO, Mako, etc)."
+            },
+            {
+              "type": "heading",
+              "content": "How to Build a Gemini Gem"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Before you build your own Gem, watch this 3-minute tutorial. Gems are mini AI assistants you can build for any topic. The video walks you through every button so you can spend lab time on YOUR Gem, not on figuring out the interface."
+            },
+            {
+              "type": "video",
+              "title": "How to use Gemini Gems - Tutorial for Beginners",
+              "url": "https://www.youtube.com/embed/QqwNue_KL-4"
             },
             {
               "type": "step",

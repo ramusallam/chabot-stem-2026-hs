@@ -924,7 +924,13 @@
             },
             {
               "type": "step",
-              "content": "Lateral reading drill (real exercise from Stanford's curriculum): Your facilitator gives you 3 articles. For each, give yourself 3 minutes to determine credibility USING ONLY lateral reading. Track what you find. Compare scores across the room."
+              "content": "Lateral reading drill (real exercise from Stanford's curriculum): open the Deepfake Detector below and tap Headline Lab > Lateral Reading. For each of 3 articles, give yourself 3 minutes to judge credibility USING ONLY lateral reading (don't read the article carefully, leave it, open other tabs, cross-check). Then click Verify in the app to see the verdict plus which 3 outside sources would catch it. Track what you found. Compare scores across the room."
+            },
+            {
+              "type": "app",
+              "title": "Deepfake Detector - Headline Lab",
+              "url": "apps/deepfake-detector.html",
+              "embed": true
             },
             {
               "type": "step",
@@ -932,7 +938,7 @@
             },
             {
               "type": "step",
-              "content": "Connect to AI: feed the 3 articles from Step 3 into Gemini and ask 'rate the credibility of this article and explain your reasoning.' Compare Gemini's verdict to your own SIFT-based verdict. Where did Gemini agree? Where did it disagree? When you disagree with the AI, WHO IS RIGHT?"
+              "content": "Connect to AI: copy the headline + snippet from each of the 3 Headline Lab articles into Gemini and ask 'rate the credibility of this article and explain your reasoning.' Compare Gemini's verdict to your own lateral-reading verdict and to the app's Verify reveal. Where did Gemini agree? Where did it disagree? When you disagree with the AI, WHO IS RIGHT?"
             },
             {
               "type": "step",

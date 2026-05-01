@@ -26,11 +26,11 @@
             },
             {
               "type": "text",
-              "content": "Fingerprint analysis has been used in courts for over a century, but how reliable is it really? Today you will examine the statistics behind biometric identification."
+              "content": "Welcome to Day 1 of the High School STEM Workshop! Today you will analyze fingerprint evidence through a scientific and legal lens."
             },
             {
               "type": "text",
-              "content": "Welcome to Day 1 of the High School STEM Workshop! Today you will analyze fingerprint evidence through a scientific and legal lens."
+              "content": "Fingerprint analysis has been used in courts for over a century, but how reliable is it really? Today you will examine the statistics behind biometric identification."
             },
             {
               "type": "callout",
@@ -171,6 +171,19 @@
               "content": "AFIS (FBI's fingerprint database) reports its error rate as approximately 1 in 10,000 for verified high-quality matches. Your trained model is almost certainly worse. Write a 1-paragraph admissibility argument: should this model's output be allowed in court? Cite the Daubert criteria (testability, peer review, error rate, general acceptance)."
             },
             {
+              "type": "heading",
+              "content": "Now: Vibe-Code a Stats Calculator"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "You audited your Teachable Machine model by hand. Now you build a real tool to do the math automatically. Gemini Canvas is a vibe-coding tool: you describe what you want in plain English and it builds a working web app on the right side of the screen. Watch the 90-second walkthrough below before you try the prompt yourself, so you know where the buttons are."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/CF62dLM5Gb4"
+            },
+            {
               "type": "step",
               "content": "Vibe coding extension: open Gemini Canvas (gemini.google.com/canvas). Type this prompt: 'Build a single page web app. It has 10 rows. Each row has three inputs: actual class (Loop / Whorl / Arch), predicted class, and confidence (0 to 100). Below the rows, add a Compute button. When I click Compute, show overall accuracy plus a clean table with precision, recall, and F1 score per class. Use simple modern styling.' Canvas will build a live web page on the right side of the screen. Type your 10 results, click Compute, and audit the numbers. Did it compute precision and recall correctly? F1 should be 2 times (precision times recall) divided by (precision plus recall) - did the AI use that formula? AI-generated stats code is a $2B/year mistake when it is wrong."
             },
@@ -279,11 +292,11 @@
             },
             {
               "type": "text",
-              "content": "Blood spatter analysis sits at the intersection of biology and physics. Today you will derive the mathematical relationship between drop shape and impact angle from first principles."
+              "content": "Welcome to Day 2! Today you will apply trigonometry to forensic science."
             },
             {
               "type": "text",
-              "content": "Welcome to Day 2! Today you will apply trigonometry to forensic science."
+              "content": "Blood spatter analysis sits at the intersection of biology and physics. Today you will derive the mathematical relationship between drop shape and impact angle from first principles."
             },
             {
               "type": "callout",
@@ -529,11 +542,11 @@
             },
             {
               "type": "text",
-              "content": "No single piece of evidence tells the whole story. The strongest forensic cases combine multiple independent lines of evidence that all point to the same conclusion."
+              "content": "Welcome to Day 3! Today you will think like a lead forensic analyst managing a complex case."
             },
             {
               "type": "text",
-              "content": "Welcome to Day 3! Today you will think like a lead forensic analyst managing a complex case."
+              "content": "No single piece of evidence tells the whole story. The strongest forensic cases combine multiple independent lines of evidence that all point to the same conclusion."
             },
             {
               "type": "callout",
@@ -744,11 +757,11 @@
             },
             {
               "type": "text",
-              "content": "AI language models can write essays, answer questions, and even pass professional exams. But they also confidently state things that are completely false. Understanding why is one of the most important skills of the AI age."
+              "content": "Welcome to Day 4! Today you will investigate one of AI's most important limitations."
             },
             {
               "type": "text",
-              "content": "Welcome to Day 4! Today you will investigate one of AI's most important limitations."
+              "content": "AI language models can write essays, answer questions, and even pass professional exams. But they also confidently state things that are completely false. Understanding why is one of the most important skills of the AI age."
             },
             {
               "type": "heading",
@@ -1119,11 +1132,11 @@
             },
             {
               "type": "text",
-              "content": "The EKG is one of medicine's most powerful diagnostic tools. Each wave and interval tells a specific story about what the heart's electrical system is doing - and what might be going wrong."
+              "content": "Welcome to Day 5! Today you enter Mini Med School as a cardiac monitoring specialist."
             },
             {
               "type": "text",
-              "content": "Welcome to Day 5! Today you enter Mini Med School as a cardiac monitoring specialist."
+              "content": "The EKG is one of medicine's most powerful diagnostic tools. Each wave and interval tells a specific story about what the heart's electrical system is doing - and what might be going wrong."
             },
             {
               "type": "callout",
@@ -1363,11 +1376,11 @@
             },
             {
               "type": "text",
-              "content": "In surgery, millimeters matter. The difference between a clean closure and a complication can come down to stitch spacing, needle angle, and tissue tension."
+              "content": "Welcome to Day 6! Today you will push your surgical skills to a higher standard."
             },
             {
               "type": "text",
-              "content": "Welcome to Day 6! Today you will push your surgical skills to a higher standard."
+              "content": "In surgery, millimeters matter. The difference between a clean closure and a complication can come down to stitch spacing, needle angle, and tissue tension."
             },
             {
               "type": "callout",
@@ -1591,11 +1604,11 @@
             },
             {
               "type": "text",
-              "content": "An AI system is only as fair as the data it was trained on and the choices its creators made. When those choices reflect existing inequalities, AI can amplify them at scale."
+              "content": "Welcome to Day 7! Today you will investigate one of the most critical ethical challenges in AI."
             },
             {
               "type": "text",
-              "content": "Welcome to Day 7! Today you will investigate one of the most critical ethical challenges in AI."
+              "content": "An AI system is only as fair as the data it was trained on and the choices its creators made. When those choices reflect existing inequalities, AI can amplify them at scale."
             },
             {
               "type": "callout",
@@ -1852,11 +1865,11 @@
             },
             {
               "type": "text",
-              "content": "Some of the most powerful AI systems in the world cannot explain how they reach their conclusions. When an AI says a patient has cancer or a defendant will reoffend, the people affected deserve to understand why."
+              "content": "Welcome to Day 8 - the final day! Today you will confront the fundamental tension at the heart of AI."
             },
             {
               "type": "text",
-              "content": "Welcome to Day 8 - the final day! Today you will confront the fundamental tension at the heart of AI."
+              "content": "Some of the most powerful AI systems in the world cannot explain how they reach their conclusions. When an AI says a patient has cancer or a defendant will reoffend, the people affected deserve to understand why."
             },
             {
               "type": "callout",

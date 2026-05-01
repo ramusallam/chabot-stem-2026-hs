@@ -924,21 +924,11 @@
             },
             {
               "type": "step",
-              "content": "Lateral reading drill (real exercise from Stanford's curriculum): open the Deepfake Detector below and tap Headline Lab > Lateral Reading. For each of 3 articles, give yourself 3 minutes to judge credibility USING ONLY lateral reading (don't read the article carefully, leave it, open other tabs, cross-check). Then click Verify in the app to see the verdict plus which 3 outside sources would catch it. Track what you found. Compare scores across the room."
-            },
-            {
-              "type": "app",
-              "title": "Deepfake Detector - Headline Lab",
-              "url": "apps/deepfake-detector.html",
-              "embed": true
+              "content": "Lateral reading is built into the Headline Lab in the Synthetic Media Literacy section below (Step 4). Apply it there: open 5 other tabs and cross-check before judging the article."
             },
             {
               "type": "step",
               "content": "Install NewsGuard (free with a public library card - and Oakland/Hayward/SF libraries all have it). Browse 5 sites you regularly visit. Note their credibility scores. Were you surprised by any?"
-            },
-            {
-              "type": "step",
-              "content": "Connect to AI: copy the headline + snippet from each of the 3 Headline Lab articles into Gemini and ask 'rate the credibility of this article and explain your reasoning.' Compare Gemini's verdict to your own lateral-reading verdict and to the app's Verify reveal. Where did Gemini agree? Where did it disagree? When you disagree with the AI, WHO IS RIGHT?"
             },
             {
               "type": "step",
@@ -987,7 +977,7 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "Hallucinations are one threat to truth, deepfakes are another. The same critical thinking habits apply: slow down, check the source, look for clues, ask who benefits. Below are the bleeding-edge facts and a brief practice."
+              "content": "Hallucinations are one threat to truth, deepfakes are another. The same critical thinking habits apply: slow down, check the source, look for clues, ask who benefits. Below are the bleeding-edge facts and a tight 4-step practice in a single app."
             },
             {
               "type": "callout",
@@ -1001,7 +991,7 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "Before you classify any image, expand the checklist below and read all 8 items. These are the questions a digital forensics analyst asks themselves about every piece of media you encounter, deepfake or otherwise. Use them as your evidence guide in the practice activity that follows."
+              "content": "Before you classify any image, expand the checklist below and read all 8 items. These are the questions a digital forensics analyst asks themselves about every piece of media. Use them as your evidence guide for every step that follows."
             },
             {
               "type": "collapsible-checklist",
@@ -1019,11 +1009,30 @@
             },
             {
               "type": "heading",
-              "content": "Step 2: Practice on 8 Images"
+              "content": "Step 2: Test AI Images"
             },
             {
-              "type": "step",
-              "content": "Image analysis: launch the Deepfake Detector below and tap Detect Fakes Practice. For each of 8 images, choose Real / AI-generated / Not sure yet, rate your confidence Low / Medium / High, and pick which evidence you noticed. Submit to see what was actually real, what was AI, and how your accuracy compared to your confidence. The methodology is from Northwestern Kellogg's PNAS 2022 paper on human-AI deepfake detection, you're running the same research protocol they use."
+              "type": "callout",
+              "style": "info",
+              "content": "Tap Detect Fakes Practice in the app below. Work all 8 images, audit your accuracy and confidence calibration. The methodology is from Northwestern Kellogg's PNAS 2022 paper on human-AI deepfake detection, you're running the same research protocol they use."
+            },
+            {
+              "type": "heading",
+              "content": "Step 3: Listen to Voice Clips"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Same app, tap Voice Analyzer. 4 clips, real or AI clone. Listen for the AI tells the app surfaces (flat-line volume, no breathing pauses, robotic 's' sounds)."
+            },
+            {
+              "type": "heading",
+              "content": "Step 4: Triage Headlines and Social Posts"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Same app, tap Headline Lab. Three tabs covering articles (Lateral Reading), headlines (SIFT), and social posts. For each item, pick Real / Misleading / Fake / Need More Info, then click Reveal."
             },
             {
               "type": "app",

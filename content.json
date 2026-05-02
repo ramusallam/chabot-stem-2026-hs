@@ -8,8 +8,24 @@
     "slug": "chabot-stem-2026-hs"
   },
   "weeks": [
-    { "label": "Week 1 - Forensics and the Digital Detective", "dayIndices": [0,1,2,3] },
-    { "label": "Week 2 - Mini Med School and the Clinical AI", "dayIndices": [4,5,6,7] }
+    {
+      "label": "Week 1 - Forensics and the Digital Detective",
+      "dayIndices": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "label": "Week 2 - Mini Med School and the Clinical AI",
+      "dayIndices": [
+        4,
+        5,
+        6,
+        7
+      ]
+    }
   ],
   "days": [
     {
@@ -1150,11 +1166,21 @@
             {
               "type": "checklist",
               "items": [
-                { "text": "I classified the fingerprint" },
-                { "text": "I computed the spatter angle" },
-                { "text": "I ran the Bayesian synthesis" },
-                { "text": "I audited the digital evidence" },
-                { "text": "I wrote the court memo" }
+                {
+                  "text": "I classified the fingerprint"
+                },
+                {
+                  "text": "I computed the spatter angle"
+                },
+                {
+                  "text": "I ran the Bayesian synthesis"
+                },
+                {
+                  "text": "I audited the digital evidence"
+                },
+                {
+                  "text": "I wrote the court memo"
+                }
               ]
             }
           ]
@@ -1995,31 +2021,36 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "Materials Needed: Comprehensive case file packets, All previous lab materials, AI Capability Map template, Presentation materials, Timer, Certificates of completion"
+              "content": "Materials Needed: Laptops or Chromebooks, stethoscopes + BP cuffs + pulse oximeters from Day 5, lab notebooks, AI Capability Map worksheet. The patient case is on this page, no printed packets needed."
+            },
+            {
+              "type": "heading",
+              "content": "Today's Patient: David, age 47"
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Patient briefing: David is 47, a construction supervisor in Hayward. He arrived at the ER 20 minutes ago with crushing chest pain that began on the job site, radiating into his left arm and jaw. He is diaphoretic, nauseated, and unable to take a deep breath. Vitals on arrival: HR 118 (sinus tachycardia), BP 162 over 94 (hypertensive), SpO2 92 percent on room air (low), RR 24 (tachypneic). EKG (12-lead) shows ST-segment elevation in leads II, III, and aVF, with reciprocal depression in I and aVL. Past medical history: cholecystectomy 2018, hypertension managed with lisinopril, hyperlipidemia, ex-smoker (quit 2019). Family history: father had MI at age 52. Initial troponin: elevated (preliminary lab back in 6 minutes). Chest X-ray: mild cardiomegaly, no acute pulmonary findings."
             },
             {
               "type": "step",
-              "content": "Case File Review: Read your team's clinical case file. This case integrates the Week 2 medical evidence: cardiac physiology (Day 5), surgical reasoning (Day 6), diagnostic imaging (Day 7), and the AI bias and explainability questions you'll answer in Part III."
+              "content": "Station 1, Cardiac Physiology (Day 5 skill): Read David's EKG findings from the briefing. Identify the territory of injury (which coronary artery is most likely involved given ST elevation in II, III, aVF?). Use the EKG Waveform Explorer with the Physiology overlay to verify the conduction-system pathway you'd expect for an inferior wall MI. Explain the mechanism: why does ST elevation indicate transmural ischemia?"
             },
             {
               "type": "step",
-              "content": "Station 1, Cardiac Physiology (Day 5 skill): Read the patient's EKG strip from the case file. Identify the rhythm. Flag any waveform abnormalities. Document whether a cardiac AI could interpret this strip and whether it could explain its reasoning."
+              "content": "Station 2, Surgical / Procedural Reasoning (Day 6 skill): David needs urgent revascularization. Defend your team's recommendation: percutaneous coronary intervention (PCI / cath lab) versus fibrinolytic therapy versus CABG. Cite the 90-minute door-to-balloon target (American Heart Association STEMI guideline) in your justification. The same precision-under-time-pressure mindset you used on Day 6 with Vertical Mattress applies here."
             },
             {
               "type": "step",
-              "content": "Station 2, Surgical Reasoning (Day 6 skill): Walk the case team through the surgical decision tree (which procedure, which suture, which autonomy level for any AI-assisted step). Document whether a surgical AI could make this call."
+              "content": "Station 3, Diagnostic Imaging (Day 7 skill): The CXR shows mild cardiomegaly. Apply the four-step systematic approach (orientation, bones, soft tissue, air spaces) to evaluate. Then connect to bias auditing: cardiac AI tools (ECG-FM, AliveCor) tend to under-detect inferior MI in women and Black patients. If David were a 47-year-old Black woman with identical symptoms and EKG, what bias-mitigation steps would you require before relying on an AI-assisted diagnosis?"
             },
             {
               "type": "step",
-              "content": "Station 3, Diagnostic Imaging (Day 7 skill): Review the imaging findings in the case file. Apply the bias-audit lens: who is over- or under-represented in the training data behind a diagnostic AI for this case type? Document the bias risk."
+              "content": "AI Capability Map: For each Week 2 station, rate the AI's potential on two scales: accuracy (1-5) and explainability (1-5). Then plot the four AI-assist points (rhythm interpretation, procedural risk modeling, imaging analysis, bias detection) on a 2x2 grid. Where does AI clearly help, where do humans still excel, and where do you need explainable AI tools (SHAP, LIME) to make AI's role defensible in a malpractice case?"
             },
             {
               "type": "step",
-              "content": "AI Capability Map: For each Week 2 station, rate the AI's potential on two scales: accuracy (1-5) and explainability (1-5). Build a visual AI Capability Map showing where AI excels in clinical care, where human clinicians excel, and where collaboration is ideal."
-            },
-            {
-              "type": "step",
-              "content": "Final Presentation: Prepare your team's final presentation: the clinical verdict plus your AI Capability Map plus the explainability case you'll defend in Part III."
+              "content": "Final Presentation: Prepare your team's final presentation: (1) the clinical verdict (acute inferior wall STEMI, recommended treatment), (2) your AI Capability Map for this case, (3) a 1-paragraph position statement on where AI's role in this diagnosis can be defended in court (Black Box Problem)."
             },
             {
               "type": "checklist",

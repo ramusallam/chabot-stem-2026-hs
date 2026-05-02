@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Chabot STEM 2026 — High School",
+    "title": "Chabot STEM 2026 \u2014 High School",
     "program": "High School (Rising 9th-11th)",
     "dates": "June 22 - July 2",
     "storageKey": "woven-chabot-2026-hs",
@@ -439,7 +439,7 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "You proved sin θ = w/L by hand. Now build a real tool that applies your math. Using Gemini Canvas (vibe coding), you'll describe what you want and Gemini will write working code. Then you'll AUDIT THE CODE and find its bugs."
+              "content": "You proved sin \u03b8 = w/L by hand. Now build a real tool that applies your math. Using Gemini Canvas (vibe coding), you'll describe what you want and Gemini will write working code. Then you'll AUDIT THE CODE and find its bugs."
             },
             {
               "type": "step",
@@ -705,7 +705,7 @@
             },
             {
               "type": "step",
-              "content": "Gemini will produce a long answer. Now AUDIT IT. For each claim Gemini makes, mark: (✓) verifiable, (?) uncertain, (✗) wrong / hallucinated. Pay special attention to: any specific match probabilities, any case-law references, any 'this is consistent with' statements."
+              "content": "Gemini will produce a long answer. Now AUDIT IT. For each claim Gemini makes, mark: (\u2713) verifiable, (?) uncertain, (\u2717) wrong / hallucinated. Pay special attention to: any specific match probabilities, any case-law references, any 'this is consistent with' statements."
             },
             {
               "type": "step",
@@ -1782,46 +1782,57 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Bleeding-edge: the STAR system (Smart Tissue Autonomous Robot, Johns Hopkins) is now in FDA Phase II trials for human soft-tissue surgery as of 2026. Yang et al. (2017) classified surgical autonomy in 6 levels (like SAE for cars). STAR is Level 3 - it can perform a sub-task autonomously under human supervision. Level 4 (full autonomy under guidance) is expected by 2030."
+              "content": "Bleeding-edge: the STAR system (Smart Tissue Autonomous Robot, Johns Hopkins) is now in FDA Phase II trials for human soft-tissue surgery as of 2026. Surgical robots come in 6 levels of autonomy (like self-driving cars), and STAR is one of the only Level 3 systems on the planet."
             },
             {
               "type": "heading",
-              "content": "Quantitative Surgical AI Analysis"
-            },
-            {
-              "type": "step",
-              "content": "Read the abstract of: Yang, G.Z., et al. (2017). 'Medical robotics - regulatory, ethical, and legal considerations for increasing levels of autonomy.' Science Robotics. Find the Levels 0-5 taxonomy. Map ONE surgical robot you know to its level (da Vinci, STAR, IBM RIO, Mako, etc)."
-            },
-            {
-              "type": "heading",
-              "content": "How to Build a Gemini Gem"
+              "content": "Watch: Surgical Robots in Action"
             },
             {
               "type": "callout",
               "style": "info",
-              "content": "Before you build your own Gem, watch this 3-minute tutorial. Gems are mini AI assistants you can build for any topic. The video walks you through every button so you can spend lab time on YOUR Gem, not on figuring out the interface."
+              "content": "Before any analysis, see what these robots actually do. Three short videos: the da Vinci (the most-used surgical robot in the world), STAR (the autonomous tissue robot), and Mako (orthopedic). Watch all three, then write a one-line reaction to each in your notebook (what surprised you, what looked routine, what looked sci-fi)."
             },
             {
               "type": "video",
-              "title": "How to use Gemini Gems - Tutorial for Beginners",
-              "url": "https://www.youtube.com/embed/QqwNue_KL-4"
+              "title": "da Vinci Surgical System (demonstration)",
+              "url": "https://www.youtube.com/embed/tAr7xjKoM5A"
+            },
+            {
+              "type": "video",
+              "title": "STAR (Smart Tissue Autonomous Robot, Johns Hopkins)",
+              "url": "https://www.youtube.com/embed/cybRmhsvOss"
+            },
+            {
+              "type": "video",
+              "title": "Mako Robotic Knee Replacement (Stryker)",
+              "url": "https://www.youtube.com/embed/zDKZhMNRSnE"
+            },
+            {
+              "type": "heading",
+              "content": "The Yang Levels (no academic paper required)"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Surgical robots come in 6 levels of autonomy, like self-driving cars. LEVEL 0 = no automation, the surgeon controls every move (most surgical tools, scalpels). LEVEL 1 = robotic assistance, the robot helps but the human controls direction (the da Vinci, surgeon at console). LEVEL 2 = task autonomy, the robot does specific sub-tasks under supervision (some Mako orthopedic cuts). LEVEL 3 = conditional autonomy, the robot performs entire procedures with the surgeon supervising (STAR Phase II trials, 2026). LEVEL 4 = high autonomy, the robot operates without supervision in routine cases (not yet approved). LEVEL 5 = full autonomy, the robot decides AND operates (sci-fi for now). The framework comes from Guang-Zhong Yang, a Royal Society robotics scholar."
             },
             {
               "type": "step",
-              "content": "Build a Gemini Gem called 'Surgical Autonomy Assessor.' Instructions: 'Given a description of a surgical robot's capabilities, classify it on the Yang Levels 0-5 taxonomy. Cite the specific behaviors that justify the level.' Test it with 4 robot descriptions."
+              "content": "Match each robot from the videos above to its Yang Level. da Vinci = Level ___? STAR = Level ___? Mako = Level ___? Defend your call in your notebook with one specific behavior you saw in each video."
             },
             {
               "type": "step",
-              "content": "Compare your Gem's classifications to the published consensus (your facilitator has the answer key). Where did your Gem disagree with experts? Was the Gem reasoning, or was it making it up? Write a 1-paragraph analysis."
+              "content": "Build a quick decision-tree in your notebook: for a robot to move UP a level, what specific capability would it need to add? Pick ONE robot and write 2 capabilities that would push it to the next level."
             },
             {
               "type": "step",
-              "content": "Liability research: in March 2026, the first lawsuit was filed against Intuitive Surgical (da Vinci's maker) for an AI-assisted error. Look up the case. Argue: should the AI company, the supervising surgeon, the hospital, or the manufacturer be liable? Defend with case law."
+              "content": "Liability flash-debate (5 minutes, with a partner): if a STAR Level 3 robot makes a mistake during surgery, who is responsible? The robot company? The supervising surgeon? The hospital? Pick a position, defend with ONE reason. Switch sides for 1 minute. The 2024 da Vinci lawsuit (a real case) decided this for Level 1, look it up if you want, but the question is what SHOULD happen."
             },
             {
               "type": "callout",
               "style": "tip",
-              "content": "The autonomy levels framework matters. As STAR moves toward Level 4, hospitals will be REQUIRED to disclose to patients which level of robot is performing their procedure - and get informed consent. You are entering medicine in the era this becomes law."
+              "content": "The autonomy levels framework matters. As STAR moves toward Level 4, hospitals will be REQUIRED to disclose to patients which level of robot is performing their procedure, and get informed consent. You are entering medicine in the era this becomes law."
             },
             {
               "type": "callout",
@@ -1889,7 +1900,7 @@
             },
             {
               "type": "text",
-              "content": "Welcome to Day 7! Today you will investigate one of the most critical ethical challenges in AI."
+              "content": "Welcome to Day 7! Today you investigate one of the most critical ethical challenges in AI."
             },
             {
               "type": "text",
@@ -1898,17 +1909,18 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Today's Case Briefing: A hospital deployed an AI that systematically under-served Black patients. An audit caught it. Lawsuits followed. Your mission: learn the bias auditing methods the EU AI Act now requires, by hand and via vibe-coded calculator. You will defend the math you produce as if a court was reading it. These methods carry into Day 8."
+              "content": "Today's Case Briefing: A real story from 2019. A hospital used AI to decide which patients got extra care. An audit caught it: the AI was systematically giving Black patients LOWER risk scores than white patients with the SAME conditions. Lawsuits followed. Your mission: figure out HOW the AI got it wrong, and fix it."
             },
             {
               "type": "video",
-              "url": "https://www.youtube.com/embed/rf68wQDVEho"
+              "title": "How I'm fighting bias in algorithms - Joy Buolamwini (TED)",
+              "url": "https://www.youtube.com/embed/UG_X_7g63rY"
             },
             {
               "type": "checklist",
               "items": [
                 {
-                  "text": "I read the case briefing and watched the Coded Bias trailer"
+                  "text": "I read the case briefing and watched Joy Buolamwini's TED talk on algorithmic bias"
                 }
               ]
             }
@@ -1928,33 +1940,81 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "Materials Needed: Simulated patient dataset (printed or digital), Calculators, Bias audit worksheet, Bias report template, Discussion norm posters"
+              "content": "Materials Needed: Laptops or Chromebooks, lab notebooks. The patient dataset, the bias-checking math, and the verdict template are ALL on this page below. Nothing to print, nothing to hand out."
+            },
+            {
+              "type": "heading",
+              "content": "Watch First: What Is Algorithmic Bias?"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Before you touch the dataset, watch this 60-second trailer for Coded Bias (the documentary about Joy Buolamwini's work). It frames the stakes: algorithms decide who gets a loan, who gets parole, who gets healthcare. When the math is wrong, real people pay."
+            },
+            {
+              "type": "video",
+              "title": "Coded Bias (2020) trailer",
+              "url": "https://www.youtube.com/embed/rf68wQDVEho"
+            },
+            {
+              "type": "heading",
+              "content": "The Hospital Dataset (work this in your notebook)"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Here's a simulated dataset of 10 patients. The hospital's AI uses HEALTHCARE SPENDING as the score for who needs extra care. Higher spending = higher risk score = more attention from doctors and nurses. Patient 1: Black, asthma, $4,200 spending, AI score 4. Patient 2: White, asthma, $9,800 spending, AI score 10. Patient 3: Black, diabetes, $3,500 spending, AI score 3. Patient 4: White, diabetes, $11,200 spending, AI score 11. Patient 5: Black, heart disease, $5,000 spending, AI score 5. Patient 6: White, heart disease, $13,500 spending, AI score 13. Patient 7: Black, hypertension, $2,800 spending, AI score 2. Patient 8: White, hypertension, $8,900 spending, AI score 9. Patient 9: Black, COPD, $4,400 spending, AI score 4. Patient 10: White, COPD, $10,800 spending, AI score 10. IMPORTANT: all 10 patients are equally sick. Asthma vs asthma. Diabetes vs diabetes. Same illness severity for matched pairs. The ONLY differences are race and how much money they have spent on healthcare."
+            },
+            {
+              "type": "heading",
+              "content": "Step 1: Spot the Pattern"
             },
             {
               "type": "step",
-              "content": "Dataset Examination: Examine the simulated dataset. Calculate the average risk score for each demographic group."
+              "content": "Look at the dataset above. Calculate the AVERAGE AI risk score for the 5 Black patients vs the 5 White patients. Black average = ___? White average = ___? What is the gap? Write all three numbers in your notebook."
+            },
+            {
+              "type": "heading",
+              "content": "Step 2: Find the Hidden Bias"
             },
             {
               "type": "step",
-              "content": "Proxy Variable Identification: Identify the proxy variable causing bias: the algorithm used healthcare spending as a proxy for healthcare need, but systemic inequalities mean some groups have less access to care."
+              "content": "The AI uses SPENDING as a stand-in number for SICKNESS. Why might Black patients in real life spend LESS on healthcare even when they are equally sick? List 3 reasons (think: insurance access, distrust built from history, time off work, transportation costs, prescription costs). This is what data scientists call a STAND-IN PROBLEM (technical name: 'proxy variable bias'), the AI used a number that LOOKED neutral but actually encoded inequality."
+            },
+            {
+              "type": "heading",
+              "content": "Step 3: Pick a Better Stand-In"
             },
             {
               "type": "step",
-              "content": "Alternative Variable Proposal: Propose an alternative variable that better captures actual health needs."
+              "content": "Brainstorm: instead of SPENDING, what number COULD the AI use to actually measure SICKNESS? Examples: number of chronic conditions, hospital admission count, lab values (A1C for diabetes, peak flow for asthma). Pick ONE and explain in 2 sentences why it would be fairer than spending."
+            },
+            {
+              "type": "heading",
+              "content": "Step 4: Recalculate"
             },
             {
               "type": "step",
-              "content": "Recalculation: Recalculate risk scores using your proposed variable. Does the bias decrease?"
+              "content": "Use NUMBER OF CHRONIC CONDITIONS as the new score. Each patient in the dataset has 1 chronic condition listed, so each one gets a score of 1. Now what is the gap between the Black average and the White average? When you remove the spending bias, the gap collapses to zero. Document this in your notebook with both calculations side by side."
+            },
+            {
+              "type": "heading",
+              "content": "Step 5: Quick Verdict (NOT a one-page report)"
             },
             {
               "type": "step",
-              "content": "Bias Audit Report: Write a one-page bias audit report documenting the problem, root cause, and your recommended fix."
+              "content": "Write THREE BULLET POINTS in your notebook: (1) what the AI got wrong, (2) why it got it wrong, (3) your fix. That is it. Three bullets is what a real bias auditor presents in a 5-minute meeting."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Career Connection: an Algorithmic Auditor does exactly what you just did, every single day. They get a real model, a real dataset, and write a 3-bullet verdict for an executive who has 5 minutes. Bay Area starting salary: $110k-$160k. The skill is spotting the stand-in number that hides inequality."
             },
             {
               "type": "checklist",
               "items": [
                 {
-                  "text": "I completed the bias audit lab and wrote my report"
+                  "text": "I calculated both averages, identified the stand-in bias, picked a fairer score, and wrote my 3-bullet verdict"
                 }
               ]
             }
@@ -1974,7 +2034,7 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Bleeding-edge: the EU AI Act took effect August 2024. As of April 2026, it has enforced over $400M in fines against biased AI systems - including a $50M fine against a health insurer using an Optum-like algorithm. The U.S. has no equivalent federal law. The patchwork of state laws (CA AB 2013, CO SB 205) creates a 'compliance maze' for AI deployers. You're entering this field at exactly the moment it's being regulated."
+              "content": "Bleeding-edge: the EU AI Act took effect August 2024. As of April 2026, it has enforced over $400M in fines against biased AI systems, including a $50M fine against a health insurer using an Optum-like algorithm. The U.S. has no equivalent federal law. The patchwork of state laws (CA AB 2013, CO SB 205) creates a 'compliance maze' for AI deployers. You are entering this field at exactly the moment it is being regulated."
             },
             {
               "type": "heading",
@@ -1991,11 +2051,11 @@
             },
             {
               "type": "step",
-              "content": "Compute the demographic parity gap by hand: |P(positive | Group A) - P(positive | Group B)|. Compute the accuracy gap: |Acc(A) - Acc(B)|. The EEOC four-fifths rule says if the impact ratio (lower group's positive rate / higher group's positive rate) drops below 0.80, the model is presumed discriminatory. Compute your impact ratio. Pass or fail?"
+              "content": "Compute the GAP between groups by hand (the technical name is 'demographic parity gap'): the difference between the share of Group A getting a positive prediction and the share of Group B getting one. Then compute the accuracy gap. Now apply the FOUR-FIFTHS RULE: if one group's positive rate is less than 80% of another group's positive rate, the model fails federal anti-discrimination law. Compute your impact ratio. Pass or fail?"
             },
             {
               "type": "step",
-              "content": "Vibe coding in Gemini Canvas. Prompt: 'Build a single-page web app. It has a table with 4 rows for 4 candidates: each row has columns for Group (A or B), AI Prediction (Approve or Deny), and True Outcome (Repaid or Defaulted). Below the table, a Compute button that outputs accuracy, false positive rate per group, demographic parity gap, equalized odds gap, and pass/fail on the EEOC four-fifths rule.' Canvas builds the app live."
+              "content": "Vibe coding in Gemini Canvas. Prompt: 'Build a single-page web app. It has a table with 4 rows for 4 candidates: each row has columns for Group (A or B), AI Prediction (Approve or Deny), and True Outcome (Repaid or Defaulted). Below the table, a Compute button that outputs accuracy, false positive rate per group, the GAP between groups, and pass/fail on the four-fifths rule (if one group's approval rate drops below 80% of the other, fail).' Canvas builds the app live."
             },
             {
               "type": "step",
@@ -2003,7 +2063,7 @@
             },
             {
               "type": "step",
-              "content": "Court memo: 'The model achieves [X]% overall accuracy. False positive rates differ by [Y] percentage points across groups. By the EEOC four-fifths rule (impact ratio = [Z]), this model FAILS / PASSES.' This is the format you'd submit to an algorithmic auditing role."
+              "content": "Quick Verdict (3 bullets, your notebook): (1) the model achieves [X]% overall accuracy, (2) the gap between groups is [Y] percentage points, (3) by the four-fifths rule (impact ratio = [Z]) the model FAILS / PASSES. Three bullets is the same format you used in Part II, and the same format a real algorithmic auditor delivers."
             },
             {
               "type": "heading",
@@ -2066,7 +2126,7 @@
             },
             {
               "type": "step",
-              "content": "Open the app, then tap 'Bias Visualizer.' Adjust the 'training data composition' slider to overrepresent Group A. Watch overall accuracy stay high (~85%) while the per-group fairness gap explodes past the EEOC's four-fifths rule threshold."
+              "content": "Open the app, then tap 'Bias Visualizer.' Adjust the 'training data composition' slider to overrepresent Group A. Watch overall accuracy stay high (~85%) while the per-group fairness gap explodes past the four-fifths rule threshold (a positive rate below 80% of the other group's rate triggers federal discrimination flags)."
             },
             {
               "type": "step",
@@ -2074,7 +2134,7 @@
             },
             {
               "type": "step",
-              "content": "Take the quiz portion focused on bias: representational bias, EEOC four-fifths rule, the difference between 'fair' and 'accurate,' the EU AI Act high-risk category."
+              "content": "Take the quiz portion focused on bias: representational bias, the four-fifths rule, the difference between 'fair' and 'accurate,' the EU AI Act high-risk category."
             },
             {
               "type": "callout",
@@ -2085,7 +2145,7 @@
               "type": "checklist",
               "items": [
                 {
-                  "text": "I analyzed the case studies and drafted algorithmic fairness standards"
+                  "text": "I computed the gap by hand, vibe-coded the calculator, shipped it to Netlify, and wrote my 3-bullet Quick Verdict"
                 }
               ]
             }

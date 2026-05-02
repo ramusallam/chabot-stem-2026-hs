@@ -1277,6 +1277,19 @@
               "content": "Bridge, Week 1 to Week 2: You've trained as a digital detective. Same critical eye, new domain: clinical medicine. The questions you've been asking AI in forensics (calibrate, audit, verify, demand explanations) come back today, applied to medical AI where the stakes are someone's heartbeat instead of a court verdict."
             },
             {
+              "type": "heading",
+              "content": "Watch First: How the Heart Pumps Blood"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Before you touch a stethoscope or read an EKG, build the mental model. The 5-minute TED-Ed animation below shows how the heart actually pumps blood through its 4-chamber system, the figure-eight circulation through the lungs and body, and why each beat matters. Watch it first. Everything else today builds on this picture."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/ruM4Xxhx32U"
+            },
+            {
               "type": "callout",
               "style": "notebook",
               "content": "Woven notebook: open your notebook to start Part I, The Hook. Write your first reactions to today's Case Briefing. What does the case demand of you? What evidence will you need? Your notebook is the running record of your thinking from briefing to verdict."
@@ -1322,7 +1335,25 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "Materials Needed: Stethoscopes, Manual blood pressure cuffs, Pulse oximeters, Stopwatches, Graph paper, SOAP note templates, Clinical scenario cards, Tablets"
+              "content": "Materials Needed: stethoscopes, manual blood pressure cuffs, pulse oximeters, stopwatches, lab notebooks. The SOAP note template and 3 clinical scenario cards are on this page below, no printed forms needed."
+            },
+            {
+              "type": "heading",
+              "content": "SOAP Note Template (use this format for every clinical writeup today)"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "SOAP is the standard clinical documentation format used by every cardiologist, ER doctor, and physician assistant in the country. Copy this structure into your notebook for each patient assessment: S - SUBJECTIVE: what the patient reports (in their own words). 'I felt my heart racing during basketball practice.' Include onset, duration, what makes it better or worse, associated symptoms. O - OBJECTIVE: what YOU measure. Vital signs (HR, BP, SpO2, RR, temp), physical exam findings, EKG interpretation, lab values. Numbers and observations only, no opinions. A - ASSESSMENT: your clinical impression. Most likely diagnosis, with 2-3 differentials (other possibilities you considered). Include reasoning. P - PLAN: what happens next. Further workup (echo? Holter monitor?), treatment (rest? medication?), patient education, follow-up timeline."
+            },
+            {
+              "type": "heading",
+              "content": "3 Clinical Scenario Cards (work each one)"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Take vitals on yourself first to calibrate. Then work each scenario below using the SOAP format. CARD 1: Marcus, 16, varsity soccer player, presents with palpitations during practice. Vitals: HR 168 (elevated), BP 110/70, SpO2 97 percent, RR 24. EKG strip: regular rhythm, narrow QRS, P waves present but rate fast. Your assessment? Sinus tachycardia from exertion (most likely) vs SVT (supraventricular tachycardia, would need EKG features) vs anxiety. CARD 2: Aisha, 17, presents with light-headedness on standing, no chest pain. Vitals lying down: HR 82, BP 118/76. Vitals standing 1 minute: HR 108 (jumped 26 bpm), BP 95/62 (dropped). SpO2 99 percent. Your assessment? Orthostatic hypotension (POTS-like pattern). CARD 3: Jamal, 15, brought in by parents after he 'felt funny' in class. Vitals: HR 48 (low), BP 102/64, SpO2 98 percent. EKG strip: regular rhythm, P waves present, PR interval 0.16s, QRS narrow. Your assessment? Athletic bradycardia (Jamal runs cross country, this can be normal in elite young athletes) vs medication effect vs vagal tone."
             },
             {
               "type": "callout",
@@ -1336,28 +1367,86 @@
               "embed": true
             },
             {
-              "type": "step",
-              "content": "Conduction System Trace: Trace the conduction system: SA node fires (P wave = atrial depolarization), AV node delays the signal (the PR interval is that pause), the bundle branches carry it to the ventricles (QRS = ventricular depolarization), then the ventricles relax and reset (T wave = ventricular repolarization). Use the Explorer's drag labels and Physiology overlay to confirm each waveform corresponds to its anatomical event."
+              "type": "heading",
+              "content": "First: How the Heart's Electrical System Works"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "The heart pumps because tiny electrical pulses tell its muscles when to squeeze. The pulse starts in the SA NODE (a cluster of cells in the upper-right of the heart, the heart's natural pacemaker). The pulse spreads across the two upper chambers (atria), making them squeeze, then HITS the AV NODE (a relay station between atria and ventricles). The AV node DELAYS the signal by about 0.1 seconds (so the atria can finish their squeeze before the ventricles start). Then the signal travels down two BUNDLE BRANCHES into the ventricles, which squeeze HARD to push blood out to the lungs and body. Then the heart muscle relaxes and resets, ready for the next beat. An EKG records this electrical activity from the surface of the skin."
             },
             {
               "type": "step",
-              "content": "Pathology Reasoning: in atrial fibrillation, why is there no clean P wave? In a STEMI, why does the ST segment elevate? Use the Explorer to compare the waveform shapes for each rhythm and write a 1-paragraph mechanism explanation for both, the kind a med student gives on rounds."
+              "content": "Trace the conduction system on the EKG Explorer: open the app above, turn on the Physiology overlay, and watch a normal sinus rhythm play. Point to each waveform feature as it happens: P wave = SA node firing + atria depolarizing (squeezing). PR interval = AV node delay (the pause). QRS complex = ventricles depolarizing (the big squeeze). T wave = ventricles relaxing (resetting). Drag the labels to confirm. Write the mapping in your notebook."
+            },
+            {
+              "type": "heading",
+              "content": "Next: Two Common Pathologies"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "ATRIAL FIBRILLATION (AFib): instead of the SA node firing one clean pulse, the atria fire chaotically from many random spots. Result: no clean P wave, an irregular ventricular rhythm, and pooling of blood in the atria (a clot risk). One of the most common arrhythmias seen in the ER. STEMI (ST-Elevation Myocardial Infarction): a coronary artery is blocked, so part of the heart muscle is being starved of oxygen. The injured muscle can't repolarize properly, so the ST segment (the flat line between QRS and T wave) ELEVATES on the EKG above baseline. STEMI is a 'time-is-muscle' emergency, the ER opens the artery within 90 minutes (door-to-balloon time) or muscle dies."
             },
             {
               "type": "step",
-              "content": "Resting Heart Rate: Measure your resting heart rate using manual palpation (radial pulse, 15-second count x 4)."
+              "content": "Pathology Reasoning: in the EKG Explorer, switch to the Atrial Fibrillation rhythm. Compare to Normal Sinus Rhythm. Where did the P wave go? Now switch to STEMI. Where is the ST segment elevated, and how does that fit the 'oxygen-starved muscle' explanation above? Write a 1-paragraph mechanism for each in your notebook, the kind a med student gives on rounds."
+            },
+            {
+              "type": "heading",
+              "content": "Now: Take Your Own Vitals"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "You'll measure your own heart rate, blood pressure, and oxygen saturation, then graph your recovery curve after exercise. These are the same vital signs taken at every doctor's visit and ER triage. The numbers tell you what your heart and lungs are doing right now."
             },
             {
               "type": "step",
-              "content": "Blood Pressure Measurement: Use the blood pressure cuff with manual auscultation. Listen for Korotkoff sounds to identify systolic and diastolic pressures."
+              "content": "Resting Heart Rate: find your radial pulse (thumb-side of your wrist, 2 fingers, light pressure). Count beats for 15 seconds, multiply by 4. That's your HR in BPM. Adult resting HR: 60-100 normal, 40-60 in trained athletes, over 100 = tachycardic, under 60 = bradycardic. Record the number and what range it falls in."
+            },
+            {
+              "type": "heading",
+              "content": "Korotkoff Sounds Explained (before you take BP)"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "When you wrap a BP cuff around an arm and inflate it, you SQUEEZE the artery shut so no blood flows. As you slowly deflate, blood starts pushing through the artery in spurts at peak pressure (this is your SYSTOLIC, the upper number). You hear those spurts as TAPPING sounds through the stethoscope, those are KOROTKOFF SOUNDS, named after the Russian doctor who described them in 1905. As you keep deflating, eventually the cuff pressure drops below the artery's lowest pressure, blood flows continuously again, and the tapping STOPS. The pressure where the tapping stops is your DIASTOLIC (the lower number). So: first tap = systolic, last tap = diastolic. Practice the listening technique once before you record numbers."
             },
             {
               "type": "step",
-              "content": "Pulse Oximetry: Apply the pulse oximeter and observe the plethysmography waveform. Note how it correlates with your pulse."
+              "content": "Blood Pressure: wrap the cuff snug around the upper arm, place stethoscope bell over the brachial artery (inside elbow). Inflate to ~150 mmHg. Slowly release at ~3 mmHg per second. The pressure where you HEAR the FIRST tapping sound = systolic. The pressure where the tapping STOPS = diastolic. Record as systolic/diastolic (e.g. 118/76). Adult normal: under 120/80. Hypertensive: over 140/90 or 130/80 depending on guideline."
+            },
+            {
+              "type": "heading",
+              "content": "Pulse Oximetry"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "A pulse oximeter shines red and infrared light through your fingertip. Oxygenated blood (bright red) absorbs different amounts than deoxygenated blood (darker red). The sensor calculates the percentage of your hemoglobin that's carrying oxygen, that's SpO2. Normal SpO2 at sea level: 95-100 percent. Below 90 percent = hypoxia, time to investigate. The waveform you see is the PLETHYSMOGRAPH, a visual of each pulse pushing blood through your fingertip."
             },
             {
               "type": "step",
-              "content": "Exercise Challenge: Perform the exercise challenge: 2 minutes of activity, then serial measurements at 0, 2, 5, and 10 minutes post-exercise. Graph your recovery curve."
+              "content": "Pulse Oximetry: clip the sensor on your fingertip. Wait 10-15 seconds for a stable reading. Record SpO2 and pulse rate. Watch the plethysmography waveform pulse with your heartbeat. If your reading is below 95, check: cold finger? Nail polish? Bad sensor placement? These all cause false lows."
+            },
+            {
+              "type": "heading",
+              "content": "Exercise Recovery Challenge"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Trained hearts recover faster after exertion than untrained hearts, this is the single most reliable cardiovascular fitness signal. Cardiologists use it as a screening tool. Today you graph YOUR recovery curve."
+            },
+            {
+              "type": "step",
+              "content": "Exercise Challenge: take resting HR baseline. Do 2 minutes of activity (jumping jacks or stair climb). Immediately take HR (this is your peak/0min). Re-measure at 2, 5, and 10 minutes post-exercise. Graph all 5 numbers (resting, 0, 2, 5, 10 min). The slope of the recovery from 0 to 10 minutes is your fitness signal, steeper drop = better fitness."
+            },
+            {
+              "type": "step",
+              "content": "Now apply everything: work all 3 Clinical Scenario Cards above (Marcus, Aisha, Jamal). For each, write a complete SOAP note in your notebook using the SOAP template provided. The hardest part is the ASSESSMENT, defending which diagnosis is MOST likely while honestly listing the differentials you considered. Compare with a partner."
             },
             {
               "type": "checklist",
@@ -1396,7 +1485,7 @@
             },
             {
               "type": "step",
-              "content": "Open gemini.google.com on the facilitator laptop. Click the photo icon. Upload a clean Normal Sinus Rhythm screenshot from the EKG Waveform Explorer (use the export button or take a screenshot)."
+              "content": "Open gemini.google.com on the facilitator laptop. Click the photo icon. Upload an EKG strip PNG from the EKG Waveform Explorer above (Part II), use its 'Download EKG strip as PNG' button to grab a clean Normal Sinus Rhythm. The downloaded file lands in your Downloads folder ready to upload to Gemini, no screenshotting required."
             },
             {
               "type": "step",

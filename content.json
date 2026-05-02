@@ -617,8 +617,25 @@
               "content": "Assign roles: lead analyst, fingerprint specialist, spatter analyst, trace evidence examiner. Each specialist will own one piece of evidence from the Pine Hills case file above."
             },
             {
+              "type": "callout",
+              "style": "info",
+              "content": "Specialist tools: the two Day 1 and Day 2 apps are re-embedded right here so the fingerprint specialist and spatter analyst do not have to scroll back to earlier days. Open whichever one matches your role."
+            },
+            {
+              "type": "app",
+              "title": "Fingerprint Ridge Classifier (re-embedded for Day 3)",
+              "url": "apps/fingerprint-classifier.html",
+              "embed": true
+            },
+            {
+              "type": "app",
+              "title": "Blood Spatter Angle Calculator (re-embedded for Day 3)",
+              "url": "apps/blood-spatter-calculator.html",
+              "embed": true
+            },
+            {
               "type": "step",
-              "content": "Independent analysis: each specialist takes 5 minutes to write a brief report on their evidence. Fingerprint specialist uses the Day 1 Fingerprint Ridge Classifier. Spatter analyst uses the Day 2 Blood Spatter Angle Calculator. Trace evidence examiner describes what fiber-comparison method they would apply. The lead analyst takes notes on each specialist's findings."
+              "content": "Independent analysis: each specialist takes 5 minutes to write a brief report on their evidence. Fingerprint specialist uses the Fingerprint Ridge Classifier above. Spatter analyst uses the Blood Spatter Angle Calculator above. Trace evidence examiner describes what fiber-comparison method they would apply. The lead analyst takes notes on each specialist's findings."
             },
             {
               "type": "step",
@@ -1157,32 +1174,56 @@
               "content": "Step 1: Apply Day 1, The Fingerprint"
             },
             {
+              "type": "app",
+              "title": "Fingerprint Ridge Classifier (re-embedded for Week 1 Finale)",
+              "url": "apps/fingerprint-classifier.html",
+              "embed": true
+            },
+            {
               "type": "step",
-              "content": "Use the Fingerprint Ridge Classifier to classify the partial print recovered. Write the pattern type AND your confidence level in your notebook. (Day 1 calibration practice: a model's stated confidence should match its actual accuracy.)"
+              "content": "Use the Fingerprint Ridge Classifier above to classify the partial print recovered. Write the pattern type AND your confidence level in your notebook. (Day 1 calibration practice: a model's stated confidence should match its actual accuracy.)"
             },
             {
               "type": "heading",
               "content": "Step 2: Apply Day 2, The Blood Spatter"
             },
             {
+              "type": "app",
+              "title": "Blood Spatter Angle Calculator (re-embedded for Week 1 Finale)",
+              "url": "apps/blood-spatter-calculator.html",
+              "embed": true
+            },
+            {
               "type": "step",
-              "content": "The blood spatter on the wall measures: width 8mm, length 14mm. Use the Blood Spatter Angle Calculator to compute the angle of impact. Write the angle in your notebook. What does it tell you about the suspect's height or stance?"
+              "content": "The blood spatter on the wall measures: width 8mm, length 14mm. Use the Blood Spatter Angle Calculator above to compute the angle of impact. Write the angle in your notebook. What does it tell you about the suspect's height or stance?"
             },
             {
               "type": "heading",
               "content": "Step 3: Apply Day 3, The Trace Evidence"
             },
             {
+              "type": "app",
+              "title": "Evidence Synthesizer (re-embedded for Week 1 Finale)",
+              "url": "apps/evidence-synthesizer.html",
+              "embed": true
+            },
+            {
               "type": "step",
-              "content": "Open the Evidence Synthesizer (Day 3 app). Load the Pine Hills case. Use the Bayesian likelihood-ratio sliders for each piece of evidence (fingerprint, spatter, trace fiber). Push the posterior probability past the 95% beyond-reasonable-doubt threshold (or document why it falls short)."
+              "content": "Open the Evidence Synthesizer above. Load the Pine Hills case. Use the Bayesian likelihood-ratio sliders for each piece of evidence (fingerprint, spatter, trace fiber). Push the posterior probability past the 95% beyond-reasonable-doubt threshold (or document why it falls short)."
             },
             {
               "type": "heading",
               "content": "Step 4: Apply Day 4, The Digital Evidence"
             },
             {
+              "type": "app",
+              "title": "Deepfake Detector (re-embedded for Week 1 Finale)",
+              "url": "apps/deepfake-detector.html",
+              "embed": true
+            },
+            {
               "type": "step",
-              "content": "The viral social-media video: open the Deepfake Detector app, run the video frame through Detect Fakes Practice. Determine whether the video is real footage, AI-generated, or inconclusive. Then verify using the Headline Lab Lateral Reading method: where else has this video been published? Is the source reputable?"
+              "content": "The viral social-media video: open the Deepfake Detector above, run the video frame through Detect Fakes Practice. Determine whether the video is real footage, AI-generated, or inconclusive. Then verify using the Headline Lab Lateral Reading method: where else has this video been published? Is the source reputable?"
             },
             {
               "type": "heading",
@@ -1486,11 +1527,17 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "You read above how Mayo's cardiac AI under-diagnoses Black women by 14 percentage points. Today you reproduce a smaller version of that audit, using Gemini's multimodal mode. Gemini won't behave identically to Mayo's clinical model, but you'll see the same KIND of bias surface, and the audit METHOD is what transfers to professional work."
+              "content": "You read above how Mayo's cardiac AI under-diagnoses Black women by 14 percentage points. Today you reproduce a smaller version of that audit, using Gemini's multimodal mode. Gemini won't behave identically to Mayo's clinical model, but you'll see the same KIND of bias surface, and the audit METHOD is what transfers to professional work. The EKG Explorer is re-embedded right here so you can grab the strip image without scrolling back to Part II."
+            },
+            {
+              "type": "app",
+              "title": "EKG Waveform Explorer (re-embedded for the Gemini bias audit)",
+              "url": "apps/ekg-waveform-explorer.html",
+              "embed": true
             },
             {
               "type": "step",
-              "content": "Open gemini.google.com on the facilitator laptop. Click the photo icon. Upload an EKG strip PNG from the EKG Waveform Explorer above (Part II), use its 'Download EKG strip as PNG' button to grab a clean Normal Sinus Rhythm. The downloaded file lands in your Downloads folder ready to upload to Gemini, no screenshotting required."
+              "content": "Open gemini.google.com on the facilitator laptop. Click the photo icon. Upload an EKG strip PNG from the EKG Waveform Explorer above, use its 'Download EKG strip as PNG' button to grab a clean Normal Sinus Rhythm. The downloaded file lands in your Downloads folder ready to upload to Gemini, no screenshotting required."
             },
             {
               "type": "step",
@@ -2043,11 +2090,17 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "Fairlearn (Microsoft's open-source bias toolkit) computes 4-5 standard fairness metrics. Today you compute the same metrics two ways: by hand using the AI Inspector's Bias Visualizer mode, then by vibe-coding a calculator in Gemini Canvas. The math is the math, regardless of the tool."
+              "content": "Fairlearn (Microsoft's open-source bias toolkit) computes 4-5 standard fairness metrics. Today you compute the same metrics two ways: by hand using the AI Inspector's Bias Visualizer mode (embedded right below), then by vibe-coding a calculator in Gemini Canvas. The math is the math, regardless of the tool."
+            },
+            {
+              "type": "app",
+              "title": "AI Inspector (Bias Visualizer) - re-embedded so you don't have to scroll",
+              "url": "apps/ai-inspector.html",
+              "embed": true
             },
             {
               "type": "step",
-              "content": "Open the AI Inspector below in Bias Visualizer mode. Adjust the training data composition slider so Group A is 80% of training data. Record: overall accuracy, accuracy on Group A, accuracy on Group B."
+              "content": "Open the AI Inspector above in Bias Visualizer mode. Adjust the training data composition slider so Group A is 80% of training data. Record: overall accuracy, accuracy on Group A, accuracy on Group B."
             },
             {
               "type": "step",
@@ -2249,7 +2302,7 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "Materials Needed: Laptops or Chromebooks, stethoscopes + BP cuffs + pulse oximeters from Day 5, lab notebooks, AI Capability Map worksheet. The patient case is on this page, no printed packets needed."
+              "content": "Materials Needed: Laptops or Chromebooks, lab notebooks. Every app you need today is embedded right next to the step that uses it, no scrolling around. The patient case, the treatment options, and all the data are on this page."
             },
             {
               "type": "heading",
@@ -2258,19 +2311,57 @@
             {
               "type": "callout",
               "style": "case",
-              "content": "Patient briefing: David is 47, a construction supervisor in Hayward. He arrived at the ER 20 minutes ago with crushing chest pain that began on the job site, radiating into his left arm and jaw. He is diaphoretic, nauseated, and unable to take a deep breath. Vitals on arrival: HR 118 (sinus tachycardia), BP 162 over 94 (hypertensive), SpO2 92 percent on room air (low), RR 24 (tachypneic). EKG (12-lead) shows ST-segment elevation in leads II, III, and aVF, with reciprocal depression in I and aVL. Past medical history: cholecystectomy 2018, hypertension managed with lisinopril, hyperlipidemia, ex-smoker (quit 2019). Family history: father had MI at age 52. Initial troponin: elevated (preliminary lab back in 6 minutes). Chest X-ray: mild cardiomegaly, no acute pulmonary findings."
+              "content": "Patient briefing: David is 47, a construction supervisor in Hayward. He walked into the ER 20 minutes ago with crushing chest pain that started on the job site, spreading into his left arm and jaw. He is sweaty, nauseated, and short of breath. Vitals on arrival: heart rate 118 (fast), blood pressure 162 over 94 (high), oxygen 92 percent on room air (low), breathing rate 24 (fast). His EKG (12-lead) shows ST-segment elevation in leads II, III, and aVF, with matching depression in leads I and aVL. History: high blood pressure (on lisinopril), high cholesterol, ex-smoker (quit 2019). Father had a heart attack at age 52. First troponin (the cardiac muscle blood test): elevated. Chest X-ray: heart slightly larger than normal, lungs look clean. Your team has 4 stations to work, then a 3-minute presentation."
+            },
+            {
+              "type": "heading",
+              "content": "Station 1: Read David's EKG"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "David's EKG shows ST elevation in leads II, III, and aVF. That pattern means the lower wall of his heart is not getting enough oxygen, an INFERIOR MI (heart attack in the bottom of the heart). Your job: confirm the pattern using the EKG Explorer below, then identify which artery is blocked."
+            },
+            {
+              "type": "app",
+              "title": "EKG Waveform Explorer",
+              "url": "apps/ekg-waveform-explorer.html",
+              "embed": true
             },
             {
               "type": "step",
-              "content": "Station 1, Cardiac Physiology (Day 5 skill): Read David's EKG findings from the briefing. Identify the territory of injury (which coronary artery is most likely involved given ST elevation in II, III, aVF?). Use the EKG Waveform Explorer with the Physiology overlay to verify the conduction-system pathway you'd expect for an inferior wall MI. Explain the mechanism: why does ST elevation indicate transmural ischemia?"
+              "content": "Open the EKG Explorer above. Switch to the STEMI rhythm. The elevation lives in the ST segment (the flat line between QRS and T wave). Match David's leads (II, III, aVF) to the heart wall they look at: these 3 leads view the INFERIOR (bottom) wall. Inferior MI = blockage of the RIGHT CORONARY ARTERY (the artery that feeds the bottom of the heart). Write the artery name in your notebook."
             },
             {
               "type": "step",
-              "content": "Station 2, Surgical / Procedural Reasoning (Day 6 skill): David needs urgent revascularization. Defend your team's recommendation: percutaneous coronary intervention (PCI / cath lab) versus fibrinolytic therapy versus CABG. Cite the 90-minute door-to-balloon target (American Heart Association STEMI guideline) in your justification. The same precision-under-time-pressure mindset you used on Day 6 with Vertical Mattress applies here."
+              "content": "Quick Verdict (3 bullets in your notebook): (1) the blocked artery is the [name], (2) this counts as a STEMI emergency because [why], (3) the door-to-balloon target is [time]. Two sentences max per bullet. The 90-minute door-to-balloon clock is what an ER cardiologist quotes from memory."
+            },
+            {
+              "type": "heading",
+              "content": "Station 2: Pick the Treatment"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "David needs his blocked artery OPENED. There are 3 treatment options. You are not the surgeon, but you will defend which option you would pick if you were."
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "The 3 options. PCI (percutaneous coronary intervention): a tiny balloon-and-stent threaded through a wrist or groin artery up to the heart, opens the blockage in 30 to 60 minutes if a cath lab is available. Standard of care if PCI can be done within 90 minutes. FIBRINOLYTICS (clot busters): IV drugs that dissolve the clot, faster to start than PCI but only about 60 percent successful, used when PCI is not available within 90 minutes. CABG (coronary artery bypass graft): full open-heart surgery, used when arteries are too damaged for PCI. Hours-long, much bigger recovery."
             },
             {
               "type": "step",
-              "content": "Station 3, Diagnostic Imaging (Day 7 skill): The CXR shows mild cardiomegaly. Apply the four-step systematic approach (orientation, bones, soft tissue, air spaces) to evaluate. Then connect to bias auditing: cardiac AI tools (ECG-FM, AliveCor) tend to under-detect inferior MI in women and Black patients. If David were a 47-year-old Black woman with identical symptoms and EKG, what bias-mitigation steps would you require before relying on an AI-assisted diagnosis?"
+              "content": "Quick Verdict (3 bullets): (1) for David, pick PCI / fibrinolytics / CABG, (2) defend the pick in 2 sentences using the 90-minute door-to-balloon constraint, (3) name 1 thing about your hospital infrastructure that decides the pick (cath lab on site? helicopter transfer needed?). Two sentences max per bullet."
+            },
+            {
+              "type": "heading",
+              "content": "Station 3: Read David's Chest X-Ray"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "David's chest X-ray shows MILD CARDIOMEGALY (the heart looks slightly bigger than normal). That is expected with high blood pressure and prior heart strain. The X-ray does NOT change the STEMI diagnosis but it confirms David has been dealing with cardiac stress for a while. The Radiology Detective app is right below, practice the 4-step look (orientation, bones, soft tissue, air spaces) on any chest case to refresh."
             },
             {
               "type": "app",
@@ -2280,17 +2371,48 @@
             },
             {
               "type": "step",
-              "content": "AI Capability Map: For each Week 2 station, rate the AI's potential on two scales: accuracy (1-5) and explainability (1-5). Then plot the four AI-assist points (rhythm interpretation, procedural risk modeling, imaging analysis, bias detection) on a 2x2 grid. Where does AI clearly help, where do humans still excel, and where do you need explainable AI tools (SHAP, LIME) to make AI's role defensible in a malpractice case?"
+              "content": "Work any chest X-ray case in the Radiology Detective above (Maya's swallowed coin works). Use the systematic 4-step look. Then come back and answer in your notebook: looking at David's CXR finding (mild cardiomegaly), what is ONE other thing you would want to check before treatment to be safe? (Hint: a bedside echocardiogram for wall motion, or repeat troponins to track the trend.)"
             },
             {
               "type": "step",
-              "content": "Final Presentation: Prepare your team's final presentation: (1) the clinical verdict (acute inferior wall STEMI, recommended treatment), (2) your AI Capability Map for this case, (3) a 1-paragraph position statement on where AI's role in this diagnosis can be defended in court (Black Box Problem)."
+              "content": "Quick AI bias check (1 sentence): cardiac AI tools (ECG-FM, AliveCor) UNDER-DETECT inferior MI in women and Black patients. The Mayo Clinic 2024 study showed a 14-percentage-point gap. If David were a 47-year-old Black WOMAN with the EXACT same symptoms and EKG, what would you do differently? Write 1 sentence in your notebook. (Hint: do not trust the AI alone, get a human cardiologist's read.)"
+            },
+            {
+              "type": "heading",
+              "content": "Station 4: Can the AI Defend Itself?"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Imagine David's family is suing the hospital, claiming the AI missed a complication. The lawyer asks the cardiac AI: 'why did you flag THIS as a STEMI?' The AI must answer in court. Today's question: WHEN can an AI's reasoning be defended in court, and when can it not?"
+            },
+            {
+              "type": "app",
+              "title": "AI Inspector (Black Box Inspector)",
+              "url": "apps/ai-inspector.html",
+              "embed": true
+            },
+            {
+              "type": "step",
+              "content": "Open the AI Inspector above and tap Black Box Inspector. Pick a denied loan applicant. Hit Open the Box, see the SHAP waterfall (the bars showing which features pushed the decision up or down). The SAME kind of explanation IS what cardiac AI vendors must provide for a court. If the cardiac AI can show its reasoning like this, it can be defended. If it cannot, it cannot be admitted."
+            },
+            {
+              "type": "step",
+              "content": "Quick Verdict (3 bullets): (1) what feature most influenced the AI's decision in your loan example, (2) would you trust this AI in a courtroom? Why or why not, (3) what would the AI need to add to be more trustworthy?"
+            },
+            {
+              "type": "heading",
+              "content": "Final Presentation"
+            },
+            {
+              "type": "step",
+              "content": "3-minute team presentation, 3 slides only. Slide 1: David's diagnosis (inferior STEMI, blocked artery). Slide 2: your treatment pick and why. Slide 3: where the AI helped vs where you did not trust it. Just 3 slides, just 3 minutes."
             },
             {
               "type": "checklist",
               "items": [
                 {
-                  "text": "I completed the evidence stations and created the AI Capability Map"
+                  "text": "I worked all 4 stations and presented David's case"
                 }
               ]
             }
@@ -2319,11 +2441,17 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "Captum, SHAP, and LIME all answer the same question: 'why did the AI make this decision?' Today you do the SHAP-style analysis directly in the AI Inspector's Black Box Inspector mode, then vibe-code your court-ready report in Gemini Canvas. No external dependencies."
+              "content": "Captum, SHAP, and LIME all answer the same question: 'why did the AI make this decision?' Today you do the SHAP-style analysis directly in the AI Inspector's Black Box Inspector mode (embedded right below), then vibe-code your court-ready report in Gemini Canvas. No external dependencies."
+            },
+            {
+              "type": "app",
+              "title": "AI Inspector (Black Box Inspector) - re-embedded for the Part III analysis",
+              "url": "apps/ai-inspector.html",
+              "embed": true
             },
             {
               "type": "step",
-              "content": "Open the AI Inspector below in Black Box Inspector mode. Pick a denied loan applicant. Click 'Open the Box.' Read the SHAP-style waterfall: each feature's contribution to the deny decision is a bar above or below zero."
+              "content": "Open the AI Inspector above in Black Box Inspector mode. Pick a denied loan applicant. Click 'Open the Box.' Read the SHAP-style waterfall: each feature's contribution to the deny decision is a bar above or below zero."
             },
             {
               "type": "step",

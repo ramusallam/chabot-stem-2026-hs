@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Chabot STEM 2026 \u2014 High School",
+    "title": "Chabot STEM 2026 — High School",
     "program": "High School (Rising 9th-11th)",
     "dates": "June 22 - July 2",
     "storageKey": "woven-chabot-2026-hs",
@@ -439,7 +439,7 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "You proved sin \u03b8 = w/L by hand. Now build a real tool that applies your math. Using Gemini Canvas (vibe coding), you'll describe what you want and Gemini will write working code. Then you'll AUDIT THE CODE and find its bugs."
+              "content": "You proved sin θ = w/L by hand. Now build a real tool that applies your math. Using Gemini Canvas (vibe coding), you'll describe what you want and Gemini will write working code. Then you'll AUDIT THE CODE and find its bugs."
             },
             {
               "type": "step",
@@ -696,7 +696,7 @@
             },
             {
               "type": "step",
-              "content": "Gemini will produce a long answer. Now AUDIT IT. For each claim Gemini makes, mark: (\u2713) verifiable, (?) uncertain, (\u2717) wrong / hallucinated. Pay special attention to: any specific match probabilities, any case-law references, any 'this is consistent with' statements."
+              "content": "Gemini will produce a long answer. Now AUDIT IT. For each claim Gemini makes, mark: (✓) verifiable, (?) uncertain, (✗) wrong / hallucinated. Pay special attention to: any specific match probabilities, any case-law references, any 'this is consistent with' statements."
             },
             {
               "type": "step",
@@ -2043,6 +2043,12 @@
             {
               "type": "step",
               "content": "Station 3, Diagnostic Imaging (Day 7 skill): The CXR shows mild cardiomegaly. Apply the four-step systematic approach (orientation, bones, soft tissue, air spaces) to evaluate. Then connect to bias auditing: cardiac AI tools (ECG-FM, AliveCor) tend to under-detect inferior MI in women and Black patients. If David were a 47-year-old Black woman with identical symptoms and EKG, what bias-mitigation steps would you require before relying on an AI-assisted diagnosis?"
+            },
+            {
+              "type": "app",
+              "title": "Radiology Detective (6 cases with real X-ray comparisons)",
+              "url": "apps/radiology-detective.html",
+              "embed": true
             },
             {
               "type": "step",

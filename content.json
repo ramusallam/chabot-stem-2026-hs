@@ -601,27 +601,36 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "Materials Needed: Multi-evidence case file packets, Evidence analysis forms, Role assignment cards, Presentation materials, Previous lab equipment as needed"
+              "content": "Materials Needed: Laptops or Chromebooks, lab notebooks, the case briefing below. The Evidence Synthesizer app provides the case files and Bayesian analysis tools, no printed packets needed."
+            },
+            {
+              "type": "heading",
+              "content": "The Pine Hills Case (your team's working case)"
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "Pine Hills Burglary, Oakland. A break-in at a Pine Hills jewelry store last Thursday at 2:47am left 4 distinct pieces of evidence: (1) a partial fingerprint on the broken display-case glass, (2) a blood spatter pattern on the wall behind the case (suspect cut themselves on the broken glass), (3) cotton fibers caught in the broken glass, and (4) a viral social-media video allegedly showing the suspect leaving the scene. The DA needs your team's evidence-based recommendation: prosecute, decline, or further investigation. Your team has 4 specialist roles to fill, then you'll synthesize all evidence using Bayesian probability."
             },
             {
               "type": "step",
-              "content": "Case File Review: Review your team's case file. Assign roles: lead analyst, fingerprint specialist, spatter analyst, trace evidence examiner."
+              "content": "Assign roles: lead analyst, fingerprint specialist, spatter analyst, trace evidence examiner. Each specialist will own one piece of evidence from the Pine Hills case file above."
             },
             {
               "type": "step",
-              "content": "Independent Analysis: Each specialist analyzes their evidence type independently and writes a brief report."
+              "content": "Independent analysis: each specialist takes 5 minutes to write a brief report on their evidence. Fingerprint specialist uses the Day 1 Fingerprint Ridge Classifier. Spatter analyst uses the Day 2 Blood Spatter Angle Calculator. Trace evidence examiner describes what fiber-comparison method they would apply. The lead analyst takes notes on each specialist's findings."
             },
             {
               "type": "step",
-              "content": "Cross-Reference: The lead analyst reviews all reports and identifies where evidence corroborates or contradicts."
+              "content": "Cross-reference: the lead analyst reviews all 4 reports and identifies where evidence corroborates (multiple lines pointing to the same conclusion) and where it contradicts (one piece of evidence undermines another). Document both."
             },
             {
               "type": "step",
-              "content": "Evidence Strength Assessment: As a team, assess the overall strength of the combined evidence."
+              "content": "Evidence strength assessment: as a team, decide each piece of evidence's individual likelihood ratio (how much MORE likely the suspect is guilty given THIS evidence vs not). Use a 1-10 scale for now, you'll convert to actual likelihood ratios in the Synthesizer."
             },
             {
               "type": "step",
-              "content": "Formal Summary: Prepare a formal evidence summary that could be presented in court."
+              "content": "Formal summary: write a 1-paragraph evidence summary suitable for a court submission. Include: the case, the 4 evidence types, your team's overall confidence, and any caveats (e.g. 'video authenticity unconfirmed,' 'fingerprint partial only')."
             },
             {
               "type": "heading",

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Chabot STEM 2026 \u2014 High School",
+    "title": "Chabot STEM 2026 — High School",
     "program": "High School (Rising 9th-11th)",
     "dates": "June 22 - July 2",
     "storageKey": "woven-chabot-2026-hs",
@@ -439,7 +439,7 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "You proved sin \u03b8 = w/L by hand. Now build a real tool that applies your math. Using Gemini Canvas (vibe coding), you'll describe what you want and Gemini will write working code. Then you'll AUDIT THE CODE and find its bugs."
+              "content": "You proved sin θ = w/L by hand. Now build a real tool that applies your math. Using Gemini Canvas (vibe coding), you'll describe what you want and Gemini will write working code. Then you'll AUDIT THE CODE and find its bugs."
             },
             {
               "type": "step",
@@ -705,7 +705,7 @@
             },
             {
               "type": "step",
-              "content": "Gemini will produce a long answer. Now AUDIT IT. For each claim Gemini makes, mark: (\u2713) verifiable, (?) uncertain, (\u2717) wrong / hallucinated. Pay special attention to: any specific match probabilities, any case-law references, any 'this is consistent with' statements."
+              "content": "Gemini will produce a long answer. Now AUDIT IT. For each claim Gemini makes, mark: (✓) verifiable, (?) uncertain, (✗) wrong / hallucinated. Pay special attention to: any specific match probabilities, any case-law references, any 'this is consistent with' statements."
             },
             {
               "type": "step",
@@ -1338,6 +1338,11 @@
               "content": "Materials Needed: stethoscopes, manual blood pressure cuffs, pulse oximeters, stopwatches, lab notebooks. The SOAP note template and 3 clinical scenario cards are on this page below, no printed forms needed."
             },
             {
+              "type": "callout",
+              "style": "case",
+              "content": "Lab Safety: today you'll take your own vitals (or a willing partner's, only with explicit consent). Wash hands before touching anyone's skin. Don't share pulse oximeter sensors without wiping them first. If a partner has a known heart condition, anxiety about medical procedures, or just doesn't want to participate, do all the readings on yourself, no pressure to use a partner. The goal is to learn the technique, not to push anyone outside their comfort zone."
+            },
+            {
               "type": "heading",
               "content": "SOAP Note Template (use this format for every clinical writeup today)"
             },
@@ -1653,13 +1658,49 @@
               "content": "Woven notebook: this is Part II, The Physical Lab. Record every measurement, calculation, and observation as you work. The lab data you capture here becomes the evidence base you defend in Part III."
             },
             {
+              "type": "heading",
+              "content": "Sharps Safety: read this BEFORE you touch a needle"
+            },
+            {
+              "type": "callout",
+              "style": "case",
+              "content": "All needles go directly into the sharps container, never set a needle down on the table loose. Count your needles at the end: every needle that went out must come back. Dispose of used suture material in the sharps container as well. This is a real OR protocol and it is non-negotiable. If you puncture skin (yours or a partner's), STOP, alert the facilitator immediately, wash the site with soap and water, and document. Needle stick injuries are a real risk in any suturing workshop, the protocol exists so the consequences are minor."
+            },
+            {
+              "type": "heading",
+              "content": "The Tools You'll Use"
+            },
+            {
               "type": "callout",
               "style": "info",
-              "content": "Materials Needed: Advanced suture kits (blunt-tip needles), Foam practice pads, Surgical gloves, Rulers for measurement, Surgical assessment rubric, Timer, Feedback forms, Vertical Mattress reference card"
+              "content": "NEEDLE DRIVER: a clamp that holds the needle, never use your fingers to grab the needle directly. Hold it like a pencil, the ring goes on your thumb and the loop on your fourth finger. TISSUE FORCEPS: tweezers for grabbing skin gently, like picking up a single hair, never crush the tissue. SCISSORS: for cutting suture thread only, never for cutting tape or paper. Practice picking up the needle with the driver before you suture, the muscle memory matters. The needle driver is a tool, not a toy."
+            },
+            {
+              "type": "heading",
+              "content": "Watch First: How a Vertical Mattress Suture Works"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Stanford Surgery 5-minute walkthrough showing the technique in motion. The far-far-near-near pattern is the whole technique, watch for it. Watch once before you pick up an instrument."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/fOt79aOgbSI"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Materials Needed: Suture practice kit (needle driver, tissue forceps, scissors), 3-0 nylon suture packets, foam suture practice pad, sharps container (safety, non-negotiable), gloves, ruler. The Vertical Mattress reference card is on this page below."
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Vertical Mattress Reference Card. The far-far-near-near pattern: 1. Drive needle 8-10mm from wound edge on side A (deep bite IN). 2. Exit 8-10mm from wound edge on side B (deep bite OUT). 3. Re-enter 2-3mm from edge on side B (superficial bite IN). 4. Exit 2-3mm from edge on side A (superficial bite OUT). 5. Tie off. The result: skin edges EVERT (lift slightly outward), tension distributes across both deep and superficial bites."
             },
             {
               "type": "step",
-              "content": "Technique Review: Review the simple interrupted from Mini Med School, then learn the Vertical Mattress, the suture residents practice for high-tension wounds where edge eversion matters."
+              "content": "Technique Review: read the Vertical Mattress Reference Card above. Practice picking up the needle with the needle driver, no fingers. Practice the four-bite path WITHOUT the needle first, dry-running the motion with your finger across the foam pad until the far-far-near-near sequence feels automatic."
             },
             {
               "type": "step",
@@ -1676,6 +1717,10 @@
             {
               "type": "step",
               "content": "Peer Review: Evaluate a partner's work using the surgical assessment rubric. Provide specific, constructive feedback."
+            },
+            {
+              "type": "step",
+              "content": "Station Clean-Up: ALL needles into the sharps container, count them, every needle that went out must come back. Dispose of used suture material in the sharps container too. Wipe instruments down. Gloves into regular trash. Follow your facilitator's instructions for station reset. Sharps safety is the LAST step, not optional, not skippable."
             },
             {
               "type": "heading",

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Chabot STEM 2026 — High School",
+    "title": "Chabot STEM 2026 \u2014 High School",
     "program": "High School (Rising 9th-11th)",
     "dates": "June 22 - July 2",
     "storageKey": "woven-chabot-2026-hs",
@@ -439,7 +439,7 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "You proved sin θ = w/L by hand. Now build a real tool that applies your math. Using Gemini Canvas (vibe coding), you'll describe what you want and Gemini will write working code. Then you'll AUDIT THE CODE and find its bugs."
+              "content": "You proved sin \u03b8 = w/L by hand. Now build a real tool that applies your math. Using Gemini Canvas (vibe coding), you'll describe what you want and Gemini will write working code. Then you'll AUDIT THE CODE and find its bugs."
             },
             {
               "type": "step",
@@ -696,7 +696,7 @@
             },
             {
               "type": "step",
-              "content": "Gemini will produce a long answer. Now AUDIT IT. For each claim Gemini makes, mark: (✓) verifiable, (?) uncertain, (✗) wrong / hallucinated. Pay special attention to: any specific match probabilities, any case-law references, any 'this is consistent with' statements."
+              "content": "Gemini will produce a long answer. Now AUDIT IT. For each claim Gemini makes, mark: (\u2713) verifiable, (?) uncertain, (\u2717) wrong / hallucinated. Pay special attention to: any specific match probabilities, any case-law references, any 'this is consistent with' statements."
             },
             {
               "type": "step",
@@ -1056,7 +1056,7 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "Same app, tap Voice Analyzer. 4 clips, real or AI clone. Listen for the AI tells the app surfaces (flat-line volume, no breathing pauses, robotic 's' sounds)."
+              "content": "Same app, tap Voice Analyzer. All 4 clips are AI-generated voices, modern AI voice cloning is good enough in 2026 that voice quality alone is no longer the reliable tell. Two clips are scam patterns (urgency + money asks), two are harmless casual voicemails. Your job: listen and decide which is which by spotting the CONTENT pattern. The app reveals the scam markers (specific dollar amounts, time pressure, request to act now without verification)."
             },
             {
               "type": "heading",

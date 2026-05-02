@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Chabot STEM 2026 \u2014 High School",
+    "title": "Chabot STEM 2026 — High School",
     "program": "High School (Rising 9th-11th)",
     "dates": "June 22 - July 2",
     "storageKey": "woven-chabot-2026-hs",
@@ -439,7 +439,7 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "You proved sin \u03b8 = w/L by hand. Now build a real tool that applies your math. Using Gemini Canvas (vibe coding), you'll describe what you want and Gemini will write working code. Then you'll AUDIT THE CODE and find its bugs."
+              "content": "You proved sin θ = w/L by hand. Now build a real tool that applies your math. Using Gemini Canvas (vibe coding), you'll describe what you want and Gemini will write working code. Then you'll AUDIT THE CODE and find its bugs."
             },
             {
               "type": "step",
@@ -722,7 +722,7 @@
             },
             {
               "type": "step",
-              "content": "Gemini will produce a long answer. Now AUDIT IT. For each claim Gemini makes, mark: (\u2713) verifiable, (?) uncertain, (\u2717) wrong / hallucinated. Pay special attention to: any specific match probabilities, any case-law references, any 'this is consistent with' statements."
+              "content": "Gemini will produce a long answer. Now AUDIT IT. For each claim Gemini makes, mark: (✓) verifiable, (?) uncertain, (✗) wrong / hallucinated. Pay special attention to: any specific match probabilities, any case-law references, any 'this is consistent with' statements."
             },
             {
               "type": "step",
@@ -1991,77 +1991,248 @@
             },
             {
               "type": "heading",
-              "content": "Watch First: What Is Algorithmic Bias?"
+              "level": "h3",
+              "content": "You're Becoming an Algorithmic Auditor"
             },
             {
               "type": "callout",
               "style": "info",
-              "content": "Before you touch the dataset, watch this 60-second trailer for Coded Bias (the documentary about Joy Buolamwini's work). It frames the stakes: algorithms decide who gets a loan, who gets parole, who gets healthcare. When the math is wrong, real people pay."
+              "content": "Some AI tools, used in healthcare, courts, and hiring, have made unfair calls on people from underserved groups. The good news: SPOTTING those bad calls is a real job. Algorithmic auditors get hired in the Bay Area at $110-180k starting to find these errors before they hurt anyone. Today you do exactly what they do. By the end of class you will have audited a real-pattern AI and shown how to fix it."
+            },
+            {
+              "type": "heading",
+              "level": "h3",
+              "content": "Watch (3 min): What is Algorithmic Bias?"
             },
             {
               "type": "video",
-              "title": "Coded Bias (2020) trailer",
-              "url": "https://www.youtube.com/embed/rf68wQDVEho"
+              "url": "https://www.youtube.com/watch?v=UG_X_7g63rY",
+              "title": "Joy Buolamwini: How I'm fighting bias in algorithms (TED)"
             },
             {
               "type": "heading",
-              "content": "The Hospital Dataset (work this in your notebook)"
+              "level": "h3",
+              "content": "Step 1: Look at the AI's Decisions"
             },
             {
               "type": "callout",
               "style": "info",
-              "content": "Here's a simulated dataset of 10 patients. The hospital's AI uses HEALTHCARE SPENDING as the score for who needs extra care. Higher spending = higher risk score = more attention from doctors and nurses. Patient 1: Black, asthma, $4,200 spending, AI score 4. Patient 2: White, asthma, $9,800 spending, AI score 10. Patient 3: Black, diabetes, $3,500 spending, AI score 3. Patient 4: White, diabetes, $11,200 spending, AI score 11. Patient 5: Black, heart disease, $5,000 spending, AI score 5. Patient 6: White, heart disease, $13,500 spending, AI score 13. Patient 7: Black, hypertension, $2,800 spending, AI score 2. Patient 8: White, hypertension, $8,900 spending, AI score 9. Patient 9: Black, COPD, $4,400 spending, AI score 4. Patient 10: White, COPD, $10,800 spending, AI score 10. IMPORTANT: all 10 patients are equally sick. Asthma vs asthma. Diabetes vs diabetes. Same illness severity for matched pairs. The ONLY differences are race and how much money they have spent on healthcare."
+              "content": "A hospital used AI to decide which patients got extra care. The AI gave each patient a SCORE from 1 (lowest priority) to 10 (highest priority). Higher score = more attention. Here are 6 patients (all equally sick, same conditions). Look at the AI's scores."
             },
             {
-              "type": "heading",
-              "content": "Step 1: Spot the Pattern"
+              "type": "table",
+              "title": "Hospital AI Patient Scores",
+              "headers": [
+                "Patient",
+                "Race",
+                "Condition",
+                "AI Score (1-10)"
+              ],
+              "rows": [
+                [
+                  "#1",
+                  "Black",
+                  "Asthma",
+                  "4"
+                ],
+                [
+                  "#2",
+                  "White",
+                  "Asthma",
+                  "10"
+                ],
+                [
+                  "#3",
+                  "Black",
+                  "Diabetes",
+                  "3"
+                ],
+                [
+                  "#4",
+                  "White",
+                  "Diabetes",
+                  "11"
+                ],
+                [
+                  "#5",
+                  "Black",
+                  "Heart Disease",
+                  "5"
+                ],
+                [
+                  "#6",
+                  "White",
+                  "Heart Disease",
+                  "13"
+                ]
+              ],
+              "highlightCol": 3
             },
             {
               "type": "step",
-              "content": "Look at the dataset above. Calculate the AVERAGE AI risk score for the 5 Black patients vs the 5 White patients. Black average = ___? White average = ___? What is the gap? Write all three numbers in your notebook."
+              "content": "What do you notice?",
+              "description": "Write 1 sentence in your notebook. (No math required, just look at the scores.)"
             },
             {
               "type": "heading",
-              "content": "Step 2: Find the Hidden Bias"
+              "level": "h3",
+              "content": "Step 2: Find the Hidden Cause"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "The AI was using HEALTHCARE SPENDING as the score (more spending = higher score = more attention). Spending LOOKS like a fair number, but it's a STAND-IN (the technical word is 'proxy variable') for what the AI actually wanted to measure: who needs help most. Why might one group spend less even when equally sick?"
+            },
+            {
+              "type": "table",
+              "title": "What the AI Was Actually Reading: Spending",
+              "headers": [
+                "Patient",
+                "Race",
+                "Condition",
+                "Spending",
+                "AI Score"
+              ],
+              "rows": [
+                [
+                  "#1",
+                  "Black",
+                  "Asthma",
+                  "$4,200",
+                  "4"
+                ],
+                [
+                  "#2",
+                  "White",
+                  "Asthma",
+                  "$9,800",
+                  "10"
+                ],
+                [
+                  "#3",
+                  "Black",
+                  "Diabetes",
+                  "$3,500",
+                  "3"
+                ],
+                [
+                  "#4",
+                  "White",
+                  "Diabetes",
+                  "$11,200",
+                  "11"
+                ],
+                [
+                  "#5",
+                  "Black",
+                  "Heart Disease",
+                  "$5,000",
+                  "5"
+                ],
+                [
+                  "#6",
+                  "White",
+                  "Heart Disease",
+                  "$13,500",
+                  "13"
+                ]
+              ],
+              "highlightCol": 3
             },
             {
               "type": "step",
-              "content": "The AI uses SPENDING as a stand-in number for SICKNESS. Why might Black patients in real life spend LESS on healthcare even when they are equally sick? List 3 reasons (think: insurance access, distrust built from history, time off work, transportation costs, prescription costs). This is what data scientists call a STAND-IN PROBLEM (technical name: 'proxy variable bias'), the AI used a number that LOOKED neutral but actually encoded inequality."
+              "content": "Why might Patient #1 (Black, asthma) spend less than Patient #2 (White, asthma) even with the SAME condition?",
+              "description": "List 2 reasons in your notebook. (Hint: insurance access, transportation, time off work, distrust from past experiences.)"
             },
             {
               "type": "heading",
-              "content": "Step 3: Pick a Better Stand-In"
+              "level": "h3",
+              "content": "Step 3: Pick a Better Number"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "The AI needs a NEW signal that actually measures sickness, not spending. Brainstorm: what's a number that means 'this person is sick' but doesn't depend on having money?"
             },
             {
               "type": "step",
-              "content": "Brainstorm: instead of SPENDING, what number COULD the AI use to actually measure SICKNESS? Examples: number of chronic conditions, hospital admission count, lab values (A1C for diabetes, peak flow for asthma). Pick ONE and explain in 2 sentences why it would be fairer than spending."
+              "content": "Pick ONE replacement and write it in your notebook.",
+              "description": "Examples to consider: number of chronic conditions, hospital admission count, lab values like A1C for diabetes."
             },
             {
               "type": "heading",
-              "content": "Step 4: Recalculate"
+              "level": "h3",
+              "content": "Step 4: See the Fix Work"
             },
             {
-              "type": "step",
-              "content": "Use NUMBER OF CHRONIC CONDITIONS as the new score. Each patient in the dataset has 1 chronic condition listed, so each one gets a score of 1. Now what is the gap between the Black average and the White average? When you remove the spending bias, the gap collapses to zero. Document this in your notebook with both calculations side by side."
-            },
-            {
-              "type": "heading",
-              "content": "Step 5: Quick Verdict (NOT a one-page report)"
-            },
-            {
-              "type": "step",
-              "content": "Write THREE BULLET POINTS in your notebook: (1) what the AI got wrong, (2) why it got it wrong, (3) your fix. That is it. Three bullets is what a real bias auditor presents in a 5-minute meeting."
+              "type": "table",
+              "title": "After the Fix: NEW Score = Chronic Conditions",
+              "headers": [
+                "Patient",
+                "Race",
+                "Condition",
+                "NEW Score (chronic conditions)"
+              ],
+              "rows": [
+                [
+                  "#1",
+                  "Black",
+                  "Asthma",
+                  "1"
+                ],
+                [
+                  "#2",
+                  "White",
+                  "Asthma",
+                  "1"
+                ],
+                [
+                  "#3",
+                  "Black",
+                  "Diabetes",
+                  "1"
+                ],
+                [
+                  "#4",
+                  "White",
+                  "Diabetes",
+                  "1"
+                ],
+                [
+                  "#5",
+                  "Black",
+                  "Heart Disease",
+                  "1"
+                ],
+                [
+                  "#6",
+                  "White",
+                  "Heart Disease",
+                  "1"
+                ]
+              ],
+              "highlightCol": 3
             },
             {
               "type": "callout",
               "style": "tip",
-              "content": "Career Connection: an Algorithmic Auditor does exactly what you just did, every single day. They get a real model, a real dataset, and write a 3-bullet verdict for an executive who has 5 minutes. Bay Area starting salary: $110k-$160k. The skill is spotting the stand-in number that hides inequality."
+              "content": "When you swap the bias-loaded number for a fairer one, the gap disappears. Same patients. Same conditions. Now equal scores. THAT is what an algorithmic auditor delivers."
+            },
+            {
+              "type": "heading",
+              "level": "h3",
+              "content": "Step 5: Quick Verdict (3 bullets)"
+            },
+            {
+              "type": "step",
+              "content": "Write 3 bullets in your notebook.",
+              "description": "(1) what the AI got wrong, (2) why it got it wrong, (3) your fix. That's it. 3 bullets is the format real auditors present."
             },
             {
               "type": "checklist",
               "items": [
                 {
-                  "text": "I calculated both averages, identified the stand-in bias, picked a fairer score, and wrote my 3-bullet verdict"
+                  "text": "I looked at the AI scores, found the spending stand-in, picked a fairer number, saw the gap collapse, and wrote my 3-bullet auditor verdict. Today I am training to catch this. My job is to prevent it."
                 }
               ]
             }

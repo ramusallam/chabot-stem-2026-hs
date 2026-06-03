@@ -1181,7 +1181,7 @@
             },
             {
               "type": "step",
-              "content": "Use the Fingerprint Ridge Classifier above. Classify a print and write the pattern type AND your confidence level in your notebook, then check: does your stated confidence match your actual accuracy? (Day 1 calibration practice: a model's stated confidence should match its real accuracy.) Apply that same judgment to the partial print recovered from the Pine Hills display-case glass."
+              "content": "The partial print recovered from the Pine Hills display-case glass is a loop pattern with 6 confirmed minutiae points (the same 6 the crime lab logged for the Evidence Synthesizer in Step 3). Use the Fingerprint Ridge Classifier above to confirm how a loop is identified and to run the calibration drill. Then record in your notebook: (1) the pattern type of the recovered print, and (2) your confidence level. Day 1 calibration check: your stated confidence should match your actual accuracy, and 6 minutiae is a usable but limited print, so be honest about how strong your match really is."
             },
             {
               "type": "heading",
@@ -1223,7 +1223,7 @@
             },
             {
               "type": "step",
-              "content": "The viral social-media video: open the Deepfake Detector above, run the video frame through Detect Fakes Practice. Determine whether the video is real footage, AI-generated, or inconclusive. Then verify using the Headline Lab Lateral Reading method: where else has this video been published? Is the source reputable?"
+              "content": "The viral social-media video allegedly shows the suspect leaving the Pine Hills jewelry store. What you know about it: it is 9 seconds long, it surfaced on an anonymous account about 6 hours after the break-in, the face looks slightly too smooth, and it was re-posted by three accounts that all appeared the same day, with no original source. First build the skill: open the Deepfake Detector above and work the Detect Fakes Practice set, learning the AI tells (faces too smooth, strange eyes or blinking, warped backgrounds). Then render judgment on the Pine Hills video, real footage, AI-generated, or inconclusive? Verify with the Headline Lab Lateral Reading method: where else has it been published, and is the source reputable? Record your verdict and your reasoning in your notebook."
             },
             {
               "type": "heading",

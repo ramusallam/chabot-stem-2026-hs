@@ -1181,7 +1181,7 @@
             },
             {
               "type": "step",
-              "content": "Use the Fingerprint Ridge Classifier above to classify the partial print recovered. Write the pattern type AND your confidence level in your notebook. (Day 1 calibration practice: a model's stated confidence should match its actual accuracy.)"
+              "content": "Use the Fingerprint Ridge Classifier above. Classify a print and write the pattern type AND your confidence level in your notebook, then check: does your stated confidence match your actual accuracy? (Day 1 calibration practice: a model's stated confidence should match its real accuracy.) Apply that same judgment to the partial print recovered from the Pine Hills display-case glass."
             },
             {
               "type": "heading",

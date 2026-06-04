@@ -128,7 +128,7 @@
           "style": "gold",
           "title": "Part III: AI & Digital Literacy",
           "duration": "",
-          "instructorNotes": "",
+          "instructorNotes": "\n\nNO-CAMERA BACKUP (Chabot lab has no webcams): students train via image 'Upload', not 'Webcam'. Before class, photograph a shared set of Loop, Whorl, and Arch fingerprints and save it to a folder every computer can open (Google Drive or the desktop) so students without a phone can still upload. Confirm teachablemachine.withgoogle.com loads on the lab network. If the site is fully blocked, switch to the no-login, no-camera fallback Code.org 'AI for Oceans' (code.org/oceans), which teaches the same train-from-examples idea.",
           "blocks": [
             {
               "type": "callout",
@@ -173,6 +173,33 @@
             {
               "type": "step",
               "content": "Hold each of your inked prints up to your webcam. For each class, click 'Hold to Record' and capture 50+ samples (rotate the print, vary the lighting). More variety in training = better generalization."
+            },
+            {
+              "type": "heading",
+              "content": "No webcam? Upload your images instead"
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "No camera on this computer? You can train the same model by uploading pictures instead of using a live webcam. On each class, click 'Upload' instead of 'Webcam', then add image files. Two ways to get the pictures:"
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "Phone as a camera: take a clear photo of your inked fingerprints, one pattern at a time, with good light and a plain background. Send the photos to the computer by emailing them to yourself and downloading, or by putting them in Google Drive and opening Drive on the computer. Then click 'Upload' on each class (Loop, Whorl, Arch) and add that class's photos."
+            },
+            {
+              "type": "callout",
+              "style": "tip",
+              "content": "No phone? Ask your instructor for the shared print set, or use a partner's photos. Open the folder, click 'Upload' on each class, and add the Loop, Whorl, and Arch pictures."
+            },
+            {
+              "type": "step",
+              "content": "Add at least 10 to 15 pictures per class, then click 'Train Model'."
+            },
+            {
+              "type": "step",
+              "content": "Test it: click 'Upload' and add one new picture you did not use in training. Check the predicted class and the confidence percent. Did it get it right?"
             },
             {
               "type": "step",

@@ -1403,7 +1403,7 @@
             {
               "type": "callout",
               "style": "info",
-              "content": "Materials Needed: stethoscopes, manual blood pressure cuffs, pulse oximeters, stopwatches, lab notebooks. The SOAP note template and 3 clinical scenario cards are on this page below, no printed forms needed."
+              "content": "Materials Needed: stethoscopes, manual blood pressure cuffs AND automatic blood pressure cuffs (both - students train on both and choose), pulse oximeters, stopwatches, lab notebooks. The SOAP note template and 3 clinical scenario cards are on this page below, no printed forms needed."
             },
             {
               "type": "callout",
@@ -1479,6 +1479,23 @@
               "content": "Resting Heart Rate: find your radial pulse (thumb-side of your wrist, 2 fingers, light pressure). Count beats for 15 seconds, multiply by 4. That's your HR in BPM. Adult resting HR: 60-100 normal, 40-60 in trained athletes, over 100 = tachycardic, under 60 = bradycardic. Record the number and what range it falls in."
             },
             {
+              "type": "callout",
+              "style": "info",
+              "content": "Two tools, two ways. The MANUAL cuff: you pump it and listen through a stethoscope for the heartbeat (Korotkoff) sounds. The AUTOMATIC cuff: you press Start and it reads the number for you. Both are at your station. Learn each below, take a reading with both, compare how closely they agree, and choose the one you trust."
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/zzplQNiRQ0c"
+            },
+            {
+              "type": "video",
+              "url": "https://www.youtube.com/embed/-LF1PLOTwiQ"
+            },
+            {
+              "type": "step",
+              "content": "Compare and choose: take your blood pressure once with the MANUAL cuff and once with the AUTOMATIC cuff. How closely did they agree? Within 5 mmHg is excellent; more than 10 mmHg apart means re-check your technique. Pick the tool you trust - then use the manual technique below to understand exactly what the numbers mean."
+            },
+            {
               "type": "heading",
               "content": "Korotkoff Sounds Explained (before you take BP)"
             },
@@ -1490,6 +1507,21 @@
             {
               "type": "step",
               "content": "Blood Pressure: wrap the cuff snug around the upper arm, place stethoscope bell over the brachial artery (inside elbow). Inflate to ~150 mmHg. Slowly release at ~3 mmHg per second. The pressure where you HEAR the FIRST tapping sound = systolic. The pressure where the tapping STOPS = diastolic. Record as systolic/diastolic (e.g. 118/76). Adult normal: under 120/80. Hypertensive: over 140/90 or 130/80 depending on guideline."
+            },
+            {
+              "type": "callout",
+              "style": "info",
+              "content": "Now read what your number means. The Vital Signs Interpreter below classifies any BP reading the way a cardiologist does (Normal, Elevated, Stage 1, Stage 2, Crisis). Enter your reading to see where you fall. Optional: take a resting, a post-exercise, and a 3-minute-recovery BP reading and enter all three to draw a blood-pressure recovery curve alongside your heart-rate one."
+            },
+            {
+              "type": "app",
+              "url": "apps/vital-signs-interpreter.html",
+              "title": "Vital Signs Interpreter",
+              "embed": true
+            },
+            {
+              "type": "step",
+              "content": "Enter your blood pressure into the Interpreter above (BP mode) and record how it classifies you. Does it match the range you estimated from the manual reading?"
             },
             {
               "type": "heading",
